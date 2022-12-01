@@ -1,4 +1,8 @@
-<?php include 'templates/header.php';?>
+<?php
+include 'templates/header.php';
+include '../../controllers/login.php';
+?>
+
 
 <div class="container">
     <div class="row">
@@ -6,16 +10,20 @@
             <div class="container">
                 <h3>Vendor Login</h3>
                 <hr>
-                <?php /*if (session()->get('success')): ?>
+                  <!-- SUCCESFULL REGISTER -->
+                  <?php if (isset($_SESSION['regisVendor'])): ?>
 
-<div class="alert alert-success" role="alert">
+                    <div class="col-12">
+                        <div class="alert alert-success text-center" role="alert">
+                        <?php 
+                        echo $_SESSION['regisVendor'];
+                        unset($_SESSION['regisVendor']);
+                        ?>
+                        </div>
+                    </div>
 
-<?=session()->get('success')?>
-
-</div>
-
-<?php endif;*/?>
-                <form class="" action="/vendorLogin" method="post">
+                    <?php endif; ?>
+                <form class="" action="" method="post">
                     <div class="form-group">
                         <label for="vendorUsername">Username</label>
                         <!-- setvalue CI4 helper(['form']) in Users Controller -->
@@ -48,7 +56,7 @@
 
                     <div class="row">
                         <div class="col-12 col-sm-4">
-                            <button type="submit" class="btn " style="background-color:#6A0DAD; color:white;">Login</button>
+                            <button type="submit" name="login" class="btn " style="background-color:#6A0DAD; color:white;">Login</button>
                         </div>
                         <div class="col-12 col-sm-8 text-right">
                             <a href="vendorRegister.php" style="color:#6A0DAD;">Have not yet registered?</a>
@@ -60,4 +68,10 @@
     </div>
 </div>
 
+<?php
+if (isset($_REQUEST['login'])) {
+    $users = new login();
+    $users->vendorLogin($_REQUEST);
+}
+?>
 <?php include 'templates/footer.php';?>

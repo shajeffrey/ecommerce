@@ -1,5 +1,9 @@
 
-<?php include 'templates/header.php';?>
+<?php
+include 'templates/header.php';
+include '../../controllers/login.php';
+?>
+
 
 <div class="container">
     <div class="row">
@@ -22,26 +26,26 @@
 
                     <!--unsuccesful Login -->
                     <?php /* if (session()->getFlashdata('errorMessage')): ?>
-                        <div class="col-12">
-                            <div class="alert alert-danger" role="alert">
-                            <?=session()->getFlashdata('errorMessage')?>
-                            </div>
-                        </div>
-                    <?php endif;*/?>
+<div class="col-12">
+<div class="alert alert-danger" role="alert">
+<?=session()->getFlashdata('errorMessage')?>
+</div>
+</div>
+<?php endif;*/?>
 
                       <!--validations to Login -->
                     <?php /* if (isset($validation)): ?>
-                    <div class="col-12">
-                        <div class="alert alert-danger" role="alert">
+<div class="col-12">
+<div class="alert alert-danger" role="alert">
 
-                            <?=$validation->listErrors()?>
-                        </div>
-                    </div>
-                    <?php endif;*/?>
+<?=$validation->listErrors()?>
+</div>
+</div>
+<?php endif;*/?>
 
                     <div class="row">
                         <div class="col-1 col-sm-3 ">
-                            <button type="submit" class="btn" style="background-color:#be0000; color:white;">Login</button>
+                            <button type="submit" name="login" class="btn" style="background-color:#be0000; color:white;">Login</button>
                         </div>
 
                     </div>
@@ -50,5 +54,14 @@
         </div>
     </div>
 </div>
+
+<?php
+
+if (isset($_REQUEST['login'])) {
+    $users = new login();
+    $users->adminLogin($_REQUEST);
+}
+
+?>
 
 <?php include 'templates/footer.php';?>

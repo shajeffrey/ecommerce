@@ -1,4 +1,7 @@
-<?php include 'templates/header.php';?>
+<?php
+include 'templates/header.php';
+include '../../controllers/register.php';
+?>
 
 <div class="container">
     <div class="row">
@@ -7,13 +10,13 @@
                 <h3>Vendor Register</h3>
                 <hr>
 
-                <form class="" action="/vendorRegister" method="post">
+                <form class="" action="" method="post">
                     <div class="row">
                         <div class="col-12 col-sm-4">
                             <div class="form-group">
                                 <label for="vName">Vendor Name</label>
                                 <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                                <input type="text" class="form-control" name="vName" id="vName" value="<?php //set_value('vName')?>">
+                                <input type="text" class="form-control" required name="vName" id="vName" value="<?php //set_value('vName')?>">
                             </div>
                         </div>
 
@@ -21,7 +24,7 @@
                             <div class="form-group">
                                 <label for="vEmail">Email</label>
                                 <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                                <input type="text" class="form-control" name="vEmail" id="vEmail" value="<?php //set_value('vEmail')?>">
+                                <input type="email" class="form-control" required name="vEmail" id="vEmail" value="<?php //set_value('vEmail')?>">
                             </div>
                         </div>
 
@@ -29,7 +32,7 @@
                             <div class="form-group">
                                 <label for="vPhone">Phone Number</label>
                                 <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                                <input type="text" class="form-control" name="vPhone" id="vPhone" value="<?php //set_value('vPhone')?>">
+                                <input type="text" class="form-control" required name="vPhone" id="vPhone" value="<?php //set_value('vPhone')?>">
                             </div>
                         </div>
 
@@ -37,7 +40,7 @@
                             <div class="form-group">
                                 <label for="vLocation">Location / Address</label>
                                  <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                                <textarea class="form-control" rows="2" name="vLocation" id="vLocation"><?php //set_value('vLocation')?></textarea>
+                                <textarea class="form-control" required rows="2" name="vLocation" id="vLocation"><?php //set_value('vLocation')?></textarea>
                             </div>
                         </div>
 
@@ -45,7 +48,7 @@
                             <div class="form-group">
                                 <label for="vBankName">Vendor Bank Name</label>
                                 <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                                <input type="text" class="form-control" name="vBankName" id="vBankName" value="<?php //set_value('vBankName')?>">
+                                <input type="text" class="form-control" required name="vBankName" id="vBankName" value="<?php //set_value('vBankName')?>">
                             </div>
                         </div>
 
@@ -53,7 +56,7 @@
                             <div class="form-group">
                                 <label for="vBankNo">Bank Account No</label>
                                 <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                                <input type="text" class="form-control" name="vBankNo" id="vBankNo" value="<?php //set_value('vBankNo')?>">
+                                <input type="number" class="form-control" required name="vBankNo" id="vBankNo" value="<?php //set_value('vBankNo')?>">
                             </div>
                         </div>
 
@@ -61,42 +64,43 @@
                             <div class="form-group">
                                 <label for="vUsername">Vendor Username</label>
                                 <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                                <input type="text" class="form-control" name="vUsername" id="vUsername" value="<?php //set_value('vUsername')?>">
+                                <input type="text" class="form-control" required name="vUsername" id="vUsername" value="<?php //set_value('vUsername')?>">
                             </div>
                         </div>
 
                         <div class="col-12 col-sm-4">
                             <div class="form-group">
                                 <label for="vPass">Vendor Password</label>
-                                <input type="password" class="form-control" name="vPass" id="vPass" value="">
+                                <input type="password" class="form-control" required name="vPass" id="vPass" value="">
                             </div>
                         </div>
 
                         <div class="col-12 col-sm-4">
                             <div class="form-group">
                                 <label for="vConfirmPass">Confirm Password</label>
-                                <input type="password" class="form-control" name="vConfirmPass" id="vConfirmPass" value="">
+                                <input type="password" class="form-control" required name="vConfirmPass" id="vConfirmPass" value="">
                             </div>
                         </div>
 
                          <!-- warnings -->
-                         <?php /*if (isset($validation)): ?>
+                         <?php if (isset($_SESSION['regisVendor'])): ?>
 
-                        <div class="col-12">
-                            <div class="alert alert-danger" role="alert">
-
-                                <?=$validation->listErrors()?>
-
+                            <div class="col-12">
+                                <div class="alert alert-danger text-center" role="alert">
+                                <?php 
+                                echo $_SESSION['regisVendor'];
+                                unset($_SESSION['regisVendor']);
+                                ?>
+                                </div>
                             </div>
-                        </div>
 
-                        <?php endif; */ ?>
+                        <?php endif; ?>
 
                     </div>
 
                     <div class="row">
                         <div class="col-12 col-sm-4">
-                            <button type="submit" class="btn " style="background-color:#6A0DAD; color:white;">Register</button>
+                            <button type="submit" class="btn " name="register" style="background-color:#6A0DAD; color:white;">Register</button>
                         </div>
                         <div class="col-12 col-sm-8 text-right">
                         <a href="vendorLogin.php" style="color:#6A0DAD;">Already have an account?</a>
@@ -110,4 +114,13 @@
     </div>
 </div>
 
-<?php include 'templates/footer.php';?>
+<?php
+
+if (isset($_REQUEST['register'])) {
+    $users = new register();
+    $users->vendorRegis($_REQUEST);
+}
+
+include 'templates/footer.php';
+
+?>

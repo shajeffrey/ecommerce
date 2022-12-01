@@ -1,11 +1,21 @@
+<?php
+session_start();
+include 'templates/uHomeHeader.php';
+?>
 
 <!-- margin y axis (top/bottom) -->
 <div class="my-3">
     <div class="d-flex justify-content-center ">
-        <h1 class="sessionName">Welcome <?=session()->get('fullName')?></h1>
+        <h1 class="sessionName">Welcome <?php // session()->get('fullName')?></h1>
     </div>
 </div>
-
+<?php 
+if(isset($_SESSION['loginUser']))
+{
+    echo $_SESSION['loginUser'];
+    unset($_SESSION['loginUser']);
+}
+?>
 <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-md-10">
@@ -68,4 +78,7 @@
     </div>
 </div>
 
+<?php
+include 'templates/footer.php';
+?>
 

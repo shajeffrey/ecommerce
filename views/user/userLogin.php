@@ -1,4 +1,9 @@
-<?php include 'templates/header.php';?>
+<?php
+
+include 'templates/header.php';
+include '../../controllers/login.php';
+
+?>
 
 <div class="container">
     <div class="row">
@@ -6,25 +11,30 @@
             <div class="container">
                 <h3>User Login</h3>
                 <hr>
-                <!-- succesfull registration -->
-                <?php /* if (session()->get('success')): ?>
+                <!-- SUCCESFULL REGISTER -->
+                <?php if (isset($_SESSION['regisUser'])): ?>
 
-<div class="alert alert-success" role="alert">
-<?=session()->get('success')?>
-</div>
+                <div class="col-12">
+                    <div class="alert alert-success text-center" role="alert">
+                    <?php 
+                    echo $_SESSION['regisUser'];
+                    unset($_SESSION['regisUser']);
+                    ?>
+                    </div>
+                </div>
 
-<?php endif;*/?>
+                <?php endif; ?>
 
                 <form class="" action="" method="post">
                     <div class="form-group">
                         <label for="custUsername">Username</label>
                         <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                        <input type="text" class="form-control"  name="custUsername" id="custUsername" value="<?php ?>">
+                        <input type="text" class="form-control" required name="custUsername" id="custUsername" value="<?php ?>">
                     </div>
 
                     <div class="form-group">
                         <label for="custPass">Password</label>
-                        <input type="password" class="form-control"  name="custPass" id="custPass" value="">
+                        <input type="password" class="form-control" required name="custPass" id="custPass" value="">
                     </div>
 
                     <!--unsuccesful Login -->
@@ -48,7 +58,7 @@
 
                     <div class="row">
                         <div class="col-12 col-sm-4">
-                            <button type="submit" class="btn" style="background-color:#007dd6; color:white;">Login</button>
+                            <button type="submit" name="login" class="btn" style="background-color:#007dd6; color:white;">Login</button>
                         </div>
                         <div class="col-12 col-sm-8 text-right">
                             <a href="userRegister.php" style="color:#007dd6; ">Have not yet registered?</a>
@@ -59,5 +69,15 @@
         </div>
     </div>
 </div>
+
+<?php
+
+if (isset($_REQUEST['login'])) {
+    $users = new login();
+    $users->userLogin($_REQUEST);
+}
+
+?>
+
 
 <?php include 'templates/footer.php';?>

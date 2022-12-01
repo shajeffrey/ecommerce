@@ -45,7 +45,7 @@
                     <a class="nav-link" href="#">Orders</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/vendorLogout">Logout</a>
+                    <a class="nav-link" href="../../home.php">Logout</a>
                 </li>
             </ul>
         </div>

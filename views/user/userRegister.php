@@ -1,4 +1,7 @@
-<?php include 'templates/header.php';?>
+<?php
+include 'templates/header.php';
+include '../../controllers/register.php';
+?>
 
 <div class="container">
     <div class="row">
@@ -6,13 +9,13 @@
             <div class="container">
                 <h3>User Register</h3>
                 <hr>
-                <form class="" action="/userRegister" method="post">
+                <form class="" action="" method="post">
                     <div class="row">
                         <div class="col-12 ">
                             <div class="form-group">
                                 <label for="uFullname">Full Name</label>
                                 <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                                <input type="text" class="form-control" name="uFullname" id="uFullname" value="<?php //set_value('uFullname')?>">
+                                <input type="text" class="form-control" required name="uFullname" id="uFullname" value="<?php //set_value('uFullname')?>">
                             </div>
                         </div>
 
@@ -20,7 +23,7 @@
                             <div class="form-group">
                                 <label for="uEmail">Email</label>
                                 <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                                <input type="text" class="form-control" name="uEmail" id="uEmail" value="<?php //set_value('uEmail')?>">
+                                <input type="email" class="form-control" required name="uEmail" id="uEmail" value="<?php //set_value('uEmail')?>">
                             </div>
                         </div>
 
@@ -28,7 +31,7 @@
                             <div class="form-group">
                                 <label for="uLocation">Location / Address</label>
                                  <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                                <textarea class="form-control" rows="3" name="uLocation" id="uLocation"><?php //set_value('uLocation')?></textarea>
+                                <textarea class="form-control" required rows="3" name="uLocation" id="uLocation"><?php //set_value('uLocation')?></textarea>
                             </div>
                         </div>
 
@@ -36,7 +39,7 @@
                             <div class="form-group">
                                 <label for="uPhone">Phone Number</label>
                                 <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                                <input type="text" class="form-control" name="uPhone" id="uPhone" value="<?php //set_value('uPhone')?>">
+                                <input type="number" class="form-control" required name="uPhone" id="uPhone" value="<?php //set_value('uPhone')?>">
                             </div>
                         </div>
 
@@ -44,44 +47,43 @@
                             <div class="form-group">
                                 <label for="uName">Username</label>
                                 <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                                <input type="text" class="form-control" name="uName" id="uName" value="<?php //set_value('uName')?>">
+                                <input type="text" class="form-control" required name="uName" id="uName" value="<?php //set_value('uName')?>">
                             </div>
                         </div>
 
                         <div class="col-12 col-sm-6">
                             <div class="form-group">
                                 <label for="uPass">Password</label>
-                                <input type="password" class="form-control" name="uPass" id="uPass" value="">
+                                <input type="password" class="form-control" required name="uPass" id="uPass" value="">
                             </div>
                         </div>
 
                         <div class="col-12 col-sm-6">
                             <div class="form-group">
                                 <label for="uConfirmPass">Confirm Password</label>
-                                <input type="password" class="form-control" name="uConfirmPass" id="uConfirmPass" value="">
+                                <input type="password" class="form-control" required name="uConfirmPass" id="uConfirmPass" value="">
                             </div>
                         </div>
 
                         <!-- warnings -->
-                        <?php /* if (isset($validation)): ?>
+                        <?php if (isset($_SESSION['regisUser'])): ?>
 
-<div class="col-12">
-<div class="alert alert-danger" role="alert">
+                        <div class="col-12">
+                            <div class="alert alert-danger text-center" role="alert">
+                            <?php
+                            echo $_SESSION['regisUser'];
+                            unset($_SESSION['regisUser']);
+                            ?>
+                            </div>
+                        </div>
 
-<?=$validation->listErrors()?>
-
-</div>
-</div>
-
-<?php endif; */?>
-
-
+                        <?php endif;?>
 
                     </div>
 
                     <div class="row">
                         <div class="col-12 col-sm-4">
-                            <button type="submit" class="btn " style="background-color:#007dd6; color:white;">Register</button>
+                            <button type="submit" class="btn " name="register" style="background-color:#007dd6; color:white;">Register</button>
                         </div>
                         <div class="col-12 col-sm-8 text-right">
                             <a href="userLogin.php" style="color:#007dd6;">Already have an account?</a>
@@ -95,4 +97,12 @@
     </div>
 </div>
 
-<?php include 'templates/footer.php';?>
+<?php
+
+if (isset($_REQUEST['register'])) {
+    $users = new register();
+    $users->userRegis($_REQUEST);
+}
+
+include 'templates/footer.php';
+?>

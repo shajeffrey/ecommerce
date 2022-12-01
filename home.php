@@ -26,7 +26,7 @@
             <ul class="navbar-nav mr-auto">
                 <!-- <li class="nav-item active"> -->
                 <li class="nav-item">
-                <div class="nav-link" href="/" >CAMPUS ECOM<span class="sr-only">(current)</span></div>
+                <div class="nav-link inactiveLink"  >CAMPUS ECOM<span class="sr-only">(current)</span></div>
                 </li>
             </ul>
 
