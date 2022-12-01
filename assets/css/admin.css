@@ -1,0 +1,10 @@
+body {
+    background-color: #e1e1e1;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.inactiveLink {
+    pointer-events: none;
+    cursor: default;
+ }
