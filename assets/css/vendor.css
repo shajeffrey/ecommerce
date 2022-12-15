@@ -7,4 +7,80 @@ body {
 .inactiveLink {
     pointer-events: none;
     cursor: default;
- }
+}
+
+
+/* VENDOR PRODUCT CATALOG CSS  */
+
+.mt-50 {
+
+    margin-top: 30px;
+}
+
+.mb-50 {
+
+    margin-bottom: 40px;
+}
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .180);
+    border-radius: 10px;
+}
+
+.card-img-actions {
+    position: relative;
+}
+
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    text-align: center;
+}
+
+.card-img {
+
+    width: 300px;
+    height: 300px;
+}
+
+.star {
+    color: red;
+}
+
+.bg-cart {
+    background-color:mediumslateblue;
+    color: #fff;
+}
+
+.bg-cart:hover {
+    background-color: #6A0DAD;
+    color: #fff;
+
+}
+
+.bg-buy {
+    background-color: green;
+    color: #fff;
+    padding-right: 29px;
+}
+
+.bg-buy:hover {
+
+    color: #fff;
+}
+
+a {
+
+    text-decoration: none !important;
+}

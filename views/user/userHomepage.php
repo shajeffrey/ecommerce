@@ -23,7 +23,7 @@ if (isset($_SESSION['loginUser'])) {
         <div class="row d-flex justify-content-center">
             <div class="col-md-10">
                 <div class="card p-3  py-4">
-                    <h5>Find Your Wanted Product</h5>
+                    <h5>Find Your Product</h5>
                     <div class="row g-3 mt-2">
                         <div class="col-md-3">
                             <div class="dropdown">
@@ -55,8 +55,9 @@ if (isset($_SESSION['loginUser'])) {
         </div>
     </div>
 </div>
+
 <div style="background-color: white; padding: 0px 20px;">
-<div class="container justify-content-center mt-50 mb-50 bglight">
+<div class="container justify-content-center mt-50 mb-50 ">
 
         <div class="row pt-3 pb-3">
         <!-- PRODUCT CATALOGUE GRID -->
@@ -99,7 +100,7 @@ if (isset($_SESSION['loginUser'])) {
                                 {
                                     //Image Available
                                     ?>
-                                    <img src="../../assets/images/product/<?php echo $prodPicture; ?>" alt="Food Pic" class="card-img img-fluid">
+                                    <img src="../../assets/images/product/<?php echo $prodPicture; ?>" alt="Product Pic" class="card-img img-fluid" >
                                     <?php
                                 }
                                 ?>
@@ -121,7 +122,7 @@ if (isset($_SESSION['loginUser'])) {
                                     <i class="fa fa-star star"></i>
                                 </div> -->
                                 <div class="text-muted mb-3">34 reviews</div>
-                                <a href="userProduct?foodID=<?php echo $productID; ?>" type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i> Add to cart</a>
+                                <a href="userProduct?prodID=<?php echo $productID; ?>" type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i> Add to cart</a>
                             </div>
                         </div>
                 </div>
