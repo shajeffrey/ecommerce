@@ -1,3 +1,4 @@
+<?php include '../../conn.php';?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +11,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" href="../../assets/css/user.css">
+    <!-- PRODUCT GRID -->
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title>User Landing</title>
 </head>
@@ -19,7 +25,7 @@
         <div class="navbar-collapse collapse w-100 dual-collapse2 order-1 order-md-0">
             <ul class="navbar-nav ml-auto text-center">
                  <li class="nav-item ">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="userHomepage.php">Home</a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="#">Profile</a>
@@ -47,7 +53,7 @@
                     <a class="nav-link" href="#">History</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../home.php">Logout</a>
+                    <a class="nav-link" href="../../controllers/logout.php">Logout</a>
                 </li>
             </ul>
         </div>

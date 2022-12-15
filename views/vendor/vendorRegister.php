@@ -16,7 +16,7 @@ include '../../controllers/register.php';
                             <div class="form-group">
                                 <label for="vName">Vendor Name</label>
                                 <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                                <input type="text" class="form-control" required name="vName" id="vName" value="<?php //set_value('vName')?>">
+                                <input type="text" class="form-control" required name="vName" id="vName" value="<?php if(isset($_SESSION['vName'])) { echo $_SESSION['vName']; unset($_SESSION['vName']);}?>">
                             </div>
                         </div>
 
@@ -24,7 +24,7 @@ include '../../controllers/register.php';
                             <div class="form-group">
                                 <label for="vEmail">Email</label>
                                 <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                                <input type="email" class="form-control" required name="vEmail" id="vEmail" value="<?php //set_value('vEmail')?>">
+                                <input type="email" class="form-control" required name="vEmail" id="vEmail" value="<?php if(isset($_SESSION['vEmail'])) { echo $_SESSION['vEmail']; unset($_SESSION['vEmail']);}?>">
                             </div>
                         </div>
 
@@ -32,7 +32,7 @@ include '../../controllers/register.php';
                             <div class="form-group">
                                 <label for="vPhone">Phone Number</label>
                                 <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                                <input type="text" class="form-control" required name="vPhone" id="vPhone" value="<?php //set_value('vPhone')?>">
+                                <input type="number" class="form-control" required name="vPhone" id="vPhone" value="<?php if(isset($_SESSION['vPhone'])) { echo $_SESSION['vPhone']; unset($_SESSION['vPhone']);}?>">
                             </div>
                         </div>
 
@@ -40,7 +40,7 @@ include '../../controllers/register.php';
                             <div class="form-group">
                                 <label for="vLocation">Location / Address</label>
                                  <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                                <textarea class="form-control" required rows="2" name="vLocation" id="vLocation"><?php //set_value('vLocation')?></textarea>
+                                <textarea class="form-control" required rows="2" name="vLocation" id="vLocation"><?php if(isset($_SESSION['vLocation'])) { echo $_SESSION['vLocation']; unset($_SESSION['vLocation']);}?></textarea>
                             </div>
                         </div>
 
@@ -48,7 +48,7 @@ include '../../controllers/register.php';
                             <div class="form-group">
                                 <label for="vBankName">Vendor Bank Name</label>
                                 <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                                <input type="text" class="form-control" required name="vBankName" id="vBankName" value="<?php //set_value('vBankName')?>">
+                                <input type="text" class="form-control" required name="vBankName" id="vBankName" value="<?php if(isset($_SESSION['vBankName'])) { echo $_SESSION['vBankName']; unset($_SESSION['vBankName']);}?>">
                             </div>
                         </div>
 
@@ -56,7 +56,7 @@ include '../../controllers/register.php';
                             <div class="form-group">
                                 <label for="vBankNo">Bank Account No</label>
                                 <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                                <input type="number" class="form-control" required name="vBankNo" id="vBankNo" value="<?php //set_value('vBankNo')?>">
+                                <input type="number" class="form-control" required name="vBankNo" id="vBankNo" value="<?php if(isset($_SESSION['vBankNo'])) { echo $_SESSION['vBankNo']; unset($_SESSION['vBankNo']);}?>">
                             </div>
                         </div>
 
@@ -64,7 +64,7 @@ include '../../controllers/register.php';
                             <div class="form-group">
                                 <label for="vUsername">Vendor Username</label>
                                 <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                                <input type="text" class="form-control" required name="vUsername" id="vUsername" value="<?php //set_value('vUsername')?>">
+                                <input type="text" class="form-control" required name="vUsername" id="vUsername" value="<?php if(isset($_SESSION['vUsername'])) { echo $_SESSION['vUsername']; unset($_SESSION['vUsername']);}?>">
                             </div>
                         </div>
 
@@ -115,12 +115,13 @@ include '../../controllers/register.php';
 </div>
 
 <?php
+include 'templates/footer.php';
 
 if (isset($_REQUEST['register'])) {
     $users = new register();
     $users->vendorRegis($_REQUEST);
 }
 
-include 'templates/footer.php';
+
 
 ?>

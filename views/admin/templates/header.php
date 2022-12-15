@@ -9,12 +9,14 @@
     <!-- bootstrap 4 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/css/admin.css">
+    <script src="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.css">
     <title>Admin Login</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#be0000;font-size: 19px;">
     <div class="container" style="margin:0px 30 ;">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand inactiveLink" href="">
         <img src="../../assets/images/ecomLogo.png" width="45" height="30" class="d-inline-block align-top" alt="">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

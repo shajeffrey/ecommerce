@@ -15,7 +15,8 @@ include '../../controllers/register.php';
                             <div class="form-group">
                                 <label for="uFullname">Full Name</label>
                                 <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                                <input type="text" class="form-control" required name="uFullname" id="uFullname" value="<?php //set_value('uFullname')?>">
+                                <input type="text" class="form-control" required name="uFullname" id="uFullname" value="<?php if(isset($_SESSION['uFullname'])) { echo $_SESSION['uFullname']; unset($_SESSION['uFullname']);} ?>">
+                            
                             </div>
                         </div>
 
@@ -23,7 +24,7 @@ include '../../controllers/register.php';
                             <div class="form-group">
                                 <label for="uEmail">Email</label>
                                 <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                                <input type="email" class="form-control" required name="uEmail" id="uEmail" value="<?php //set_value('uEmail')?>">
+                                <input type="email" class="form-control" required name="uEmail" id="uEmail" value="<?php if(isset($_SESSION['uEmail'])) { echo $_SESSION['uEmail']; unset($_SESSION['uEmail']);}?>">
                             </div>
                         </div>
 
@@ -31,7 +32,7 @@ include '../../controllers/register.php';
                             <div class="form-group">
                                 <label for="uLocation">Location / Address</label>
                                  <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                                <textarea class="form-control" required rows="3" name="uLocation" id="uLocation"><?php //set_value('uLocation')?></textarea>
+                                <textarea class="form-control" required rows="3" name="uLocation" id="uLocation"><?php if(isset($_SESSION['uLocation'])) { echo $_SESSION['uLocation']; unset($_SESSION['uLocation']);}?></textarea>
                             </div>
                         </div>
 
@@ -39,7 +40,7 @@ include '../../controllers/register.php';
                             <div class="form-group">
                                 <label for="uPhone">Phone Number</label>
                                 <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                                <input type="number" class="form-control" required name="uPhone" id="uPhone" value="<?php //set_value('uPhone')?>">
+                                <input type="number" class="form-control" required name="uPhone" id="uPhone" value="<?php if(isset($_SESSION['uPhone'])) { echo $_SESSION['uPhone']; unset($_SESSION['uPhone']);}?>">
                             </div>
                         </div>
 
@@ -47,7 +48,7 @@ include '../../controllers/register.php';
                             <div class="form-group">
                                 <label for="uName">Username</label>
                                 <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                                <input type="text" class="form-control" required name="uName" id="uName" value="<?php //set_value('uName')?>">
+                                <input type="text" class="form-control" required name="uName" id="uName" value="<?php if(isset($_SESSION['uName'])) { echo $_SESSION['uName']; unset($_SESSION['uName']);}?>">
                             </div>
                         </div>
 
@@ -98,11 +99,11 @@ include '../../controllers/register.php';
 </div>
 
 <?php
+include 'templates/footer.php';
 
 if (isset($_REQUEST['register'])) {
     $users = new register();
     $users->userRegis($_REQUEST);
 }
 
-include 'templates/footer.php';
 ?>

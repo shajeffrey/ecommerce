@@ -1,3 +1,4 @@
+<?php include '../../conn.php';?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +46,7 @@
                     <a class="nav-link" href="#">Orders</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../home.php">Logout</a>
+                    <a class="nav-link" href="../../controllers/logout.php">Logout</a>
                 </li>
             </ul>
         </div>

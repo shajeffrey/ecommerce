@@ -54,7 +54,7 @@ include '../../controllers/login.php';
         </div>
     </div>
 </div>
-
+<?php include 'templates/footer.php';?>
 <?php
 
 if (isset($_REQUEST['login'])) {
@@ -64,4 +64,3 @@ if (isset($_REQUEST['login'])) {
 
 ?>
 
-<?php include 'templates/footer.php';?>

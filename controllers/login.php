@@ -11,23 +11,6 @@ class login
     public function adminLogin()
     {
 
-        ?>
-            <html>
-            <head>
-                <title>ADMIN LOGIN</title>
-                <script src="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.min.js"></script>
-                <link rel="stylesheet" type="text/css" href="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.css">
-
-                <style media="screen">
-                *{
-                    font-family: 'Poppins', sans-serif;
-                }
-                </style>
-            </head>
-            </html>
-
-        <?php
-
         $this->username = $_REQUEST['adminUsername'];
         $this->password = $_REQUEST['adminPassword'];
 
@@ -39,14 +22,23 @@ class login
 
         if (mysqli_num_rows($validateAdmin) == 1) {
 
+            $row = mysqli_fetch_assoc($validateAdmin);
+            // put all admin data into session
+            $_SESSION['adminID'] = $row['adminID'];
+            $_SESSION['adminName'] = $row['adminName'];
+            $_SESSION['adminUsername'] = $row['adminUsername'];
+            $_SESSION['adminPass'] = $row['adminPass'];
+            $_SESSION['adminPhone'] = $row['adminPhone'];
+            $_SESSION['adminEmail'] = $row['adminEmail'];
+
             $_SESSION['loginAdmin'] = "<div style='color: green' class='alert alert-success text-center'>Login succesful.</div>";
             echo '<script>window.location.href = "../../views/admin/adminHomepage.php"</script>';
         } else {
             echo '
 				<script>
 				swal({
-				title: "Sorry: Does Not Match",
-				text: "Try Again, Please",
+				title: "Sorry, Invalid Login Details!",
+				text: "Try Again, Please...",
 				type: "warning",
 			},
 				function(){
@@ -65,23 +57,6 @@ class login
     public function userLogin()
     {
 
-        ?>
-            <html>
-            <head>
-                <title>USER LOGIN</title>
-                <script src="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.min.js"></script>
-                <link rel="stylesheet" type="text/css" href="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.css">
-
-                <style media="screen">
-                *{
-                    font-family: 'Poppins', sans-serif;
-                }
-                </style>
-            </head>
-            </html>
-
-        <?php
-
         $this->username = $_REQUEST['custUsername'];
         $this->password = $_REQUEST['custPass'];
 
@@ -93,14 +68,24 @@ class login
 
         if (mysqli_num_rows($validateUser) == 1) {
 
+            $row = mysqli_fetch_assoc($validateUser);
+            // put all user data into session
+            $_SESSION['userID'] = $row['userID'];
+            $_SESSION['userFullname'] = $row['fullName'];
+            $_SESSION['userName'] = $row['uName'];
+            $_SESSION['userPass'] = $row['uPass'];
+            $_SESSION['userEmail'] = $row['userEmail'];
+            $_SESSION['userPhone'] = $row['userPhone'];
+            $_SESSION['userLocation'] = $row['userLocation'];
+
             $_SESSION['loginUser'] = "<div style='color: green' class='alert alert-success text-center'>Login succesful.</div>";
             echo '<script>window.location.href = "../../views/user/userHomepage.php"</script>';
         } else {
             echo '
 				<script>
 				swal({
-				title: "Sorry: Does Not Match",
-				text: "Try Again, Please",
+				title: "Sorry, Invalid Login Details!",
+				text: "Try Again, Please...",
 				type: "warning",
 			},
 				function(){
@@ -119,23 +104,6 @@ class login
     public function vendorLogin()
     {
 
-        ?>
-            <html>
-            <head>
-                <title>VENDOR LOGIN</title>
-                <script src="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.min.js"></script>
-                <link rel="stylesheet" type="text/css" href="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.css">
-
-                <style media="screen">
-                *{
-                    font-family: 'Poppins', sans-serif;
-                }
-                </style>
-            </head>
-            </html>
-
-        <?php
-
         $this->username = $_REQUEST['vendorUsername'];
         $this->password = $_REQUEST['vendorPass'];
 
@@ -147,14 +115,27 @@ class login
 
         if (mysqli_num_rows($validateVendor) == 1) {
 
+            $row = mysqli_fetch_assoc($validateVendor);
+            // put all user data into session
+            $_SESSION['vendorID'] = $row['vendorID'];
+            $_SESSION['vendorName'] = $row['vendorName'];
+            $_SESSION['vendorEmail'] = $row['vendorEmail'];
+            $_SESSION['vendorUsername'] = $row['vUsername'];
+            $_SESSION['vendorPassword'] = $row['vPassword'];
+            $_SESSION['vendorPhone'] = $row['vendorPhone'];
+            $_SESSION['vendorLocation'] = $row['vendorLocation'];
+            $_SESSION['qrUpload'] = $row['qrUpload'];
+            $_SESSION['bankName'] = $row['bankName'];
+            $_SESSION['bankNo'] = $row['bankNo'];
+
             $_SESSION['loginVendor'] = "<div style='color: green' class='alert alert-success text-center'>Login succesful.</div>";
             echo '<script>window.location.href = "../../views/vendor/vendorHomepage.php"</script>';
         } else {
             echo '
 				<script>
 				swal({
-				title: "Sorry: Does Not Match",
-				text: "Try Again, Please",
+				title: "Sorry, Invalid Login Details!",
+				text: "Try Again, Please...",
 				type: "warning",
 			},
 				function(){
@@ -169,5 +150,3 @@ class login
         mysqli_close($conn);
     }
 }
-
-?>

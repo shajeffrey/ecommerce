@@ -67,11 +67,10 @@ include '../../controllers/login.php';
         </div>
     </div>
 </div>
-
+<?php include 'templates/footer.php';?>
 <?php
 if (isset($_REQUEST['login'])) {
     $users = new login();
     $users->vendorLogin($_REQUEST);
 }
 ?>
-<?php include 'templates/footer.php';?>

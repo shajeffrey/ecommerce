@@ -16,14 +16,14 @@ include '../../controllers/login.php';
 
                 <div class="col-12">
                     <div class="alert alert-success text-center" role="alert">
-                    <?php 
+                    <?php
                     echo $_SESSION['regisUser'];
                     unset($_SESSION['regisUser']);
                     ?>
                     </div>
                 </div>
 
-                <?php endif; ?>
+                <?php endif;?>
 
                 <form class="" action="" method="post">
                     <div class="form-group">
@@ -70,6 +70,8 @@ include '../../controllers/login.php';
     </div>
 </div>
 
+<?php include 'templates/footer.php';?>
+
 <?php
 
 if (isset($_REQUEST['login'])) {
@@ -79,5 +81,3 @@ if (isset($_REQUEST['login'])) {
 
 ?>
 
-
-<?php include 'templates/footer.php';?>
