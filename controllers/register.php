@@ -105,7 +105,7 @@ class register
         $query4 = mysqli_query($conn, "SELECT bankNo FROM vendor WHERE bankNo= '$vBankNo'");
 
         $sql = "INSERT INTO vendor VALUES ('','$vName','$vEmail','$vUsername','$vPass','$vPhone', '$vLocation', '', '$vBankName' ,'$vBankNo')";
-       // $sql = "INSERT INTO complaint VALUES ('','$vName','$vEmail','$vUsername','$vPass','$vPhone', '$vLocation', '', '$vBankName' ,'$vBankNo')";
+        // $sql = "INSERT INTO complaint VALUES ('','$vName','$vEmail','$vUsername','$vPass','$vPhone', '$vLocation', '', '$vBankName' ,'$vBankNo')";
 
         if (mysqli_num_rows($query1) == 1) {
             $_SESSION['regisVendor'] = "<div >Email already in Use!</div>";

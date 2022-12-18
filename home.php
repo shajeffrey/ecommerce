@@ -94,19 +94,19 @@
         <!-- Three columns of text below the carousel -->
         <div class="row" >
           <div class="col-lg-4">
-            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <img class="rounded-circle" src="assets/images/home/platform.png" alt="Generic placeholder image" width="140" height="140">
             <h2 class="p-2">Platform</h2>
             <p style="font-size: 18px;">Offers an online platform for studies to conduct sales</p>
 
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4">
-            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <img class="rounded-circle" src="assets/images/home/audience.png" alt="Generic placeholder image" width="140" height="140">
             <h2 class="p-2">Audience</h2>
             <p style="font-size: 18px;">Vendors can promote their product & reach their audience </p>
 
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4">
-            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <img class="rounded-circle" src="assets/images/home/ease.png" alt="Generic placeholder image" width="140" height="140">
             <h2 class="p-2">Ease of Use</h2>
             <p style="font-size: 18px;">Its easier to do buisness online rather than manually</p>
 
@@ -120,50 +120,56 @@
   <!-- CAROUSSEL -->
     <div class="row mt-3">
       <div class="col-sm pt-5">
-      <div id="myCarousel" class="carousel slide" data-ride="carousel" >
-          <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-          </ol>
+      <div id="myCarousel" class="carousel slide"  >
+
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img class="first-slide" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmkxtHaF70z-7attFIsBcI9LqZZSaYnvdtGA&usqp=CAU" alt="First slide">
+              <img class="first-slide" src="assets/images/home/hardware2.png" alt="First slide">
               <div class="container">
-                <div class="carousel-caption text-left">
-                  <h1>Example headline.</h1>
-                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                  <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                <div class="carousel-caption ">
+                  <h1 style="color: #003f7d;">Upgrading PC?</h1>
+                  <p style="color: #003f7d;">You've been looking at your PC, and finally its time to upgrade, checkout the Hardware section and find what your looking for...</p>
+                  <!-- <p style="color: blue;"><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p> -->
                 </div>
               </div>
             </div>
             <div class="carousel-item" >
-              <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
+              <img class="second-slide" src="assets/images/home/books.png" alt="Second slide">
               <div class="container">
                 <div class="carousel-caption">
-                  <h1>Another example headline.</h1>
-                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                  <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                  <h1 style="color: white;" >Like Reading?</h1>
+                  <p style="color: white;">Reading books you like are known to improve creative, language and vocabulary, checkout the Books section.</p>
+                  <!-- <p style="color: blue;"><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p> -->
                 </div>
               </div>
             </div>
             <div class="carousel-item">
-              <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
+              <img class="third-slide" src="assets/images/home/module2.png" alt="Third slide">
               <div class="container">
-                <div class="carousel-caption text-right">
-                  <h1>One more for good measure.</h1>
-                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                  <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                <div class="carousel-caption ">
+                  <h1 style="color: black;">Learning Modules?</h1>
+                  <p style="color: black;">Need to catchup with the times, dont fret, a course module section may come in handy for your upcoming exams.</p>
+                  <!-- <p style="color: blue;"><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p> -->
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="forth-slide" src="assets/images/home/service.jpg" alt="Forth slide">
+              <div class="container">
+                <div class="carousel-caption ">
+                  <h1 style="color: cyan;">IT Services?</h1>
+                  <p style="color: cyan;">Having bluescreens, get in touch with the various types of services to solve your problem</p>
+                  <!-- <p style="color: blue;"><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p> -->
                 </div>
               </div>
             </div>
           </div>
           <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="carousel-control-prev-icon" style=" padding: 15px; border-radius:5px;" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
           </a>
-          <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <a class="carousel-control-next " href="#myCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" style=" padding: 15px; border-radius:5px;" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
           </a>
         </div>
@@ -195,9 +201,9 @@
                     <h3 class="mb-0">
                       <h1 class="" >Categories?</h1></h1>
                     </h3>
-                    <div class="mb-1 text-muted" style="padding: 2px; font-size: 20px;">- Accesories</div>
-                    <div class="mb-1 text-muted" style="padding: 2px; font-size: 20px;">- Apparel</div>
-                    <div class="mb-1 text-muted" style="padding: 2px; font-size: 20px;">- Electronics</div>
+                    <div class="mb-1 text-muted" style="padding: 2px; font-size: 20px;">- Hardware </div>
+                    <div class="mb-1 text-muted" style="padding: 2px; font-size: 20px;">- Books </div>
+                    <div class="mb-1 text-muted" style="padding: 2px; font-size: 20px;">- Modules </div>
 
                   </div>
                 </div>
@@ -209,6 +215,20 @@
     </div>
   </div>
 </div>
+
+<section id="contact" class="contact">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-header">
+          <h1>LOCATED OPERATIONS</h1>
+      </div>
+
+      <!-- Location Google Maps -->
+      <div class="mb-3">
+      <iframe style="border:0; border-radius:10px; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8757.78371747703!2d102.3170937782214!3d2.3111440837248103!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d1e46c6eaa869b%3A0xb8935957e3536888!2sUniversiti%20Teknikal%20Malaysia%20Melaka!5e0!3m2!1sen!2smy!4v1671376367679!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>      </div>
+
+    </div>
+</section>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -249,7 +269,7 @@
       <div>
         <h4>HQ Hours</h4>
         <p>
-          <strong>Monday-Friday: 9AM</strong> - 6PM<br>
+          <strong>Monday-Friday: </strong>9AM - 6PM<br>
           Saturday & Sunday: Closed
         </p>
       </div>
