@@ -54,7 +54,11 @@ if (isset($_SESSION['loginVendor'])) {
             {
                 $productID = $row['productID'];
                 $vendorID = $row['vendorID'];
-                $categoryID = $row['categoryID'];
+                //get corresponding category name
+                    $categoryID = $row['categoryID'];
+                    $catRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `category` WHERE categoryID='$categoryID' "));
+                    $category = $catRow['categoryName'];
+
                 $prodName = $row['prodName'];
                 $prodDesc = $row['prodDesc'];
                 $inventoryNo = $row['inventoryNo'];
@@ -92,14 +96,14 @@ if (isset($_SESSION['loginVendor'])) {
                             <div class="card-body bg-light text-center">
                                 <div class="mb-2">
                                     <h6 class="font-weight-semibold mb-2">
-                                        <a href="#" class="text-default mb-2" data-abc="true"><?= $prodName; ?></a>
+                                        <a href="#" class="text-default mb-2" data-abc="true"><?=$prodName; ?></a>
                                     </h6>
-                                    <a href="#" class="text-muted" data-abc="true">Item Category</a>
+                                    <a href="#" class="text-muted" data-abc="true"><?=$category; ?></a>
                                 </div>
                                 <h3 class="mb-0 font-weight-semibold">RM<?=$prodPrice;?></h3>
                             
-                                <div class="text-muted mb-3">34 Bought</div>
-                                <a href="vendorProduct?prodID=<?php echo $productID; ?>" type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i> Add to cart</a>
+                                <div class="text-muted mb-3">Available : <?=$inventoryNo; ?></div>
+                                <a href="updateProduct.php?prodID=<?php echo $productID; ?>" type="button" class="btn bg-cart"><i class="fa fa-cart-plus "></i>Update Product?</a>
                             </div>
                         </div>
                 </div>
