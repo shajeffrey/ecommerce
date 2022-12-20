@@ -89,21 +89,26 @@ a {
 .inner-update {
     background: #fff;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    min-width: 0;
    
   }
   
   .image-holder-update {
-  
-  
+    min-width: 170px;
+    min-height: 170px;
+
     box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2);
     width: 100%;
     height: 100%;
   }
   
   .card-img-update {
-margin-left: 10px;
+    margin-left: 10px;
     width: 100%;
-    height: 100%;
+    height:100%;
   }
 
   /* ALL INPUT COLOR GREY */
