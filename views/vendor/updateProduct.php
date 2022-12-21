@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include 'templates/vHomeHeader.php';
 include '../../controllers/manageProduct.php';
 ?>
@@ -17,14 +17,18 @@ if (isset($_GET['prodID'])) {
 
     $productID = $row['productID'];
     $vendorID = $row['vendorID'];
-    $categoryID = $row['categoryID'];
+
+        $categoryID = $row['categoryID'];
+        $catRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `category` WHERE categoryID='$categoryID' "));
+        $cat = $catRow['categoryName'];
+
     $prodName = $row['prodName'];
     $prodDesc = $row['prodDesc'];
     $inventoryNo = $row['inventoryNo'];
     $prodPrice = $row['prodPrice'];
     $inStock = $row['inStock'];
     $discAmount = $row['discAmount'];
-    $prodPicture = $row['prodPicture'];
+    $currentPicture = $row['prodPicture'];
 } else {
     //If not found redirect to vendorhomepage
     $_SESSION['loginVendor'] = "<div style='color: red' class='alert alert-danger text-center'>Sorry! Product Not Found</div>";
@@ -40,7 +44,24 @@ if (isset($_GET['prodID'])) {
                     <section>
                         <div class=" inner-update">
                             <div class="image-holder-update" >
-                            <img src="../../assets/images/product/<?php echo $prodPicture; ?>" alt="Product Pic" class="card-img-update img-fluid" >
+                    <?php 
+                        //Check whether image available or not
+                        if($currentPicture=="")
+                        {
+                            //Image not Available
+                            ?>
+                            <img src="../../assets/images/product/error2.jpg" alt="Product Pic" class="card-img img-fluid">
+                            <?php
+                            //echo "<div class='error'>Image not available.</div>";
+                        }
+                        else
+                        {
+                            //Image Available
+                            ?>
+                            <img src="../../assets/images/product/<?php echo $currentPicture; ?>" alt="Product Pic" class="card-img-update img-fluid" >
+                            <?php
+                        }
+                    ?>
                             </div>
                             <div class="p-4">
                                 <div class="col-12 form-header-update text-center">
@@ -50,81 +71,108 @@ if (isset($_GET['prodID'])) {
                                     <div class="col-12 col-sm-6" >
                                         <div class="form-group">
                                             <label for="prodName">Item Name</label>
-                                            <input type="text" class="form-control input-update" required name="prodName" id="prodName" value="<?php ?>">
+                                            <input type="text" class="form-control input-update" required name="prodName" id="prodName" value="<?=$prodName?>">
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6">
                                         <div class="form-group">
                                             <label for="prodCat">Item Category</label>
-                                            <input type="text" class="form-control input-update" required name="prodCat" id="prodCat" value="<?php ?>">
+                                            <select name="prodCat" class="form-control input-update">
+
+                        <?php 
+                            $sql = "SELECT * FROM `category`";
+                            $categories = mysqli_query($conn, $sql);
+                            $count = mysqli_num_rows($categories);
+                            if($count>0)
+                            {
+                                while($row=mysqli_fetch_assoc($categories))
+                                {
+                                    //get the details of categories
+                                    $categoryID = $row['categoryID'];
+                                    $categoryName = $row['categoryName'];
+                                    $categoryDesc = $row['categoryDesc'];
+                                    ?>
+                                    <option <?php if($cat==$categoryName) {echo "selected";} ?> value="<?php echo $categoryID;?>"> <?php echo "$categoryName"; ?></option>
+                                    <?php
+                                }
+                            }
+                            else
+                            {
+                                ?>
+                                <option value="0">Error! Not Found</option>
+                                <?php
+                            }
+                        ?>
+                                             </select>
+                                          
                                         </div>
                                     </div>
                                     <div class="col-12 ">
                                         <div class="form-group">
-                                            <label for="vLocation">Item Description</label>
-                                            <textarea class="form-control input-update" required rows="2" name="vLocation" id="vLocation"><?php ?></textarea>
+                                            <label for="prodDesc">Item Description</label>
+                                            <textarea class="form-control input-update" required rows="2" name="prodDesc" id="prodDesc"><?=$prodDesc?></textarea>
                                         </div>
                                     </div>
 
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group">
-                                            <label for="prodInv">Item Price</label>
-                                            <input type="text" class="form-control input-update" required name="prodInv" id="prodInv" value="<?php ?>">
+                                            <label for="prodPrice">Item Price (RM)</label>
+                                            <input type="number" step=".01" min="0" class="form-control input-update" required name="prodPrice" id="prodPrice" value="<?=$prodPrice?>">
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group">
-                                            <label for="prodInv">Item Discount</label>
-                                            <input type="text" class="form-control input-update" required name="prodInv" id="prodInv" value="<?php ?>">
+                                            <label for="prodDisc">Item Discount (%/RM)</label>
+                                            <input type="number" min="0" class="form-control input-update" required name="prodDisc" id="prodDisc" value="<?=$discAmount?>">
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group">
                                             <label for="prodInv">Item Inventory</label>
-                                            <input type="text" class="form-control input-update" required name="prodInv" id="prodInv" value="<?php ?>">
+                                            <input type="number" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" class="form-control input-update" required name="prodInv" id="prodInv" value="<?=$inventoryNo?>">
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6">
                                         <div class="form-group">
-                                            <label for="Availability">Item Availability</label>
-                                            <div class="col-12 col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="radio" class=" form-control " required name="instock" id="instock" value="yes">Yes
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="radio" class=" form-control" required name="instock" id="instock" value="no">No
-                                                </div>
-                                            </div>
+                                            <label for="prodPic">Item Image</label>
+                                            <input type="file" class="form-control-file input-update"  name="prodPic" id="prodPic" >
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6">
                                         <div class="form-group">
-                                            <label for="prodCat">Item Image</label>
-                                            <input type="file" class="form-control input-update" required name="prodCat" id="prodCat" value="<?php ?>">
+                                            <label for="Availability">Item Available?</label> <br>
+
+                                            <div class="form-check form-check-inline">
+                                            <input <?php if($inStock=="yes") {echo "checked";} ?> type="radio" name="instock" value="yes">
+                                            <label class="form-check-label" for="inlineCheckbox2">Yes</label>
+                                            </div>
+                                            <span style="margin-left: 25px;"></span>
+                                            <div class="form-check form-check-inline">
+                                            <input <?php if($inStock=="no") {echo "checked";} ?> type="radio" name="instock" value="no">
+                                            <label class="form-check-label" for="inlineCheckbox2">No</label>       
+                                            </div>
                                         </div>
                                     </div>
-                                    <!-- INSTOCK SECTION  -->
-                                    <!-- <div class="col-12 col-sm-6">
-                                         <div class="addFoodMargin">
-                                            <div class="order-label" style="color: rgb(220,53,69);">Active</div>
-                                            <input <?php //if($active=="Yes") {echo "checked";} ?> type="radio" name="active" value="Yes"> Yes
-                                            <input <?php //if($active=="No") {echo "checked";} ?> type="radio" name="active" value="No"> No
-                                        </div>
-                                         <div class="form-group">
-                                            <label class="">
-                                                <input type="radio" name="gender" value="male" checked>Yes<br>
-                                            </label>
-                                            <label class="">
-                                                <input type="radio" name="gender" value="female">No<br>
-                                            </label>
-                                        </div>
-                                    </div> -->
+                                    <input type="hidden" name="productID" value="<?php echo $productID; ?>">
+                                   <input type="hidden" name="currentPicture" value="<?php echo $currentPicture; ?>">
+    
                                     <div class="col-12 col-sm-4">
                                         <button type="submit" name="update" class="btn" style="background-color:#6A0DAD; color:white;">Update Item</button>
                                     </div>
 
+                                    <!-- ERROR CHECKING PLACE  -->
+                                    <?php if (isset($_SESSION['updateProduct'])): ?>
+
+                                    <div class="col-12 col-sm-8">
+                                        <div class="alert alert-danger text-center" role="alert">
+                                        <?php 
+                                        echo $_SESSION['updateProduct'];
+                                        unset($_SESSION['updateProduct']);
+                                        ?>
+                                        </div>
+                                    </div>
+
+                                    <?php endif; ?>
                                 </div>
                             </div>
 
@@ -140,6 +188,7 @@ include 'templates/footer.php';
 ?>
 <?php
 if (isset($_REQUEST['update'])) {
+
     $update = new manageProduct();
     $update->product_update($_REQUEST);
 }

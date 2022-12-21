@@ -22,6 +22,8 @@ echo "Connected";
 }
  */
 
+// define('SITEURL', 'http://localhost/ecomdp/');
+
 $sname = "localhost";
 
 $unmae = "root";

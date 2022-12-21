@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include 'templates/vHomeHeader.php';
 include '../../controllers/search.php';
 ?>
