@@ -9,6 +9,20 @@ body {
     cursor: default;
 }
 
+/* MANAGE PRODUCTS */
+.wrapper {
+  justify-content: center;
+  padding: 1%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.wrapper2 {
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
 
 /* VENDOR PRODUCT CATALOG CSS  */
 
@@ -45,7 +59,7 @@ body {
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
     padding: 1.25rem;
-    text-align: center;
+    text-align: justify;
 }
 
 .card-img {
@@ -59,7 +73,7 @@ body {
 }
 
 .bg-cart {
-    background-color:mediumslateblue;
+    background-color:#6A0DAD;
     color: #fff;
 }
 

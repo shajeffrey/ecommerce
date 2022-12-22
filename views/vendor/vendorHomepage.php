@@ -93,12 +93,14 @@ if (isset($_SESSION['loginVendor'])) {
                                         <!-- <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png" class="card-img img-fluid" width="96" height="350" alt=""> -->
                                 </div>
                             </div>
-                            <div class="card-body bg-light text-center">
+                            <div class="card-body bg-light text-justify">
                                 <div class="mb-2">
                                     <h6 class="font-weight-semibold mb-2">
-                                        <a href="#" class="text-default mb-2" data-abc="true"><?=$prodName; ?></a>
+                                        <a href="#" class="text-default mb-2 inactiveLink" data-abc="true"><?=$prodName; ?></a>
                                     </h6>
-                                    <a href="#" class="text-muted" data-abc="true"><?=$category; ?></a>
+                                    <a href="#" class="text-muted inactiveLink" data-abc="true"><?=$category; ?></a>
+                                    <hr>
+                                    <a href="#" class="text-muted inactiveLink" data-abc="true"><?=$prodDesc; ?></a>
                                 </div>
                                 <h3 class="mb-0 font-weight-semibold">RM<?=$prodPrice;?></h3>
                             
