@@ -23,6 +23,10 @@ body {
   margin: 0 auto;
 }
 
+.middle{
+  text-align: center;
+  vertical-align: bottom;
+}
 
 /* VENDOR PRODUCT CATALOG CSS  */
 
@@ -70,6 +74,7 @@ body {
 
 .star {
     color: red;
+    
 }
 
 .bg-cart {

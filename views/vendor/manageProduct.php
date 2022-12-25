@@ -39,13 +39,14 @@ include 'templates/vHomeHeader.php';
         <thead style="color:#6A0DAD;">
         <tr>
             <th>No.</th>
-            <th>Name</th>
-            <th>Price</th>
             <th>Image</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Discount</th>
             <th>Inventory</th>
             <th>Available</th>
-            <th>Discount</th>
-            <th>Actions</th>
+            <th style="width: 15%;">Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -68,6 +69,11 @@ include 'templates/vHomeHeader.php';
             {
                 //get the values from individual columns
                 $productID = $row['productID'];
+
+                    $categoryID = $row['categoryID'];
+                    $catRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `category` WHERE categoryID='$categoryID' "));
+                    $category = $catRow['categoryName'];
+
                 $prodName = $row['prodName'];
                 $prodPrice = $row['prodPrice'];
                 $prodPicture = $row['prodPicture'];
@@ -78,9 +84,7 @@ include 'templates/vHomeHeader.php';
 
         <tr>
            <td ><?php echo $sn++; ?>. </td>
-            <td><?php echo $prodName; ?></td>
-            <td>RM<?php echo $prodPrice; ?></td>
-            <td>
+           <td>
                 <?php  
                     //CHeck whether we have image or not
                     if($prodPicture=="")
@@ -97,14 +101,16 @@ include 'templates/vHomeHeader.php';
                     }
                 ?>
             </td>
+            <td><?php echo $prodName; ?></td>
+            <td><?php echo $category; ?></td>
+            <td>RM<?php echo $prodPrice; ?></td>
+            <td><?php echo $discAmount; ?></td>
+            
             <td><?php echo $inventoryNo; ?></td>
             <td><?php echo $inStock; ?></td>
-            <td><?php echo $discAmount; ?></td>
             <td>
-            <?php 
-                ?>
                 <a href="updateProduct.php?prodID=<?php echo $productID;?>" class="btn">Update Item</a>
-                
+            
                 <a href="deleteProduct.php?deleteID=<?php echo $productID;?>&currentImage=<?php echo $prodPicture; ?>" class="btn">Delete Item</a>
             </td>
         </tr>

@@ -4,15 +4,15 @@ include 'templates/vHomeHeader.php';
 
 <div class="my-3">
     <div class="d-flex justify-content-center ">
-        <h1 class="sessionName">Welcome <?=$_SESSION['vendorName'];?></h1>
+        <h2>Find Results</h2>
     </div>
 </div>
-<?php
-if (isset($_SESSION['loginVendor'])) {
-    echo $_SESSION['loginVendor'];
-    unset($_SESSION['loginVendor']);
-}
+
+<?php 
+//Get Search Keyword
+$search = $_POST['searchProd'];
 ?>
+
 <div class="container">
     <form action="searchProduct.php" method="POST">
         <div class="row d-flex justify-content-center">
@@ -45,7 +45,7 @@ if (isset($_SESSION['loginVendor'])) {
         <!-- VENDOR PRODUCT CATALOGUE -->
         <?php
         $id = $_SESSION['vendorID'];
-        $query = "SELECT * FROM `product` WHERE vendorID='$id' ";
+        $query = "SELECT * FROM `product` WHERE vendorID='$id' AND prodName LIKE '%$search%' ";
 
         $vendorCatalogue = mysqli_query($conn, $query);
 
@@ -116,13 +116,17 @@ if (isset($_SESSION['loginVendor'])) {
             else
             {
                 //Products Not Available 
-                echo "<div class='alert alert-danger col-12 text-center'>Products not available.</div>";
+                echo "<div class='alert col-12 alert-danger text-center'>Products not available.</div>";
             }
             ?>
 
         </div>
     </div>
     </div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 
 <?php
