@@ -31,6 +31,14 @@ include 'templates/vHomeHeader.php';
             ?>
     </div>
     <?php endif; ?>
+    <?php if (isset($_SESSION['updateProdInv'])): ?>
+    <div class="col-12">
+            <?php 
+            echo $_SESSION['updateProdInv'];
+            unset($_SESSION['updateProdInv']);
+            ?>
+    </div>
+    <?php endif; ?>
 
     <h2 style="color:#6A0DAD;">Manage Vendor Products</h2>
     <a  href="addProduct.php" style="background-color:#6A0DAD; color:white;" class="btn inline float-right mb-3 ">Add Product</a> 
@@ -111,7 +119,7 @@ include 'templates/vHomeHeader.php';
             <td>
                 <a href="updateProduct.php?prodID=<?php echo $productID;?>" class="btn">Update Item</a>
             
-                <a href="deleteProduct.php?deleteID=<?php echo $productID;?>&currentImage=<?php echo $prodPicture; ?>" class="btn">Delete Item</a>
+                <a onclick="return confirm('Are you sure you want to delete this item?');" href="deleteProduct.php?deleteID=<?php echo $productID;?>&currentImage=<?php echo $prodPicture; ?>" class="btn">Delete Item</a>
             </td>
         </tr>
         

@@ -197,7 +197,17 @@ if (isset($_POST['update'])) {
         $prodPrice = $_POST['prodPrice'];
         $prodDisc = $_POST['prodDisc'];
         $prodInv = $_POST['prodInv'];
-        $instock = $_POST['instock'];
+        if( $prodInv == 0)
+        {
+            $instock = "no"; //set instock to NO if no inventory available
+            $_SESSION['updateProdInv'] = "<div style='color: green' class='alert alert-success text-center'>Item Inventory 0, Product Availability set to no</div>";
+        }
+        else if( isset($_POST['instock']))
+        {
+            $instock = $_POST['instock'];
+        } else{
+            $instock = "no";
+        }
     
         if(isset($_FILES['prodPic']['name']))
         {

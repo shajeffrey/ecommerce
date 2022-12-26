@@ -149,7 +149,7 @@ if (isset($_SESSION['loginUser'])) {
                                 <h3 class="mb-0 font-weight-semibold">RM<?=$prodPrice;?></h3>
                             
                                 <div class="text-muted mb-3">34 reviews</div>
-                                <a href="userProduct?prodID=<?php echo $productID; ?>" type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i> Add to cart</a>
+                                <a href="userProduct.php?prodID=<?php echo $productID; ?>" type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i>Add to cart</a>
                             </div>
                         </div>
                 </div>
@@ -159,7 +159,7 @@ if (isset($_SESSION['loginUser'])) {
             else
             {
                 //Products Not Available 
-                echo "<div class='alert col-12 alert-danger text-center'>Products not available.</div>";
+                echo "<div class='alert col-12 alert-danger text-center'>No Products not Available.</div>";
             }
             ?>
 

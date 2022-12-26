@@ -132,7 +132,9 @@ include 'templates/vHomeHeader.php';
 
 <?php
 if (isset($_POST['add'])) {
-         $vendorID = $_SESSION['vendorID'];
+
+    
+        $vendorID = $_SESSION['vendorID'];
         $prodCat = $_POST['prodCat'];
         $prodName = $_POST['prodName'];
         $prodDesc = $_POST['prodDesc'];
@@ -140,13 +142,16 @@ if (isset($_POST['add'])) {
         $prodDisc = $_POST['prodDisc'];
         $prodInv = $_POST['prodInv'];
 
-        if(isset($_POST['instock']))
+        if( $prodInv == 0)
+        {
+            $instock = "no"; //set instock to NO if no inventory available
+            $_SESSION['updateProdInv'] = "<div style='color: green' class='alert alert-success text-center'>Item Inventory 0, Product Availability set to no</div>";
+        }
+        else if( isset($_POST['instock']))
         {
             $instock = $_POST['instock'];
-        }
-        else
-        {
-            $instock = "no"; //SEtting the Default Value
+        } else{
+            $instock = "no";
         }
 
     

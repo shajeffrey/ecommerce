@@ -107,7 +107,7 @@ if(empty($_POST['catSearch']) && empty($_POST['typeSearch'])){
                                 <h3 class="mb-0 font-weight-semibold">RM<?=$prodPrice;?></h3>
                             
                                 <div class="text-muted mb-3">34 reviews</div>
-                                <a href="userProduct?prodID=<?php echo $productID; ?>" type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i> Add to cart</a>
+                                <a href="userProduct.php?prodID=<?php echo $productID; ?>" type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i>Add to cart</a>
                             </div>
                         </div>
                 </div>
