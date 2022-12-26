@@ -119,7 +119,7 @@ include 'templates/vHomeHeader.php';
             <td>
                 <a href="updateProduct.php?prodID=<?php echo $productID;?>" class="btn">Update Item</a>
             
-                <a onclick="return confirm('Are you sure you want to delete this item?');" href="deleteProduct.php?deleteID=<?php echo $productID;?>&currentImage=<?php echo $prodPicture; ?>" class="btn">Delete Item</a>
+                <a onclick="return confirm('Are you sure you want to delete this product?');" href="deleteProduct.php?deleteID=<?php echo $productID;?>&currentImage=<?php echo $prodPicture; ?>" class="btn">Delete Item</a>
             </td>
         </tr>
         
