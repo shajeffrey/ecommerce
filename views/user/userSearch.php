@@ -44,10 +44,9 @@ if(empty($_POST['catSearch']) && empty($_POST['typeSearch'])){
 <div class="container justify-content-center mt-50 mb-50 ">
 
         <div class="row pt-3 pb-3">
-
         <!-- PRODUCT CATALOGUE GRID -->
         <?php
-        // $query = "SELECT * FROM `product` WHERE inStock='yes' ";
+       // $query = "SELECT * FROM `product` WHERE inStock='yes' ";
 
         $prodCatalogue = mysqli_query($conn, $query);
 
@@ -57,7 +56,11 @@ if(empty($_POST['catSearch']) && empty($_POST['typeSearch'])){
             {
                 $productID = $row['productID'];
                 $vendorID = $row['vendorID'];
-                $categoryID = $row['categoryID'];
+                  //get corresponding category name
+                  $categoryID = $row['categoryID'];
+                  $catRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `category` WHERE categoryID='$categoryID' "));
+                  $category = $catRow['categoryName'];
+
                 $prodName = $row['prodName'];
                 $prodDesc = $row['prodDesc'];
                 $inventoryNo = $row['inventoryNo'];
@@ -92,20 +95,17 @@ if(empty($_POST['catSearch']) && empty($_POST['typeSearch'])){
                                         <!-- <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png" class="card-img img-fluid" width="96" height="350" alt=""> -->
                                 </div>
                             </div>
-                            <div class="card-body bg-light text-center">
-                                <div class="mb-2">
+                            <div class="card-body bg-light text-justify">
+                            <div class="mb-2">
                                     <h6 class="font-weight-semibold mb-2">
-                                        <a href="#" class="text-default mb-2" data-abc="true"><?= $prodName; ?></a>
+                                        <a href="#" class="text-default mb-2 inactiveLink" data-abc="true"><?=$prodName; ?></a>
                                     </h6>
-                                    <a href="#" class="text-muted" data-abc="true">Laptops & Notebooks</a>
+                                    <a href="#" class="text-muted inactiveLink" data-abc="true"><?=$category; ?></a>
+                                    <hr>
+                                    <a href="#" class="text-muted inactiveLink" data-abc="true"><?=$prodDesc; ?></a>
                                 </div>
                                 <h3 class="mb-0 font-weight-semibold">RM<?=$prodPrice;?></h3>
-                                <!-- <div>
-                                    <i class="fa fa-star star"></i>
-                                    <i class="fa fa-star star"></i>
-                                    <i class="fa fa-star star"></i>
-                                    <i class="fa fa-star star"></i>
-                                </div> -->
+                            
                                 <div class="text-muted mb-3">34 reviews</div>
                                 <a href="userProduct?prodID=<?php echo $productID; ?>" type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i> Add to cart</a>
                             </div>
