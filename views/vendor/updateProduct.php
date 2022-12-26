@@ -298,7 +298,7 @@ if (isset($_POST['update'])) {
 ?>
 
 </div>
-<div style="margin-top: 60px ;">
+<div style="margin-top: 70px ;">
 </div>
 
 <?php
