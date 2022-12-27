@@ -35,7 +35,7 @@ if (isset($_GET['prodID'])) {
 
 <div class="container mt-5">
 
-                <form action="" id="wizard" method="POST" enctype="multipart/form-data">
+                <form action="" id="qty" method="POST" enctype="multipart/form-data">
                     <!-- SECTION 1 -->
                     <h2 style="text-align: center ;"></h2>
                     <section>
@@ -73,7 +73,7 @@ if (isset($_GET['prodID'])) {
                                     </div>
                                     <div class="col-12 col-sm-6">
                                         <div class="form-group">
-                                            <label for="prodCat">Item Category</label>
+                                            <label for="prodCat">Category</label>
                                             <select readonly name="prodCat" class="form-control inactiveLink input-update">
                                             <option  value="<?php echo $categoryID;?>"> <?php echo "$cat"; ?></option>
                                             </select>  
@@ -81,20 +81,20 @@ if (isset($_GET['prodID'])) {
                                     </div>
                                     <div class="col-12 ">
                                         <div class="form-group">
-                                            <label for="prodDesc">Item Description</label>
+                                            <label for="prodDesc">Description</label>
                                             <textarea readonly class="form-control inactiveLink input-update" required rows="4" name="prodDesc" id="prodDesc"><?=$prodDesc?></textarea>
                                         </div>
                                     </div>
 
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group">
-                                            <label for="prodPrice">Item Price (RM)</label>
+                                            <label for="prodPrice">Price (RM)</label>
                                             <input readonly type="number" step=".01" min="0" class="form-control inactiveLink input-update" required name="prodPrice" id="prodPrice" value="<?=$prodPrice?>">
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group">
-                                            <label for="prodDisc">Item Discount (%)</label>
+                                            <label for="prodDisc">Discount (%)</label>
                                             <input readonly type="number" min="0" max="100" class="form-control inactiveLink input-update" required name="prodDisc" id="prodDisc" value="<?=$discAmount?>">
                                         </div>
                                     </div>
@@ -105,33 +105,33 @@ if (isset($_GET['prodID'])) {
                                         </div>
                                     </div>
 
-                                  
-                                    <input readonly type="hidden" name="productID" value="<?=$productID;?>">
-                                   <input readonly type="hidden" name="currentPicture" value="<?=$currentPicture;?>">
-                                   <input readonly type="hidden" name="vendorID" value="<?=$vendorID;?>">
-
                                    <div class="col-12 col-sm-12 text-center" style="padding: 0% 30% ;">
                                         <div class="form-group">
                                             <label for="prodQuantity">Enter Your Quantity</label>
-                                            <input type="number" min="1" step="1"  oninput="" title="Numbers only" onkeypress="return event.charCode >= 48 && event.charCode <= 57" max="<?=$inventoryNo?>" class="form-control  input-update" required name="prodQuantity" id="prodQuantity" value="">
+                                            <input type="number" min="1" step="1"  oninput="" title="Numbers only" onkeypress="return event.charCode >= 48 && event.charCode <= 57" max="<?=$inventoryNo?>" class="form-control text-center input-update" required name="prodQuantity" id="prodQuantity" value="">
                                         </div>
                                     </div>
 
                                     <div class="col-12 col-sm-4 text-center">
                                         <div class="form-group">
-                                            <label for="prodQuantity">1 Unit After Discount</label>
-                                            <input type="number" min="1" oninput="" readonly max="<?=$inventoryNo?>" style="background-color:white;" class="form-control  input-update-2" required name="prodQuantity" id="prodQuantity" value="">
+                                            <label for="singleUnit">Unit After Discount</label>
+                                            <input type="text" readonly style="background-color:white;" class="form-control text-center input-update-2" required name="singleUnit" id="singleUnit" value="">
                                         </div>
                                     </div>
 
-                                    <div class="col-12 col-sm-4 text-center">
+                                    <div class="col-12 col-sm-5 text-center" style="padding: 0% 5% ;">
                                         <div class="form-group">
                                             <label for="prodTotal">Sum of Units</label>
-                                            <input type="number"  min="1" step=".01" style="background-color:white;" readonly class="form-control  input-update-2" required name="prodTotal" id="prodTotal" value="">
+                                            <input type="text"  min="1" step=".01" style="background-color:white;" readonly class="form-control text-center  input-update-2" required name="prodTotal" id="prodTotal" value="">
                                         </div>
                                     </div>
-                                   
-                                    <div class="col-12 text-right col-sm-4 mt-4" style="padding: 0% 10% 0% 0% ;">
+
+                                    <input readonly type="hidden" name="productID" value="<?=$productID;?>">
+                                    <input readonly type="hidden" name="vendorID" value="<?=$vendorID;?>">
+                                    <input readonly type="hidden" id="hiddenUnit" name="hiddenUnit" value="">
+                                    <input readonly type="hidden" id="hiddenTotal" name="hiddenTotal" value="">
+
+                                    <div class="col-12 text-right col-sm-3 " style="padding: 0% 5% 0% 0%; margin:4% 0% 0% 0%;">
                                         <button type="submit" name="addCart"  class="btn" style="background-color:#007dd6; color:white;">Add to cart</button>
                                     </div>
 
@@ -156,6 +156,43 @@ if (isset($_GET['prodID'])) {
                 </form>
         </div>
 </div>
+
+<script>
+
+    var formInputs = document.forms.qty;
+    var fields = formInputs.elements;
+
+    var prodPrice = fields.prodPrice;
+    var prodDisc = fields.prodDisc;
+    var prodQty = fields.prodQuantity;
+    var unit1 = fields.singleUnit;
+    var totalQty = fields.prodTotal;
+    var hiddenUnit = fields.hiddenUnit;
+    var hiddenTotal = fields.hiddenTotal;
+
+    formInputs.oninput = validate;
+
+    function validate(e) {
+
+        if(prodQty.value != ''){
+         
+            var afterDisc = prodPrice.value - (prodPrice.value * (prodDisc.value/100));
+            var totalAfter = afterDisc * prodQty.value;
+            
+            unit1.value = "RM" + afterDisc;
+            totalQty.value = "RM" + afterDisc + " X " + prodQty.value + " Units = RM" + totalAfter;
+            hiddenUnit.value = afterDisc;
+            hiddenTotal.value = totalAfter;
+
+        }else{
+            unit1.value = '';
+            totalQty.value = '';
+            hiddenUnit.value = '';
+            hiddenTotal.value = '';
+        }
+    }
+
+</script>
 
 </div>
 <div style="margin-top: 70px ;">
