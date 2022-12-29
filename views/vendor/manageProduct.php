@@ -47,7 +47,7 @@ include 'templates/vHomeHeader.php';
         <thead style="color:#6A0DAD;">
         <tr>
             <th>No.</th>
-            <th>Image</th>
+            <th style="width: 17%;">Image</th>
             <th>Name</th>
             <th>Category</th>
             <th>Price</th>
@@ -104,7 +104,7 @@ include 'templates/vHomeHeader.php';
                     {
                         //WE Have Image, Display Image
                         ?>
-                        <img src="../../assets/images/product/<?php echo $prodPicture; ?>" width="150px" height="150px">
+                        <img src="../../assets/images/product/<?php echo $prodPicture; ?>" width="60%" height="60%">
                         <?php
                     }
                 ?>
@@ -117,9 +117,9 @@ include 'templates/vHomeHeader.php';
             <td><?php echo $inventoryNo; ?></td>
             <td><?php echo $inStock; ?></td>
             <td>
-                <a href="updateProduct.php?prodID=<?php echo $productID;?>" class="btn">Update Item</a>
+                <a href="updateProduct.php?prodID=<?php echo $productID;?>" class="btn btn-link">Update Item</a>
             
-                <a onclick="return confirm('Are you sure you want to delete this product?');" href="deleteProduct.php?deleteID=<?php echo $productID;?>&currentImage=<?php echo $prodPicture; ?>" class="btn">Delete Item</a>
+                <a onclick="return confirm('Are you sure you want to delete this product?');" href="deleteProduct.php?deleteID=<?php echo $productID;?>&currentImage=<?php echo $prodPicture; ?>" class="btn btn-link">Delete Item</a>
             </td>
         </tr>
         

@@ -14,6 +14,8 @@ if (isset($_GET['prodID']) && isset($_GET['cartID'])) {
 
     $productID = $row['productID'];
     $vendorID = $row['vendorID'];
+    $vRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `vendor` WHERE vendorID='$vendorID' "));
+    $vName = $vRow['vendorName'];
 
         $categoryID = $row['categoryID'];
         $catRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `category` WHERE categoryID='$categoryID' "));
@@ -84,7 +86,7 @@ if (isset($_GET['prodID']) && isset($_GET['cartID'])) {
                             </div>
                             <div class="p-4">
                                 <div class="col-12 form-header-update text-center">
-                                    <h3 style="color:#007dd6 ;">Update Cart Order</h3>
+                                    <h3 style="color:#007dd6 ;">Update Order : <?=$vName ?></h3>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-sm-6" >

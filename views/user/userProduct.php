@@ -13,7 +13,9 @@ if (isset($_GET['prodID'])) {
     $row = mysqli_fetch_assoc($getProductDetails);
 
     $productID = $row['productID'];
-    $vendorID = $row['vendorID'];
+        $vendorID = $row['vendorID'];
+        $vRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `vendor` WHERE vendorID='$vendorID' "));
+        $vName = $vRow['vendorName'];
 
         $categoryID = $row['categoryID'];
         $catRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `category` WHERE categoryID='$categoryID' "));
@@ -62,7 +64,7 @@ if (isset($_GET['prodID'])) {
                             </div>
                             <div class="p-4">
                                 <div class="col-12 form-header-update text-center">
-                                    <h3 style="color:#007dd6 ;">Add to Cart</h3>
+                                    <h3 style="color:#007dd6 ;">Add Order : <?=$vName?></h3>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-sm-6" >

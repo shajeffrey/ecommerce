@@ -1,6 +1,6 @@
 <?php
 include 'templates/uHomeHeader.php';
-$zero = 0;
+
 ?>
 
 <!-- margin y axis (top/bottom) -->
@@ -114,7 +114,11 @@ if (isset($_SESSION['updateCart'])) {
             while($row = mysqli_fetch_assoc($prodCatalogue))
             {
                 $productID = $row['productID'];
-                $vendorID = $row['vendorID'];
+
+                  $vendorID = $row['vendorID'];
+                  $vRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `vendor` WHERE vendorID='$vendorID' "));
+                  $vName = $vRow['vendorName'];
+
                   //get corresponding category name
                   $categoryID = $row['categoryID'];
                   $catRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `category` WHERE categoryID='$categoryID' "));
@@ -157,9 +161,11 @@ if (isset($_SESSION['updateCart'])) {
                             <div class="card-body bg-light text-justify">
                             <div class="mb-2">
                                     <h6 class="font-weight-semibold mb-2">
-                                        <a href="#" class="text-default mb-2 inactiveLink" data-abc="true"><?=$prodName; ?></a>
+                                        <a href="#" class="text-default mb-2 inactiveLink" data-abc="true"><?=$prodName; ?></a><br>
+                                        
                                     </h6>
-                                    <a href="#" class="text-muted inactiveLink" data-abc="true"><?=$category; ?></a>
+                                    <a href="#" class="text-muted inactiveLink" data-abc="true">Vendor   :<?=$vName; ?></a><br>
+                                    <a href="#" class="text-muted inactiveLink" data-abc="true">Category :<?=$category; ?></a><br>
                                     <hr>
                                     <a href="#" class="text-muted inactiveLink" data-abc="true"><?=$prodDesc; ?></a>
                                 </div>
