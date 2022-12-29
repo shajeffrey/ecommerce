@@ -55,7 +55,7 @@ session_start();?>
         <div class="navbar-collapse collapse w-100 dual-collapse2 order-2 order-md-2">
             <ul class="navbar-nav mr-auto text-center">
                 <li class="nav-item ">
-                    <a class="nav-link" href="#">Cart</a>
+                    <a class="nav-link" href="userCart.php">Cart</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">History</a>
