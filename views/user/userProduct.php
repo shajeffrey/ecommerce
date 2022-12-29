@@ -194,6 +194,75 @@ if (isset($_GET['prodID'])) {
 
 </script>
 
+<?php
+if (isset($_POST['addCart'])) {
+
+    $userID = $_SESSION['userID'];
+    $prodID = $_POST['productID'];
+    $vendorID = $_POST['vendorID'];
+    $prodInv = $_POST['prodInv'];
+    $prodDisc = $_POST['prodDisc'];
+
+    $prodQuantity = $_POST['prodQuantity'];
+    $hiddenUnit = $_POST['hiddenUnit'];
+    $hiddenTotal = $_POST['hiddenTotal'];
+    
+    $stockLeft = $prodInv - $prodQuantity;
+    
+    if( $stockLeft == 0)
+    {
+        $instock = "no"; //set instock to NO if no inventory available ( 0 )
+    }else{
+        $instock = "yes";
+    }
+    
+    $updateProd= "UPDATE `product` SET 
+    `inventoryNo`='$stockLeft',
+    `inStock`='$instock' WHERE productID='$prodID'";
+    
+    if (!mysqli_query($conn, $updateProd)) {
+
+        $_SESSION['updateProd'] = "<div style='color: red' class='alert alert-danger text-center'>Update Product Inv unsuccesful.</div>";
+        echo '<script>window.location.href = "userHomepage.php"</script>';
+        
+        mysqli_error($conn);
+        
+    } 
+
+    $insertOrder = "INSERT INTO `userorder`(`userID`, `receiveDate`, `fulfilled`, `deleted`, `paid`, `paymentDate`) VALUES 
+    ('$userID','','no','no','no','')";
+
+    if (mysqli_query($conn, $insertOrder)) {
+        $_SESSION['insertOrder'] = "<div style='color: green' class='alert alert-success text-center'>Add to Cart Success</div>";
+        $orderRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `userorder` ORDER BY orderID DESC LIMIT 1"));
+        $orderID = $orderRow['orderID'];  
+
+    } else {
+        $_SESSION['insertOrder'] = "<div style='color: red' class='alert alert-danger text-center'>Insert Order unsuccesful</div>";
+        echo '<script>window.location.href = "userHomepage.php"</script>';
+      
+        mysqli_error($conn);
+    }
+    
+    $insertCart = "INSERT INTO cart VALUES ('','$orderID','$prodID','$hiddenUnit','$prodQuantity','$prodDisc', '$hiddenTotal', 'no')";
+    
+    if (mysqli_query($conn, $insertCart)) {
+ 
+        $_SESSION['addCart'] = "<div style='color: green' class='alert alert-success text-center'>Add to Cart Success</div>";
+        echo '<script>window.location.href = "userHomepage.php"</script>';
+
+    } else {
+        $_SESSION['addCart'] = "<div style='color: red' class='alert alert-danger text-center'>Add to Cart unsuccesful</div>";
+        echo '<script>window.location.href = "userHomepage.php"</script>';
+      
+        mysqli_error($conn);
+    }
+
+    mysqli_close($conn);
+    
+}
+?>
+
 </div>
 <div style="margin-top: 70px ;">
 </div>

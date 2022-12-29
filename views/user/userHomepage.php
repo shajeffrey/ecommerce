@@ -16,6 +16,18 @@ if (isset($_SESSION['loginUser'])) {
     echo $_SESSION['loginUser'];
     unset($_SESSION['loginUser']);
 }
+if (isset($_SESSION['addCart'])) {
+    echo $_SESSION['addCart'];
+    unset($_SESSION['addCart']);
+}
+if (isset($_SESSION['insertOrder'])) {
+    echo $_SESSION['insertOrder'];
+    unset($_SESSION['insertOrder']);
+}
+if (isset($_SESSION['updateProd'])) {
+    echo $_SESSION['updateProd'];
+    unset($_SESSION['updateProd']);
+}
 ?>
 
 <div class="container">
@@ -147,7 +159,12 @@ if (isset($_SESSION['loginUser'])) {
                                     <a href="#" class="text-muted inactiveLink" data-abc="true"><?=$prodDesc; ?></a>
                                 </div>
                                 <h3 class="mb-0 font-weight-semibold">RM<?=$prodPrice;?></h3>
-                            
+                                
+                                <?php   
+                                 $categoryID = $row['categoryID'];
+                                 $catRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `category` WHERE categoryID='$categoryID' "));
+                                 $cat = $catRow['categoryName'];
+                                ?>
                                 <div class="text-muted mb-3">34 reviews</div>
                                 <a href="userProduct.php?prodID=<?php echo $productID; ?>" type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i>Add to cart</a>
                             </div>
