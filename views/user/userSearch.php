@@ -46,7 +46,8 @@ if(empty($_POST['catSearch']) && empty($_POST['typeSearch'])){
         <div class="row pt-3 pb-3">
         <!-- PRODUCT CATALOGUE GRID -->
         <?php
-       // $query = "SELECT * FROM `product` WHERE inStock='yes' ";
+        $userID = $_SESSION['userID'];
+        //$query = "SELECT * FROM `product` WHERE inStock='yes' ";
 
         $prodCatalogue = mysqli_query($conn, $query);
 
@@ -105,9 +106,48 @@ if(empty($_POST['catSearch']) && empty($_POST['typeSearch'])){
                                     <a href="#" class="text-muted inactiveLink" data-abc="true"><?=$prodDesc; ?></a>
                                 </div>
                                 <h3 class="mb-0 font-weight-semibold">RM<?=$prodPrice;?></h3>
-                            
-                                <div class="text-muted mb-3">34 reviews</div>
-                                <a href="userProduct.php?prodID=<?php echo $productID; ?>" type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i>Add to cart</a>
+                                
+                                <?php   
+                                $x = 'no';
+                                
+                                //  $catRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `userorder` WHERE userID='$userID' "));
+                                //  $cat = $catRow['categoryName'];
+
+                                $query = "SELECT * FROM `userorder` WHERE userID='$userID' ";
+
+                                $orderTable = mysqli_query($conn, $query);
+
+                                if (mysqli_num_rows($orderTable) > 0) 
+                                {
+                                    while($row = mysqli_fetch_assoc($orderTable))
+                                    {
+                                        $orderID = $row['orderID'];
+                                        $query2 = "SELECT * FROM `cart` WHERE orderID='$orderID' AND productID='$productID' AND completed='no' ";
+                                        $cartTable = mysqli_query($conn, $query2);
+
+                                        if (mysqli_num_rows($cartTable) == 1 ){
+                                            $x = 'yes';
+                                            $row = mysqli_fetch_assoc($cartTable);
+                                            $cartID = $row['cartID'];
+
+                                            ?>
+                                            <div class="text-muted mb-3">Availability to Add to Order: <?=$inventoryNo; ?></div>
+                                            <a href="userUpdate.php?prodID=<?php echo $productID;?>&cartID=<?php echo $cartID; ?>" type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i>Update Your Order?</a>
+                                            
+                                            <?php
+                                        }
+                                    }
+                                }
+                                ?>
+                                <?php
+                                if ($x == 'no'){
+                                ?>
+                                    <div class="text-muted mb-3">Available : <?=$inventoryNo; ?></div>
+                                    <a href="userProduct.php?prodID=<?php echo $productID; ?>" type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i>Add to cart</a>
+                                <?php
+                                }
+                                ?>
+
                             </div>
                         </div>
                 </div>
@@ -117,7 +157,7 @@ if(empty($_POST['catSearch']) && empty($_POST['typeSearch'])){
             else
             {
                 //Products Not Available 
-                echo "<div class='alert col-12 alert-danger text-center'>Sorry, Your Search Found no Products</div>";
+                echo "<div class='alert col-12 alert-danger text-center'>No Products not Available.</div>";
             }
             ?>
 
