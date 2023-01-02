@@ -28,10 +28,7 @@ if (isset($_SESSION['updateProd'])) {
     echo $_SESSION['updateProd'];
     unset($_SESSION['updateProd']);
 }
-if (isset($_SESSION['updateCart'])) {
-    echo $_SESSION['updateCart'];
-    unset($_SESSION['updateCart']);
-}
+
 ?>
 
 <div class="container">
@@ -176,8 +173,8 @@ if (isset($_SESSION['updateCart'])) {
                                 
                                 //  $catRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `userorder` WHERE userID='$userID' "));
                                 //  $cat = $catRow['categoryName'];
-
-                                $query = "SELECT * FROM `userorder` WHERE userID='$userID' ";
+                                //LIKE JOIN BUT FRIGGIN HARD TO UNDERSTAND
+                                $query = "SELECT * FROM `userorder` WHERE userID='$userID' AND deleted='no' ";
 
                                 $orderTable = mysqli_query($conn, $query);
 

@@ -268,8 +268,8 @@ if (isset($_POST['updateCart'])) {
     
     if (!mysqli_query($conn, $updateProd)) {
 
-        $_SESSION['updateProd'] = "<div style='color: red' class='alert alert-danger text-center'>Update Product Inv unsuccesful.</div>";
-        echo '<script>window.location.href = "userHomepage.php"</script>';
+        $_SESSION['updateProdInv'] = "<div style='color: red' class='alert alert-danger text-center'>Update Product Inventory unsuccesful.</div>";
+        echo '<script>window.location.href = "userCart.php"</script>';
         
         mysqli_error($conn);
         
@@ -285,11 +285,11 @@ if (isset($_POST['updateCart'])) {
     if (mysqli_query($conn, $updateCart)) {
  
         $_SESSION['updateCart'] = "<div style='color: green' class='alert alert-success text-center'>Update Cart Order Success</div>";
-        echo '<script>window.location.href = "userHomepage.php"</script>';
+        echo '<script>window.location.href = "userCart.php"</script>';
 
     } else {
         $_SESSION['updateCart'] = "<div style='color: red' class='alert alert-danger text-center'>Update Cart Order Fail</div>";
-        echo '<script>window.location.href = "userHomepage.php"</script>';
+        echo '<script>window.location.href = "userCart.php"</script>';
       
         mysqli_error($conn);
     }

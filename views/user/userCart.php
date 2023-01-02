@@ -6,36 +6,38 @@ include 'templates/uHomeHeader.php';
     
     <div style="background-color: #fff; border-radius:10px;" class="m-5 p-4">
 
-    <?php if (isset($_SESSION['addProd'])): ?>
+    <?php if (isset($_SESSION['updateCart'])): ?>
     <div class="col-12">
             <?php 
-            echo $_SESSION['addProd'];
-            unset($_SESSION['addProd']);
-            ?>
-    </div>
-    <?php endif; ?>
-    <?php if (isset($_SESSION['updateProd'])): ?>
-    <div class="col-12">
-            <?php 
-            echo $_SESSION['updateProd'];
-            unset($_SESSION['updateProd']);
+            echo $_SESSION['updateCart'];
+            unset($_SESSION['updateCart']);
             ?>
     </div>
     <?php endif; ?>
 
-    <?php if (isset($_SESSION['deleteProd'])): ?>
+    <?php if (isset($_SESSION['deleteOrder'])): ?>
     <div class="col-12">
             <?php 
-            echo $_SESSION['deleteProd'];
-            unset($_SESSION['deleteProd']);
+            echo $_SESSION['deleteOrder'];
+            unset($_SESSION['deleteOrder']);
             ?>
     </div>
     <?php endif; ?>
+
     <?php if (isset($_SESSION['updateProdInv'])): ?>
     <div class="col-12">
             <?php 
             echo $_SESSION['updateProdInv'];
             unset($_SESSION['updateProdInv']);
+            ?>
+    </div>
+    <?php endif; ?>
+
+    <?php if (isset($_SESSION['updateProd'])): ?>
+    <div class="col-12">
+            <?php 
+            echo $_SESSION['updateProd'];
+            unset($_SESSION['updateProd']);
             ?>
     </div>
     <?php endif; ?>
@@ -67,7 +69,7 @@ include 'templates/uHomeHeader.php';
         FROM cart 
         JOIN userorder 
         ON cart.orderID = userorder.orderID
-        WHERE userorder.userID='$userID' ORDER BY `cartID` DESC;";
+        WHERE userorder.userID='$userID' AND userorder.deleted='no' AND userorder.paid='no' ORDER BY `cartID` DESC";
 
         // $query = "SELECT * FROM product WHERE vendorID='$vendorID' ORDER BY `productID` DESC";
         //Execute the qUery
@@ -137,7 +139,7 @@ include 'templates/uHomeHeader.php';
             <td>
                 <a href="userUpdate.php?prodID=<?php echo $productID;?>&cartID=<?php echo $cartID; ?>" class="btn btn-link" >Update Order</a>
             
-                <a onclick="return confirm('Are you sure you want to delete this product?');" href="userDelete.php?deleteID=<?php echo $productID;?>&currentImage=<?php echo $prodPicture; ?>" class="btn btn-link" >Delete Item</a>
+                <a onclick="return confirm('Are you sure you want to delete this item?');" href="userDelete.php?deleteID=<?php echo $cartID;?>" class="btn btn-link" >Delete Item</a>
             </td>
         </tr>
         
