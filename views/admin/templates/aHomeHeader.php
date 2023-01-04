@@ -27,10 +27,10 @@ session_start();?>
         <div class="navbar-collapse collapse w-100 dual-collapse2 order-1 order-md-0">
             <ul class="navbar-nav ml-auto text-center">
                  <li class="nav-item ">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="adminHomepage.php">Dashboard</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="#">Admins</a>
+                    <a class="nav-link" href="#">Category</a>
                 </li>
             </ul>
         </div>

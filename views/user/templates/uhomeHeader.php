@@ -33,7 +33,7 @@ session_start();?>
                     <a class="nav-link" href="userHomepage.php">Home</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="#">Profile</a>
+                    <a class="nav-link" href="userProfile.php">Profile</a>
                 </li>
                 <!-- orders as in product catalog -->
                 <!-- <li class="nav-item ">

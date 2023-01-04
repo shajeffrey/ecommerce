@@ -30,7 +30,7 @@ session_start();?>
                     <a class="nav-link" href="vendorHomepage.php">Home</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="#">Profile</a>
+                    <a class="nav-link" href="vendorProfile.php">Profile</a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="#">Reports</a>
