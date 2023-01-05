@@ -222,12 +222,12 @@ a {
     font-style: normal;
     border-radius: 5px;
     width: 100%;
-    background-color:#007dd6; color:white;
+    background-color:#6A0DAD; color:white;
     width: 100%;
     transition: 0.3s;
   }
 
   .buttonProfile:hover{
-
-    background-color:lightskyblue; color:white;
+    background-color:mediumpurple; color:white;
+    cursor: pointer;
   }

@@ -157,7 +157,7 @@ if(empty($_POST['catSearch']) && empty($_POST['typeSearch'])){
             else
             {
                 //Products Not Available 
-                echo "<div class='alert col-12 alert-danger text-center'>No Products not Available.</div>";
+                echo "<div class='alert col-12 alert-danger text-center'>No Products Available.</div>";
             }
             ?>
 

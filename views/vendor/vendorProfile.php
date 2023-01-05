@@ -5,7 +5,7 @@ include 'templates/vHomeHeader.php';
 
 <div class="my-3">
     <div class="d-flex justify-content-center ">
-        <h2 class="sessionName">Update Profile <?=$_SESSION['vendorName'];?></h2>
+        <h2 class="sessionName">Update Profile <?=$_SESSION['userName'];?></h2>
     </div>
 </div>
 
@@ -14,8 +14,8 @@ if (isset($_SESSION['updateProfile'])) {
     echo $_SESSION['updateProfile'];
     unset($_SESSION['updateProfile']);
 
-    $userID = $_SESSION['userID'];
-    $row = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `vendor` WHERE userID='$userID' "));
+    $vendorID = $_SESSION['vendorID'];
+    $row = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `vendor` WHERE vendorID='$uID' "));
 
     $_SESSION['userFullname'] = $row['fullName'];
     $_SESSION['userName'] = $row['uName'];
@@ -201,6 +201,7 @@ if (isset($_POST['updateProfile'])) {
   
 }
 ?>
+
 
 <?php
 include 'templates/footer.php';
