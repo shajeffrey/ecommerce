@@ -41,7 +41,7 @@ class register
             $_SESSION['regisUser'] = "<div >Phone Number 10-12 digits!</div>";
             echo '<script>window.location.href = "../../views/user/userRegister.php"</script>';
 
-        } else if (strlen($uPass) <= 6) {
+        } else if (strlen($uPass) < 6) {
             $_SESSION['regisUser'] = "<div >Password length at least 6</div>";
             echo '<script>window.location.href = "../../views/user/userRegister.php"</script>';
 
@@ -130,7 +130,7 @@ class register
             $_SESSION['regisVendor'] = "<div >Bank No 9-17 digits!</div>";
             echo '<script>window.location.href = "../../views/vendor/vendorRegister.php"</script>';
 
-        } else if (strlen($vPass) <= 6) {
+        } else if (strlen($vPass) < 6) {
             $_SESSION['regisVendor'] = "<div >Password length at least 6</div>";
             echo '<script>window.location.href = "../../views/vendor/vendorRegister.php"</script>';
 

@@ -11,6 +11,7 @@ include '../../controllers/register.php';
                 <hr>
                 <form class="" action="" method="post">
                     <div class="row">
+
                         <div class="col-12 ">
                             <div class="form-group">
                                 <label for="uFullname">Full Name</label>
@@ -97,6 +98,7 @@ include '../../controllers/register.php';
         </div>
     </div>
 </div>
+
 
 <?php
 include 'templates/footer.php';

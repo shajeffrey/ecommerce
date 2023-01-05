@@ -265,9 +265,6 @@ if (isset($_POST['addCart'])) {
 }
 ?>
 
-</div>
-<div style="margin-top: 70px ;">
-</div>
 
 
 <?php

@@ -77,7 +77,7 @@ include 'templates/vHomeHeader.php';
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group">
                                             <label for="prodInv">Item Inventory</label>
-                                            <input type="number" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" class="form-control input-update" required name="prodInv" id="prodInv" value="">
+                                            <input type="number" min="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57" max="<?=$inventoryNo?>" class="form-control input-update" required name="prodInv" id="prodInv" value="">
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6">
@@ -215,9 +215,7 @@ if (isset($_POST['add'])) {
 }
 ?>
 
-</div>
-<div style="margin-top: 60px ;">
-</div>
+
 
 <?php
 include 'templates/footer.php';

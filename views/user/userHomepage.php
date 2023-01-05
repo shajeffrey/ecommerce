@@ -28,6 +28,10 @@ if (isset($_SESSION['updateProd'])) {
     echo $_SESSION['updateProd'];
     unset($_SESSION['updateProd']);
 }
+// if (isset($_SESSION['updateProfile'])) {
+//     echo $_SESSION['updateProfile'];
+//     unset($_SESSION['updateProfile']);
+// }
 
 ?>
 

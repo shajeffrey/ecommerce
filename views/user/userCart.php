@@ -157,8 +157,7 @@ include 'templates/uHomeHeader.php';
         </tbody>
     </table>
     </div>
-</div>
-<div style="margin-top: 60px ;"></div>
+
 <?php
 
 include 'templates/footer.php';

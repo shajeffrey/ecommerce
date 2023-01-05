@@ -54,6 +54,8 @@ include '../../controllers/login.php';
         </div>
     </div>
 </div>
+
+
 <?php include 'templates/footer.php';?>
 <?php
 

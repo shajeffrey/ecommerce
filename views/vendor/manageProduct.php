@@ -138,7 +138,7 @@ include 'templates/vHomeHeader.php';
     </table>
     </div>
 </div>
-<div style="margin-top: 60px ;"></div>
+
 <?php
 
 include 'templates/footer.php';

@@ -299,10 +299,6 @@ if (isset($_POST['updateCart'])) {
 }
 ?>
 
-</div>
-<div style="margin-top: 70px ;">
-</div>
-
 
 <?php
 include 'templates/footer.php';

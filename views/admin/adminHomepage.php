@@ -89,17 +89,55 @@ if (isset($_SESSION['loginAdmin'])) {
             </div>
         </div>
         <div class=" col-sm-4 text-center" > 
-            <div class=" boxStyle">            
-            <?php 
-                //Sql Query 
-                $sql = "SELECT * FROM `userorder` WHERE paid='yes'";
-                //Execute Query
-                $count = mysqli_num_rows(mysqli_query($conn, $sql));
-            ?>
+            <div class="row">
+                <div class=" col-sm-6 text-center" > 
+                    <div class=" boxStyle">            
+                    <?php 
+                        //Sql Query 
+                        $Join = "SELECT 'Today' as date, count(orderID) as Unpaid FROM userorder 
+                        WHERE deleted='no' 
+                        AND paid='no' 
+                        AND orderDate > DATE_ADD(CURDATE(), INTERVAL -1 DAY)";
+                        //Execute Query
+                        $res = mysqli_query($conn, $Join);
+                        $row = mysqli_fetch_assoc($res);
+                        $countUnpaid = $row['Unpaid'];
+        
+                        if($countUnpaid == null )
+                        {
+                            $countUnpaid = 0;
+                        }
+                    ?>
 
-            <h1><?php echo $count; ?></h1>
-            <br />
-            <h4>Today Product Orders</h4>
+                    <h1><?php echo $countUnpaid; ?></h1>
+                    <br />
+                    <h5>Today Unpaid Orders</h5>
+                    </div>
+                </div>
+                <div class=" col-sm-6 text-center" > 
+                    <div class=" boxStyle">            
+                    <?php 
+                        //Sql Query 
+                        $Join = "SELECT 'Today' as date, count(orderID) as paid FROM userorder 
+                        WHERE deleted='no' 
+                        AND paid='yes' 
+                        AND orderDate > DATE_ADD(CURDATE(), INTERVAL -1 DAY)";
+                        //Execute Query
+                        $res = mysqli_query($conn, $Join);
+                        $row = mysqli_fetch_assoc($res);
+                        $countPaid = $row['paid'];
+        
+                        if($countPaid == null )
+                        {
+                            $countPaid = 0;
+                        }
+                    ?>
+
+                    <h1><?php echo $countPaid; ?></h1>
+                    <br />
+                    <h5>Today Paid Orders</h5>
+                    </div>
+                </div>
             </div>
         </div>
         <div class=" col-sm-4 text-center" > 
@@ -170,9 +208,6 @@ if (isset($_SESSION['loginAdmin'])) {
     </div>
 </div>
 
-</div>
-<div style="margin-top: 70px ;">
-</div>
 
 
 <?php
