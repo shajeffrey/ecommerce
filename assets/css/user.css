@@ -217,3 +217,11 @@ a {
   .buttonProfile:hover{
     background-color:lightskyblue; color:white;
   }
+
+  .sides{
+    background-color: white; 
+    width:60%; 
+    border:solid 1px; 
+    border-radius: 8px;
+    border-color: #007dd6;
+  }

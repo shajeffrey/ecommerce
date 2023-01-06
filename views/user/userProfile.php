@@ -26,16 +26,16 @@ if (isset($_SESSION['updateProfile'])) {
 }
 ?>
 <div class="m-4">
-<div class="container " style="background-color: whitesmoke;">
+<div class="container sides" >
 <form action="" method="post" class="">
 
 <div class="container">
       <fieldset>
   
-      <div class="row py-2">
+      <div class="row pt-2">
 
         <div class="col-12  col-sm-4">
-          <legend class="legend1 py-1"><span class="number"></span>Your Profile Info</legend>
+          <legend class="legend1 "><span class="number"></span>Your Profile Info</legend>
         </div>
 
         <!-- ERROR CHECKING PLACE  -->
@@ -51,6 +51,8 @@ if (isset($_SESSION['updateProfile'])) {
         <?php endif; ?>
 
       </div>
+
+      <hr>
 
       <div class="row">
 
@@ -155,19 +157,19 @@ if (isset($_POST['updateProfile'])) {
   `userPhone`='$uPhone',
   `userLocation`='$uLocation' WHERE userID='$userID'";
   
-  $query1 = mysqli_query($conn, "SELECT userEmail FROM user WHERE userEmail='$uEmail' AND userID!='$userID'");
-  $query2 = mysqli_query($conn, "SELECT uName FROM user WHERE uName='$uName' AND userID!='$userID'");
-  $query3 = mysqli_query($conn, "SELECT userPhone FROM user WHERE userPhone='$uPhone' AND userID!='$userID'");
+  $check1 = mysqli_query($conn, "SELECT userEmail FROM user WHERE userEmail='$uEmail' AND userID!='$userID'");
+  $check2 = mysqli_query($conn, "SELECT uName FROM user WHERE uName='$uName' AND userID!='$userID'");
+  $check3 = mysqli_query($conn, "SELECT userPhone FROM user WHERE userPhone='$uPhone' AND userID!='$userID'");
 
 
-    if (mysqli_num_rows($query1) == 1) {
+    if (mysqli_num_rows($check1) == 1) {
         $_SESSION['updateProf'] = "<div >Email already in Use!</div>";
         echo '<script>window.location.href = "userProfile.php"</script>';
-    } else if (mysqli_num_rows($query2) == 1) {
+    } else if (mysqli_num_rows($check2) == 1) {
         $_SESSION['updateProf'] = "<div >Username already in Use!</div>";
         echo '<script>window.location.href = "userProfile.php"</script>';
 
-    } else if (mysqli_num_rows($query3) == 1) {
+    } else if (mysqli_num_rows($check3) == 1) {
         $_SESSION['updateProf'] = "<div >Phone number already in Use!</div>";
         echo '<script>window.location.href = "userProfile.php"</script>';
 

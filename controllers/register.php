@@ -119,7 +119,7 @@ class register
             echo '<script>window.location.href = "../../views/vendor/vendorRegister.php"</script>';
 
         } else if (mysqli_num_rows($query4) == 1) {
-            $_SESSION['regisVendor'] = "<div >Phone number already in Use!</div>";
+            $_SESSION['regisVendor'] = "<div >Bank number already in Use!</div>";
             echo '<script>window.location.href = "../../views/vendor/vendorRegister.php"</script>';
 
         } else if (strlen($vPhone) < 10 || strlen($vPhone) > 12) {
