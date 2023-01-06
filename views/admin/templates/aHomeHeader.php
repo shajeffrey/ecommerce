@@ -30,7 +30,7 @@ session_start();?>
                     <a class="nav-link" href="adminHomepage.php">Dashboard</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="#">Category</a>
+                    <a class="nav-link" href="adminCategory.php">Category</a>
                 </li>
             </ul>
         </div>

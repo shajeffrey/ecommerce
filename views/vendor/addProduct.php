@@ -25,7 +25,7 @@ include 'templates/vHomeHeader.php';
                                     <div class="col-12 col-sm-6">
                                         <div class="form-group">
                                             <label for="prodCat">Item Category</label>
-                                            <select name="prodCat" class="form-control input-update">
+                                            <select name="prodCat" class=" form-control input-update">
 
                         <?php 
                             $sql = "SELECT * FROM `category`";
@@ -40,7 +40,9 @@ include 'templates/vHomeHeader.php';
                                     $categoryName = $row['categoryName'];
                                     $categoryDesc = $row['categoryDesc'];
                                     ?>
-                                    <option  value="<?php echo $categoryID;?>"> <?php echo "$categoryName"; ?></option>
+                                    <option  value="<?php echo $categoryID;?>">
+                                    <?php echo "$categoryName : $categoryDesc"; ?>
+                                    </option>
                                     <?php
                                 }
                             }

@@ -91,7 +91,7 @@ if (isset($_GET['prodID'])) {
                                     $categoryName = $row['categoryName'];
                                     $categoryDesc = $row['categoryDesc'];
                                     ?>
-                                    <option <?php if($cat==$categoryName) {echo "selected";} ?> value="<?php echo $categoryID;?>"> <?php echo "$categoryName"; ?></option>
+                                    <option <?php if($cat==$categoryName) {echo "selected";} ?> value="<?php echo $categoryID;?>"> <?php echo "$categoryName : $categoryDesc"; ?></option>
                                     <?php
                                 }
                             }
@@ -128,7 +128,7 @@ if (isset($_GET['prodID'])) {
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group">
                                             <label for="prodInv">Item Inventory</label>
-                                            <input type="number" min="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57" max="<?=$inventoryNo?>" class="form-control input-update" required name="prodInv" id="prodInv" value="<?=$inventoryNo?>">
+                                            <input type="number" min="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57"  class="form-control input-update" required name="prodInv" id="prodInv" value="<?=$inventoryNo?>">
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6">

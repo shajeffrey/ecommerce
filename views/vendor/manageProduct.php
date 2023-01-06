@@ -43,7 +43,7 @@ include 'templates/vHomeHeader.php';
     <h2 style="color:#6A0DAD;">Manage Vendor Products</h2>
     <a  href="addProduct.php" style="background-color:#6A0DAD; color:white;" class="btn inline float-right mb-3 ">Add Product</a> 
     <br>       
-    <table style="background-color: rgba(255,255,255,0.1); box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);"  class="table text-center table-bordered">
+    <table style="background-color: rgba(255,255,255,0.1); border:solid 1px; box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);"  class="table text-center table-bordered">
         <thead style="color:#6A0DAD;">
         <tr>
             <th>No.</th>
@@ -113,9 +113,26 @@ include 'templates/vHomeHeader.php';
             <td><?php echo $category; ?></td>
             <td>RM<?php echo $prodPrice; ?></td>
             <td><?php echo $discAmount; ?></td>
-            
-            <td><?php echo $inventoryNo; ?></td>
-            <td><?php echo $inStock; ?></td>
+            <!-- INVENTORY SIGNS -->
+            <?php
+            if($inventoryNo == 0){ ?>
+                <td class="alert-danger"><?php echo $inventoryNo; ?></td>
+            <?php
+            }else{ ?>
+                <td ><?php echo $inventoryNo; ?></td>
+            <?php 
+            }
+            ?>
+            <!-- AVAILABLE SIGNS -->
+            <?php
+            if($inStock == 'yes'){ ?>
+                <td class="alert-success"><?php echo $inStock; ?></td>
+            <?php
+            }else{ ?>
+                <td class="alert-danger"><?php echo $inStock; ?></td>
+            <?php 
+            }
+            ?>
             <td>
                 <a href="updateProduct.php?prodID=<?php echo $productID;?>" class="btn btn-link">Update Item</a>
             

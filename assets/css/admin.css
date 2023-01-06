@@ -20,3 +20,80 @@ body {
     color: #be0000;
   }
   
+  
+  /* Profile CSS */
+   /* Profile CSS */
+
+   .form {
+    max-width: 300px;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background: #f4f7f8;
+    border-radius: 8px;
+  }
+  
+  .input
+   {
+    background: rgba(255,255,255,0.1);
+    border: none;
+    font-size: 16px;
+    height: auto;
+    margin: 0;
+    outline: 0;
+    padding: 10px;
+    width: 100%;
+    background-color: #e8eeef;
+    color: #8a97a0;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+
+  }
+  
+  
+  .fieldset {
+
+    border: none;
+  }
+
+  
+  .legend1 {
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: #be0000;
+  }
+  
+  .label {
+    margin-bottom: 2px;
+  }
+  
+  .label.light {
+    font-weight: 300;
+    display: inline;
+  }
+  
+  
+  .buttonProfile {
+    border: none;
+    color: #FFF;
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    border-radius: 5px;
+    width: 100%;
+    background-color:#be0000; color:white;
+    width: 100%;
+    transition: 0.3s;
+  }
+
+  .buttonProfile:hover{
+    background-color:tomato; color:white;
+    cursor: pointer;
+  }
+
+  .sides{
+    background-color: white; 
+    width:100%; 
+    border:solid 1px; 
+    border-radius: 8px;
+    border-color: #be0000;
+    
+  }
