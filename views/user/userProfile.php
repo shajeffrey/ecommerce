@@ -193,7 +193,7 @@ if (isset($_POST['updateProfile'])) {
       $_SESSION['updateProfile'] = "<div style='color: green' class='alert alert-success text-center'>User Update Success</div>";
       echo '<script>window.location.href = "userProfile.php"</script>';
     } else {
-      $_SESSION['updateProf'] = "<div style='color: red' class='alert alert-danger text-center'>Update Profile Unsuccessful</div>";
+      $_SESSION['updateProf'] = "<div>Update Profile Unsuccessful</div>";
           echo '<script>window.location.href = "userProfile.php"</script>';
         
       mysqli_error($conn);

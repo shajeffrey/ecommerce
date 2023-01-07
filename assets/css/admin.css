@@ -56,7 +56,7 @@ body {
 
   
   .legend1 {
-    font-size: 20px;
+    font-size: 23px;
     margin-bottom: 5px;
     color: #be0000;
   }
@@ -93,7 +93,22 @@ body {
     background-color: white; 
     width:100%; 
     border:solid 1px; 
-    border-radius: 8px;
+
+    border-color: #be0000;
+    
+  }
+
+  .sides2{
+    border:solid 1px; 
+
+    border-color: #be0000;
+    
+  }
+  .sides3{
+    background-color: white; 
+    width:50%; 
+    border:solid 1px; 
+
     border-color: #be0000;
     
   }

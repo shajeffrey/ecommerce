@@ -28,7 +28,7 @@ include 'templates/vHomeHeader.php';
                                             <select name="prodCat" class=" form-control input-update">
 
                         <?php 
-                            $sql = "SELECT * FROM `category`";
+                            $sql = "SELECT * FROM `category` WHERE catDel='no' ";
                             $categories = mysqli_query($conn, $sql);
                             $count = mysqli_num_rows($categories);
                             if($count>0)
