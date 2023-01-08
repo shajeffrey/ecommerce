@@ -101,7 +101,8 @@ if(isset($_POST['updateCate'])){
     $catName = $_POST['catName'];
     $catDesc = $_POST['catDesc'];
 
-    $check1 = mysqli_query($conn, "SELECT * FROM category WHERE categoryName='$catName' OR categoryName LIKE '%$catName%' AND categoryID!='$catID' ");
+    $check1 = mysqli_query($conn, "SELECT * FROM category WHERE categoryName='$catName' AND categoryID!='$catID' AND catDel='no' ");
+    $check2 = mysqli_query($conn, "SELECT * FROM category WHERE categoryName LIKE '%$catName%' AND categoryID!='$catID' AND catDel='no' ");
 
     $sql = "UPDATE `category` SET 
     `categoryName`='$catName',
@@ -109,6 +110,10 @@ if(isset($_POST['updateCate'])){
 
     if (mysqli_num_rows($check1) > 0) {
         $_SESSION['addCategory'] = "<div style='color: red' class='alert alert-danger text-center'>Update Category already in Use!</div>";
+        echo '<script>window.location.href = "adminCat.php"</script>';
+
+    } else if (mysqli_num_rows($check2) > 0) {
+        $_SESSION['addCategory'] = "<div style='color: red' class='alert alert-danger text-center'>Update Like Category already in Use!</div>";
         echo '<script>window.location.href = "adminCat.php"</script>';
 
     } else if(mysqli_query($conn, $sql)){

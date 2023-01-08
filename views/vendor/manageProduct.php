@@ -82,7 +82,9 @@ include 'templates/vHomeHeader.php';
                     $catRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `category` WHERE categoryID='$categoryID' "));
                     $category = $catRow['categoryName'];
 
-              
+                $prodName = $row['prodName'];
+                $prodPrice = $row['prodPrice'];
+                $prodPicture = $row['prodPicture'];
                 $inventoryNo = $row['inventoryNo'];
                 $inStock = $row['inStock'];
                 $discAmount = $row['discAmount'];     

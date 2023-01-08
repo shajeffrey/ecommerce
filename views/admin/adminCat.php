@@ -149,12 +149,19 @@ if(isset($_POST['addCat'])){
     $catName = $_POST['catName'];
     $catDesc = $_POST['catDesc'];
 
-    $check1 = mysqli_query($conn, "SELECT * FROM category WHERE categoryName='$catName' OR categoryName LIKE '%$catName%'");
+    $check1 = mysqli_query($conn, "SELECT * FROM category WHERE categoryName='$catName' AND catDel='no'");
+    $check2 = mysqli_query($conn, "SELECT * FROM category WHERE categoryName LIKE '%$catName%' AND catDel='no'");
 
     $sql = "INSERT INTO category VALUES ('','$catName','$catDesc','no')";
 
     if (mysqli_num_rows($check1) > 0) {
         $_SESSION['addCat'] = "<div >Category already in Use!</div>";
+        $_SESSION['catName'] = $catName;
+        $_SESSION['catDesc'] = $catDesc;
+        echo '<script>window.location.href = "adminCat.php"</script>';
+
+    } if (mysqli_num_rows($check2) > 0) {
+        $_SESSION['addCat'] = "<div >A Similar Category already in Use!</div>";
         $_SESSION['catName'] = $catName;
         $_SESSION['catDesc'] = $catDesc;
         echo '<script>window.location.href = "adminCat.php"</script>';
