@@ -235,7 +235,6 @@ if (isset($_POST['addCart'])) {
     ('$userID','','no','no','no','')";
 
     if (mysqli_query($conn, $insertOrder)) {
-        $_SESSION['insertOrder'] = "<div style='color: green' class='alert alert-success text-center'>Add to Order Success</div>";
         $orderRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `userorder` ORDER BY orderID DESC LIMIT 1"));
         $orderID = $orderRow['orderID'];  
 

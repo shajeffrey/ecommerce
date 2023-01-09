@@ -119,6 +119,7 @@ if (isset($_SESSION['addCategory'])) {
                             <td><?php echo$categoryDesc?></td>
                             <td >
                                 <a href="updateCat.php?updateID=<?php echo $categoryID;?>" class=" btn-link">Update</a>
+                                <br>
                                 <a onclick="return confirm('Are you sure you want to delete this product?');" href="deleteCat.php?deleteID=<?php echo $categoryID;?>" class=" btn-link">Delete</a>
                             </td>
                          

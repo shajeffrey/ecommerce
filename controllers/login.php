@@ -145,7 +145,7 @@ class login
 
 				</script>
 				 ';
-            mysqli_error($conn);
+            mysqli_error($conn);    
         }
         mysqli_close($conn);
     }

@@ -1,6 +1,16 @@
 <?php
 include 'templates/uHomeHeader.php';
 
+
+if (isset($_GET['vendorID'])) {
+
+$getid = $_GET['vendorID'];
+
+} else {
+//If not found redirect to vendorhomepage
+$_SESSION['loginUser'] = "<div style='color: red' class='alert alert-danger text-center'>Sorry! Vendor Products Not Found</div>";
+echo '<script>window.location.href = "userHomepage.php"</script>';
+}
 ?>
 
 <!-- margin y axis (top/bottom) -->
@@ -9,31 +19,6 @@ include 'templates/uHomeHeader.php';
         <h1 class="sessionName">Welcome <?=$_SESSION['userFullname'];?></h1>
     </div>
 </div>
-
-<?php
-
-if (isset($_SESSION['loginUser'])) {
-    echo $_SESSION['loginUser'];
-    unset($_SESSION['loginUser']);
-}
-if (isset($_SESSION['addCart'])) {
-    echo $_SESSION['addCart'];
-    unset($_SESSION['addCart']);
-}
-if (isset($_SESSION['insertOrder'])) {
-    echo $_SESSION['insertOrder'];
-    unset($_SESSION['insertOrder']);
-}
-if (isset($_SESSION['updateProd'])) {
-    echo $_SESSION['updateProd'];
-    unset($_SESSION['updateProd']);
-}
-// if (isset($_SESSION['updateProfile'])) {
-//     echo $_SESSION['updateProfile'];
-//     unset($_SESSION['updateProfile']);
-// }
-
-?>
 
 <div class="container">
     <form action="userSearch.php" method="POST">
@@ -106,7 +91,7 @@ if (isset($_SESSION['updateProd'])) {
         <!-- PRODUCT CATALOGUE GRID -->
         <?php
         $userID = $_SESSION['userID'];
-        $query = "SELECT * FROM `product` WHERE inStock='yes' ";
+        $query = "SELECT * FROM `product` WHERE inStock='yes' AND vendorID='$getid' ";
 
         $prodCatalogue = mysqli_query($conn, $query);
 
@@ -165,8 +150,7 @@ if (isset($_SESSION['updateProd'])) {
                                         <a href="#" class="text-default mb-2 inactiveLink" data-abc="true"><?=$prodName; ?></a><br>
                                         
                                     </h6>
-                                    <u><a href="userVendor.php?vendorID=<?php echo $vendorID; ?>" class="text-muted  mt-1" data-abc="true">Vendor   :<?=$vName; ?></a></u>
-                                    <br>
+                                    <u><a href="#" class="text-muted  mt-1" data-abc="true">Vendor   :<?=$vName; ?></a></u><br>
                                     <a href="#" class="text-muted inactiveLink" data-abc="true">Category :<?=$category; ?></a><br>
                                     <hr>
                                     <a href="#" class="text-muted inactiveLink" data-abc="true"><?=$prodDesc; ?></a>
