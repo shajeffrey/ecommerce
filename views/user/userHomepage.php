@@ -169,7 +169,7 @@ if (isset($_SESSION['updateProd'])) {
                                     <br>
                                     <a href="#" class="text-muted inactiveLink" data-abc="true">Category :<?=$category; ?></a><br>
                                     <hr>
-                                    <a href="#" class="text-muted inactiveLink" data-abc="true"><?=$prodDesc; ?></a>
+                                    
                                 </div>
                                 <h3 class="mb-0 font-weight-semibold">RM<?=$prodPrice;?></h3>
                                 
@@ -179,7 +179,7 @@ if (isset($_SESSION['updateProd'])) {
                                 //  $catRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `userorder` WHERE userID='$userID' "));
                                 //  $cat = $catRow['categoryName'];
                                 //LIKE JOIN BUT FRIGGIN HARD TO UNDERSTAND
-                                $query = "SELECT * FROM `userorder` WHERE userID='$userID' AND deleted='no' ";
+                                $query = "SELECT * FROM `userorder` WHERE userID='$userID' AND deleted='no' AND paid='no' ";
 
                                 $orderTable = mysqli_query($conn, $query);
 

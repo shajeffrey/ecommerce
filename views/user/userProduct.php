@@ -222,41 +222,43 @@ if (isset($_POST['addCart'])) {
     `inventoryNo`='$stockLeft',
     `inStock`='$instock' WHERE productID='$prodID'";
     
-    if (!mysqli_query($conn, $updateProd)) {
+    if (mysqli_query($conn, $updateProd)) {
 
+        $insertOrder = "INSERT INTO `userorder`(`userID`, `fulfilled`, `deleted`, `paid`) VALUES 
+        ('$userID','no','no','no')";
+    
+        if (mysqli_query($conn, $insertOrder)) {
+            $orderRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `userorder` ORDER BY orderID DESC LIMIT 1"));
+            $orderID = $orderRow['orderID'];  
+    
+            $insertCart = "INSERT INTO cart VALUES ('','$orderID','$prodID','$hiddenUnit','$prodQuantity','$prodDisc', '$hiddenTotal', 'no','')";
+        
+            if (mysqli_query($conn, $insertCart)) {
+         
+                $_SESSION['addCart'] = "<div style='color: green' class='alert alert-success text-center'>Add to Cart Success</div>";
+                echo '<script>window.location.href = "userHomepage.php"</script>';
+        
+            } else {
+        
+                $_SESSION['addCart'] = "<div style='color: red' class='alert alert-danger text-center'>Add to Cart unsuccesful</div>";
+                echo '<script>window.location.href = "userHomepage.php"</script>';
+              
+                mysqli_error($conn);
+            }
+    
+        } else {
+            $_SESSION['insertOrder'] = "<div style='color: red' class='alert alert-danger text-center'>Insert Order unsuccesful</div>";
+            echo '<script>window.location.href = "userHomepage.php"</script>';
+          
+            mysqli_error($conn);
+        }
+        
+    } else{
         $_SESSION['updateProd'] = "<div style='color: red' class='alert alert-danger text-center'>Update Product Inv unsuccesful.</div>";
         echo '<script>window.location.href = "userHomepage.php"</script>';
         
         mysqli_error($conn);
         
-    } 
-
-    $insertOrder = "INSERT INTO `userorder`(`userID`, `receiveDate`, `fulfilled`, `deleted`, `paid`, `paymentDate`) VALUES 
-    ('$userID','','no','no','no','')";
-
-    if (mysqli_query($conn, $insertOrder)) {
-        $orderRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `userorder` ORDER BY orderID DESC LIMIT 1"));
-        $orderID = $orderRow['orderID'];  
-
-    } else {
-        $_SESSION['insertOrder'] = "<div style='color: red' class='alert alert-danger text-center'>Insert Order unsuccesful</div>";
-        echo '<script>window.location.href = "userHomepage.php"</script>';
-      
-        mysqli_error($conn);
-    }
-    
-    $insertCart = "INSERT INTO cart VALUES ('','$orderID','$prodID','$hiddenUnit','$prodQuantity','$prodDisc', '$hiddenTotal', 'no')";
-    
-    if (mysqli_query($conn, $insertCart)) {
- 
-        $_SESSION['addCart'] = "<div style='color: green' class='alert alert-success text-center'>Add to Cart Success</div>";
-        echo '<script>window.location.href = "userHomepage.php"</script>';
-
-    } else {
-        $_SESSION['addCart'] = "<div style='color: red' class='alert alert-danger text-center'>Add to Cart unsuccesful</div>";
-        echo '<script>window.location.href = "userHomepage.php"</script>';
-      
-        mysqli_error($conn);
     }
 
     mysqli_close($conn);

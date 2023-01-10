@@ -1,5 +1,13 @@
 <?php
 include 'templates/uHomeHeader.php';
+
+$userID = $_SESSION['userID'];
+
+$query = "SELECT * 
+FROM cart 
+JOIN userorder 
+ON cart.orderID = userorder.orderID
+WHERE userorder.userID='$userID' AND userorder.deleted='no' AND userorder.paid='no' ORDER BY `cartID` DESC";
 ?>
 
 <div class="container-fluid ">
@@ -43,7 +51,22 @@ include 'templates/uHomeHeader.php';
     <?php endif; ?>
 
     <h2 style="color:#007dd6;">Manage Cart Orders</h2>
-    <a  href="pay.php" style="background-color:#007dd6; color:white;" class="btn inline float-right mb-3 ">Make Payment?</a> 
+
+    <?php 
+     $cartList = mysqli_query($conn, $query);
+     //Count Rows to check whether we have foods or not
+     $count = mysqli_num_rows($cartList);
+
+     if($count == 0){
+    ?>
+    <a  href="payment.php" style="background-color:#007dd6; color:white;" class="btn inline float-right inactiveLink2 mb-3 faded">Make Payment?</a> 
+    
+    <?php } else{ ?>
+        
+        <a  href="payment.php" style="background-color:#007dd6; color:white;" class="btn inline float-right mb-3 ">Make Payment?</a> 
+
+    <?php }?>
+
     <br>       
     <table style="background-color: rgba(255,255,255,0.1); box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);"  class="table text-center table-bordered">
         <thead style="color:#007dd6;">
@@ -63,14 +86,6 @@ include 'templates/uHomeHeader.php';
         <tbody>
 
         <?php 
-        $userID = $_SESSION['userID'];
-
-        $query = "SELECT * 
-        FROM cart 
-        JOIN userorder 
-        ON cart.orderID = userorder.orderID
-        WHERE userorder.userID='$userID' AND userorder.deleted='no' AND userorder.paid='no' ORDER BY `cartID` DESC";
-
         // $query = "SELECT * FROM product WHERE vendorID='$vendorID' ORDER BY `productID` DESC";
         //Execute the qUery
         $cartList = mysqli_query($conn, $query);

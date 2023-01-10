@@ -8,6 +8,11 @@ body {
     pointer-events: none;
     cursor: default;
 }
+.inactiveLink2 {
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.3;
+}
 
 /* USER HOMEPAGE PRODUCT CATALOG CSS  */
 
@@ -225,3 +230,7 @@ a {
     border-radius: 8px;
     border-color: #007dd6;
   }
+
+  /* Payment */
+
+  

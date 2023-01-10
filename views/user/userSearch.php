@@ -103,7 +103,7 @@ if(empty($_POST['catSearch']) && empty($_POST['typeSearch'])){
                                     </h6>
                                     <a href="#" class="text-muted inactiveLink" data-abc="true"><?=$category; ?></a>
                                     <hr>
-                                    <a href="#" class="text-muted inactiveLink" data-abc="true"><?=$prodDesc; ?></a>
+                                  
                                 </div>
                                 <h3 class="mb-0 font-weight-semibold">RM<?=$prodPrice;?></h3>
                                 
@@ -113,7 +113,7 @@ if(empty($_POST['catSearch']) && empty($_POST['typeSearch'])){
                                 //  $catRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `userorder` WHERE userID='$userID' "));
                                 //  $cat = $catRow['categoryName'];
 
-                                $query = "SELECT * FROM `userorder` WHERE userID='$userID' AND deleted='no' ";
+                                $query = "SELECT * FROM `userorder` WHERE userID='$userID' AND deleted='no' AND paid='no' ";
 
                                 $orderTable = mysqli_query($conn, $query);
 
@@ -122,7 +122,7 @@ if(empty($_POST['catSearch']) && empty($_POST['typeSearch'])){
                                     while($row = mysqli_fetch_assoc($orderTable))
                                     {
                                         $orderID = $row['orderID'];
-                                        $query2 = "SELECT * FROM `cart` WHERE orderID='$orderID' AND productID='$productID' AND completed='no'  ";
+                                        $query2 = "SELECT * FROM `cart` WHERE orderID='$orderID' AND productID='$productID' AND completed='no'   ";
                                         $cartTable = mysqli_query($conn, $query2);
 
                                         if (mysqli_num_rows($cartTable) == 1 ){
