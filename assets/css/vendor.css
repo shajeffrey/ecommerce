@@ -9,6 +9,13 @@ body {
     cursor: default;
 }
 
+.inactiveLink2 {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.3;
+}
+
+
 /* MANAGE PRODUCTS */
 .wrapper {
   justify-content: center;
@@ -241,3 +248,11 @@ a {
     
   }
 
+  .tr:nth-child(odd) {
+    background: linear-gradient(45deg,rgba(106, 13, 173, 0.1) 100%, rgba(106, 13, 173, 0.1) );
+  }
+  
+  .tr2:nth-child(even) {
+    background: linear-gradient(45deg, rgba(106, 13, 173, 0.1) 100%, rgba(106, 13, 173, 0.1) );
+  }
+  

@@ -49,10 +49,10 @@ session_start();?>
             <ul class="navbar-nav mr-auto text-center">
                 <li class="nav-item">
                     <!-- ongoing orders & history of orders -->
-                    <a class="nav-link" href="manageProduct.php">Manage</a>
+                    <a class="nav-link" href="manageProduct.php">Catalogue</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Orders</a>
+                    <a class="nav-link" href="orderPaid.php">Orders</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../../controllers/logout.php">Logout</a>
