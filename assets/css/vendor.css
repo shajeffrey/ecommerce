@@ -12,7 +12,7 @@ body {
 .inactiveLink2 {
   pointer-events: none;
   cursor: default;
-  opacity: 0.3;
+  opacity: 0.4;
 }
 
 

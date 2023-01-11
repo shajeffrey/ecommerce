@@ -55,7 +55,7 @@ session_start();?>
                     <a class="nav-link" href="userCart.php">Cart</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">History</a>
+                    <a class="nav-link" href="orderPay.php">History</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../../controllers/logout.php">Logout</a>

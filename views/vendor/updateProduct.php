@@ -122,7 +122,7 @@ if (isset($_GET['prodID'])) {
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group">
                                             <label for="prodDisc">Item Discount(%)</label>
-                                            <input type="number" min="0" max="100" class="form-control input-update" required name="prodDisc" id="prodDisc" value="<?=$discAmount?>">
+                                            <input type="number" min="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57" max="100" class="form-control input-update" required name="prodDisc" id="prodDisc" value="<?=$discAmount?>">
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-4">
@@ -195,6 +195,7 @@ if (isset($_POST['update'])) {
         $prodName = $_POST['prodName'];
         $prodDesc = $_POST['prodDesc'];
         $prodPrice = $_POST['prodPrice'];
+        $prodPrice = number_format($prodPrice, 2);
         $prodDisc = $_POST['prodDisc'];
         $prodInv = $_POST['prodInv'];
         if( $prodInv == 0)

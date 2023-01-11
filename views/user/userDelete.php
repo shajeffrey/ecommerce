@@ -57,10 +57,13 @@ if (isset($_GET['deleteID'])) //Either use '&&' or 'AND'
         mysqli_error($conn);
         
     } 
+
+    date_default_timezone_set("Singapore");
+    $del_date = date("Y-m-d h:i:sa"); //Order DAte
     //make order a deleted entry
     // update set orderID to deleted == yes
     $updateOrder = "UPDATE `userorder` SET
-    `deleted`='$deletedYes' WHERE orderID='$orderID'";
+    `deleted`='$deletedYes', `deleteDate`='$del_date' WHERE orderID='$orderID'";
     //Execute the Query
     $deleteProd = mysqli_query($conn, $updateOrder);
 

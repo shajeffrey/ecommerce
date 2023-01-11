@@ -50,7 +50,7 @@ WHERE userorder.userID='$userID' AND userorder.deleted='no' AND userorder.paid='
     </div>
     <?php endif; ?>
 
-    <h2 style="color:#007dd6;">Manage Cart Orders</h2>
+    <h2 style="color:#007dd6;">Manage Cart</h2>
 
     <?php 
      $cartList = mysqli_query($conn, $query);
@@ -70,7 +70,7 @@ WHERE userorder.userID='$userID' AND userorder.deleted='no' AND userorder.paid='
     <br>       
     <table style="background-color: rgba(255,255,255,0.1); box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);"  class="table text-center table-bordered">
         <thead style="color:#007dd6;">
-        <tr>
+        <tr class="tr">
             <th style="width: 3%;">No.</th>
             <th>Vendor</th>
             <th style="width: 17%;">Image</th>

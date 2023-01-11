@@ -15,7 +15,7 @@ include 'templates/vHomeHeader.php';
             <a  href="orderPaid.php" style="background-color:#6A0DAD; color:white;" class="btn ">View Incoming Orders</a> 
         </div>
         <div class="col-4  text-center">
-            <a  href="orderOngoing.php" style="background-color:#6A0DAD; color:white;" class="btn ">View Orders in Progress</a> 
+            <a  href="orderOngoing.php" style="background-color:#6A0DAD; color:white;" class="btn ">View Orders Sent</a> 
         </div>
         <div class="col-4  text-center">
             <a  href="orderReceive.php" style="background-color:#6A0DAD; color:white;" class="btn inactiveLink2">View Orders Received</a> 
@@ -26,6 +26,7 @@ include 'templates/vHomeHeader.php';
         <thead style="color:#6A0DAD;">
         <tr class="tr">
             <th>No.</th>
+            <th style="width: 7%;">ID No.</th>
             <th>Payer Name</th>
             <th style="width: 15%;">Address</th>
             <th>Contact</th>
@@ -60,6 +61,7 @@ include 'templates/vHomeHeader.php';
             {
                 //get the values from individual columns
                 $cartID = $cartRow['cartID'];
+                $orderID = $cartRow['orderID'];
                 $qty = $cartRow['quantity'];
                 $prodPicture = $cartRow['prodPicture'];
                 $prodName = $cartRow['prodName'];
@@ -88,7 +90,8 @@ include 'templates/vHomeHeader.php';
         ?>
 
         <tr class="tr2">
-           <td ><?php echo $sn++; ?>. </td>
+           <td ><?php echo $sn++; ?>) </td>
+           <td ><?php echo $orderID; ?> </td>
            <td><?php echo $userName; ?></td>
            <td><?php echo $userAddress; ?></td>
            <td><?php echo $userPhone; ?></td>

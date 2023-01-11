@@ -45,7 +45,7 @@ include 'templates/vHomeHeader.php';
     <br>       
     <table style="background-color: rgba(255,255,255,0.1); border:solid 1px; box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);"  class="table text-center table-bordered">
         <thead style="color:#6A0DAD;">
-        <tr>
+        <tr class="tr">
             <th>No.</th>
             <th style="width: 17%;">Image</th>
             <th>Name</th>

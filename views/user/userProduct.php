@@ -178,11 +178,12 @@ if (isset($_GET['prodID'])) {
 
         if(prodQty.value != ''){
          
-            var afterDisc = prodPrice.value - (prodPrice.value * (prodDisc.value/100));
+            var afterDisc = (prodPrice.value - (prodPrice.value * (prodDisc.value/100))).toFixed(2);
             var totalAfter = afterDisc * prodQty.value;
+            totalAfter = totalAfter.toFixed(2);
             
             unit1.value = "RM" + afterDisc;
-            totalQty.value = "RM" + afterDisc + " X " + prodQty.value + " Units = RM" + totalAfter;
+            totalQty.value = "RM" + afterDisc + " X " + prodQty.value + " = RM" + totalAfter;
             hiddenUnit.value = afterDisc;
             hiddenTotal.value = totalAfter;
 
@@ -208,6 +209,8 @@ if (isset($_POST['addCart'])) {
     $prodQuantity = $_POST['prodQuantity'];
     $hiddenUnit = $_POST['hiddenUnit'];
     $hiddenTotal = $_POST['hiddenTotal'];
+
+    $hiddenTotal = number_format($hiddenTotal, 2);
     
     $stockLeft = $prodInv - $prodQuantity;
     

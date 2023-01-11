@@ -40,7 +40,7 @@ include 'templates/uHomeHeader.php';
         FROM cart 
         JOIN userorder 
         ON cart.orderID = userorder.orderID
-        WHERE  AND userorder.deleted='no' AND userorder.paid='no' ORDER BY `cartID` DESC";
+        WHERE userorder.userID='$userID' AND userorder.deleted='no' AND userorder.paid='no' ORDER BY `cartID` DESC";
 
         // $query = "SELECT * FROM product WHERE vendorID='$vendorID' ORDER BY `productID` DESC";
         //Execute the qUery
