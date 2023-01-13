@@ -2,7 +2,7 @@
 include 'templates/uHomeHeader.php';
 ?>
 
-<div class="container-fluid " style="width: 50%;">
+<div class="container-fluid " style="width: 77%;">
     
     <div style="background-color: #fff; border-radius:10px;" class="m-5 p-4">
 
@@ -17,17 +17,21 @@ include 'templates/uHomeHeader.php';
 
     
 
-    <h2 style="color:#007dd6;" class="text-center ">Cart Payment</h2>
+    <h2 style="color:#007dd6;" class="text-center ">Payment</h2>
     
     <br>       
     <table  class="table text-center table-borderless">
         <thead style="color:#007dd6;">
         <tr>
             <th style="width: 3%;">No.</th>
-            <th>Vendor Name</th>
             <th>Item Name</th>
             <th>Quantity</th>
+            <th>Vendor Name</th>
+            <th>Bank Name</th>
+            <th>Bank No.</th>
+            <th style="width: 9%;">ID No.</th>
             <th>Total</th>
+            <th>Validation</th>
            
         </tr>
         </thead>
@@ -49,21 +53,32 @@ include 'templates/uHomeHeader.php';
         $count = mysqli_num_rows($cartList);
         //Create Serial Number VAriable and Set Default VAlue as 1
         $sn=1;
+        $x=0;
 
         if($count>0)
         {
+            
             //We have food in Database
             //Get the Foods from Database and Display
             while($cartRow=mysqli_fetch_assoc($cartList))
             {
                 //get the values from individual columns
                 $cartID = $cartRow['cartID'];
+                $orderID = $cartRow['orderID'];
+                $proof = $cartRow['proof'];
+
+                if(empty($proof)){
+                    $x++;
+                }
+
                 $productID = $cartRow['productID'];
                     $prodRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `product` WHERE productID='$productID' "));
                     
                     $vendorID = $prodRow['vendorID'];
                     $venRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `vendor` WHERE vendorID='$vendorID' "));
                     $vendorName = $venRow['vendorName'];
+                    $bankName = $venRow['bankName'];
+                    $bankNo = $venRow['bankNo'];
                     $categoryID = $prodRow['categoryID'];
                             $cateRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `category` WHERE categoryID='$categoryID' "));
                             $category = $cateRow['categoryName'];
@@ -80,14 +95,25 @@ include 'templates/uHomeHeader.php';
                 $total = $cartRow['total'];
 
                 $sum += $total;
+                $sum = number_format($sum, 2);
         ?>
 
         <tr>
            <td ><?php echo $sn++; ?>. </td>
+           <td><?php echo $prodName; ?></td>
+           <td><?php echo $qty; ?></td>
            <td ><?php echo $vendorName; ?></td>
-            <td><?php echo $prodName; ?></td>
-            <td><?php echo $qty; ?></td>
-            <td>RM<?php echo $total; ?></td>
+           <td ><?php echo $bankName; ?></td>
+           <td ><?php echo $bankNo; ?></td>
+           <td style="color: #007dd6;"><?php echo $orderID ?> </td>
+           <td style="color: #007dd6;">RM<?php echo $total; ?></td>
+           
+           <td >
+            
+           <a href="proof.php?oID=<?php echo $orderID;?>" style="background-color:#007dd6; color:white;" class="btn btn-primary turned-button" >Upload</a>
+
+           </td>
+
            
         </tr>
         
@@ -102,6 +128,7 @@ include 'templates/uHomeHeader.php';
 
         ?>
 
+
         </tbody>
     </table>
 
@@ -109,16 +136,28 @@ include 'templates/uHomeHeader.php';
 
     <div class="col-6 text-center">
 
-        <a  href="userCart.php" style="background-color:#007dd6; color:white;" class="btn ">Back to Cart</a> 
+        <a  href="userCart.php" style="background-color:#007dd6; color:white;" class="btn ">Back To Cart</a> 
     </div>
     <div class="col-6  text-center">
-        <form method="post">
-        <button onclick="return confirm('Are you sure you want to pay?');" name="pay" style="background-color:#007dd6; color:white;"  class="btn hover">Pay <?php echo "RM$sum" ?>?</button>         
-        </form>
-    </div>
-    </div>
-    </div>
 
+    <?php 
+     if($x == 0){
+    ?>
+    <form method="post">
+        <button onclick="return confirm('Are you sure you have paid?');" name="pay" style="background-color:#007dd6; color:white;"  class="btn hover">Confirm Payments?</button>         
+        </form>
+    
+    <?php } else{ ?>
+        
+        <button style=" color:007dd6;"  class="btn btn-link inactiveLink">You Have To Upload <?=$x?> More Payment</button>         
+
+    <?php }?>
+       
+    </div>
+    </div>
+    </div>
+    
+</div>
 
     <?php
 if (isset($_POST['pay'])) {
@@ -133,7 +172,7 @@ if (isset($_POST['pay'])) {
     
     if (mysqli_query($conn, $queryPaid)) {
  
-        $_SESSION['loginUser'] = "<div style='color: green' class='alert alert-success text-center'>Cart Payment Success!, check your History</div>";
+        $_SESSION['loginUser'] = "<div style='color: green' class='alert alert-success text-center'>Cart Payment Validation Sent!, check your History</div>";
         echo '
 			<script>
 			sweetAlert({
@@ -150,7 +189,7 @@ if (isset($_POST['pay'])) {
 				';
 
     } else {
-        $_SESSION['payError'] = "<div style='color: red' class='alert alert-danger text-center'>Sorry Payment Failed</div>";
+        $_SESSION['payError'] = "<div style='color: red' class='alert alert-danger text-center'>Sorry Payment Validation Failed</div>";
         echo '
         <script>
         sweetAlert({
@@ -172,7 +211,6 @@ if (isset($_POST['pay'])) {
     mysqli_close($conn);
 }
 ?>
-
 
 <?php
 

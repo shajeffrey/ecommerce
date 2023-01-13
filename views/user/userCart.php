@@ -59,11 +59,11 @@ WHERE userorder.userID='$userID' AND userorder.deleted='no' AND userorder.paid='
 
      if($count == 0){
     ?>
-    <a  href="payment.php" style="background-color:#007dd6; color:white;" class="btn inline float-right inactiveLink2 mb-3 faded">Make Payment?</a> 
+    <a  href="payment.php" style="background-color:#007dd6; color:white;" class="btn inline float-right inactiveLink2 mb-3 faded">Make Payments?</a> 
     
     <?php } else{ ?>
         
-        <a  href="payment.php" style="background-color:#007dd6; color:white;" class="btn inline float-right mb-3 ">Make Payment?</a> 
+        <a  href="payment.php" style="background-color:#007dd6; color:white;" class="btn inline float-right mb-3 ">Make Payments?</a> 
 
     <?php }?>
 

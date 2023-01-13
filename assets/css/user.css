@@ -182,6 +182,21 @@ a {
     box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
 
   }
+
+  .input2
+   {
+    background: rgba(255,255,255,0.1);
+    border: none;
+    font-size: 16px;
+    height: auto;
+    margin: 0;
+    outline: 0;
+    padding: 15px;
+    width: 100%;
+    background-color: #e8eeef;
+    color: #007dd6;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+  }
   
   
   .fieldset {
@@ -231,6 +246,14 @@ a {
     border-color: #007dd6;
   }
 
+  
+  .sides2{
+    border:solid 1px; 
+
+    border-color: #007dd6;
+    
+  }
+
   /* History */
 
   .tr:nth-child(odd) {
@@ -242,3 +265,35 @@ a {
   }
   
   
+  /* ========== SignIn Form =========== */
+  .wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.active {
+  opacity: 1;
+  
+  transition: 0.5s; 
+  background-color: rgba(158, 149, 149, 0.646);
+
+  visibility: visible;
+}
+
+  .wrapper .close-form {
+  position: absolute;
+  top: 120px;
+  right: 465px;
+  color: var(--default-color);
+  font-size: 5rem;
+  cursor: pointer;
+}

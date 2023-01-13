@@ -186,23 +186,10 @@ if (isset($_POST['receive'])) {
     if (mysqli_query($conn, $queryReceive)) {
  
         $_SESSION['userPay'] = "<div style='color: green' class='alert alert-success text-center'>Order Received! Check Orders Received</div>";
-        echo '<script>
-
-				function(){
-							window.location.href ="orderPay.php";
-				});
-
-			</script>';
-
+        echo '<script>window.location.href = "orderPay.php"</script>';
     } else {
         $_SESSION['userPay'] = "<div style='color: red' class='alert alert-danger text-center'>Sorry! Update Order Status Failed</div>";
-        echo '<script>
-
-                function(){
-                            window.location.href ="orderPay.php";
-                });
-
-            </script>';
+        echo '<script>window.location.href = "orderPay.php"</script>';
       
         mysqli_error($conn);
     }

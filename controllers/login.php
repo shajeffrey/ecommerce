@@ -18,6 +18,7 @@ class login
 
         $query = "SELECT * FROM `admin` WHERE adminUsername='$this->username' AND adminPass='$this->password' ";
 
+
         $validateAdmin = mysqli_query($conn, $query);
 
         if (mysqli_num_rows($validateAdmin) == 1) {
@@ -118,6 +119,24 @@ class login
             $row = mysqli_fetch_assoc($validateVendor);
             // put all user data into session
             $_SESSION['vendorID'] = $row['vendorID'];
+
+            $vid = $_SESSION['vendorID'];
+
+            $query = "SELECT * 
+            FROM cart 
+            JOIN userorder ON cart.orderID = userorder.orderID
+            JOIN product ON cart.productID = product.productID
+            WHERE product.vendorID='$vid' AND userorder.deleted='no' AND userorder.paid='yes' AND cart.completed='no' ORDER BY `cartID` DESC";
+            //Execute the qUery
+            $paidOrder = mysqli_query($conn, $query);
+            //Count Rows to check whether we have foods or not
+            $count = mysqli_num_rows($paidOrder);
+            //Create Serial Number VAriable and Set Default VAlue as 1
+            
+            if($count>0){
+                $_SESSION['paidOrder'] = "<div style='color: red' class='alert text-center'>You Have Orders to fulfill.</div>";
+            }
+            
             $_SESSION['vendorName'] = $row['vendorName'];
             $_SESSION['vendorEmail'] = $row['vendorEmail'];
             $_SESSION['vendorUsername'] = $row['vUsername'];

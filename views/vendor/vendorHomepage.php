@@ -12,6 +12,11 @@ if (isset($_SESSION['loginVendor'])) {
     echo $_SESSION['loginVendor'];
     unset($_SESSION['loginVendor']);
 }
+// Paid Order Reminder of Orders to Fulfill
+if (isset($_SESSION['paidOrder'])) {
+    echo $_SESSION['paidOrder'];
+    unset($_SESSION['paidOrder']);
+}
 ?>
 <div class="container">
     <form action="searchProduct.php" method="POST">

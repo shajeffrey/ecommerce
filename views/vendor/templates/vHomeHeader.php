@@ -32,9 +32,7 @@ session_start();?>
                 <li class="nav-item ">
                     <a class="nav-link" href="vendorProfile.php">Profile</a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="#">Reports</a>
-                </li>
+            
             </ul>
         </div>
         <div class="mx-auto my-2 order-0 order-md-1 position-relative">

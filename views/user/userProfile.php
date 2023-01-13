@@ -56,7 +56,7 @@ if (isset($_SESSION['updateProfile'])) {
 
       <div class="row">
 
-        <div class="col-12  col-sm-6">
+        <div class="col-12  ">
             <div class="form-group">
                 <label class="labels" for="uFullname">Full Name</label>
                 <!-- setvalue CI4 helper(['form']) in Users Controller -->
@@ -65,7 +65,7 @@ if (isset($_SESSION['updateProfile'])) {
             </div>
         </div>
 
-        <div class="col-12 col-sm-6">
+        <div class="col-12 ">
             <div class="form-group">
                 <label class="labels" for="uName">Username</label>
                 <!-- setvalue CI4 helper(['form']) in Users Controller -->
