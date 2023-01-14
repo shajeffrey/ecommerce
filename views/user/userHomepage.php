@@ -211,7 +211,7 @@ if (isset($_SESSION['paidUser2'])) {
 
                                             ?>
                                             <div class="text-muted mb-3">Availability to Add to Order: <?=$inventoryNo; ?></div>
-                                            <a href="userUpdate.php?prodID=<?php echo $productID;?>&cartID=<?php echo $cartID; ?>" type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i>Update Latest Product Order?</a>
+                                            <a href="userUpdate.php?prodID=<?php echo $productID;?>&cartID=<?php echo $cartID; ?>" type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i>Update Product Order?</a>
                                             
                                             <?php
                                         }

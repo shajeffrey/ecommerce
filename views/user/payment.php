@@ -2,7 +2,7 @@
 include 'templates/uHomeHeader.php';
 ?>
 
-<div class="container-fluid " style="width: 77%;">
+<div class="container-fluid " style="width: 80%;">
     
     <div style="background-color: #fff; border-radius:10px;" class="m-5 p-4">
 

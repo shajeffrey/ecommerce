@@ -95,14 +95,18 @@ if (isset($_SESSION['loginAdmin'])) {
             <div class=" boxStyle">            
             <?php 
                 //Sql Query 
-                $sql = "SELECT * FROM `userorder` WHERE deleted='no' AND paid='yes' AND approved='' ";
+                $sql = "SELECT *
+                FROM cart 
+                JOIN userorder 
+                ON cart.orderID = userorder.orderID
+                WHERE userorder.deleted='no' AND userorder.paid='yes' AND userorder.approved='yes' AND userorder.fulfilled='no' AND cart.completed='yes' ";
                 //Execute Query
                 $count = mysqli_num_rows(mysqli_query($conn, $sql));
             ?>
 
             <h1><?php echo $count; ?></h1>
             <br />
-            <h4>Total Order for Validation</h4>
+            <h4>Total Order To Receive</h4>
             </div>
         </div>
 
@@ -190,7 +194,7 @@ if (isset($_SESSION['loginAdmin'])) {
                 FROM cart 
                 JOIN userorder 
                 ON cart.orderID = userorder.orderID
-                WHERE userorder.deleted='no' AND userorder.paid='yes' AND userorder.approved='yes' AND cart.completed='yes'";
+                WHERE userorder.deleted='no' AND userorder.paid='yes' AND userorder.approved='yes' AND userorder.fulfilled='yes' AND cart.completed='yes'";
                 
                 $res = mysqli_query($conn, $Join);
                 $row = mysqli_fetch_assoc($res);
@@ -214,7 +218,7 @@ if (isset($_SESSION['loginAdmin'])) {
                 $queryJoin = "SELECT 'Today' as date, sum(total) as total FROM cart
                 JOIN userorder 
                 ON cart.orderID = userorder.orderID
-                WHERE userorder.deleted='no' AND userorder.paid='yes' AND userorder.approved='yes' AND cart.completed='yes'
+                WHERE userorder.deleted='no' AND userorder.paid='yes' AND userorder.approved='yes' AND userorder.fulfilled='yes' AND cart.completed='yes' 
                 AND userorder.orderDate > DATE_ADD(CURDATE(), INTERVAL -1 DAY)";
                 //Execute Query
                 $res = mysqli_query($conn, $queryJoin);

@@ -184,7 +184,7 @@ echo '<script>window.location.href = "userHomepage.php"</script>';
 
                                             ?>
                                             <div class="text-muted mb-3">Availability to Add to Order: <?=$inventoryNo; ?></div>
-                                            <a href="userUpdate.php?prodID=<?php echo $productID;?>&cartID=<?php echo $cartID; ?>" type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i>Update Your Order?</a>
+                                            <a href="userUpdate.php?prodID=<?php echo $productID;?>&cartID=<?php echo $cartID; ?>" type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i>Update Product Order?</a>
                                             
                                             <?php
                                         }
