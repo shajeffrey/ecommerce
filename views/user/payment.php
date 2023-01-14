@@ -198,8 +198,8 @@ if (isset($_POST['pay'])) {
         echo '
 			<script>
 			sweetAlert({
-					title: "Payment Done!",
-					text: "Check Your History For Order Progress",
+					title: "Order Semt For Validation!",
+					text: "Check Your History",
 					type: "success",
 				},
 

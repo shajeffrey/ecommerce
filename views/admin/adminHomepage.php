@@ -46,20 +46,7 @@ if (isset($_SESSION['loginAdmin'])) {
             <h4>Total Vendors</h4>
             </div>
         </div>
-        <div class=" col-sm-4 text-center" > 
-            <div class=" boxStyle">            
-            <?php 
-                //Sql Query 
-                $sql = "SELECT * FROM `admin`";
-                //Execute Query
-                $count = mysqli_num_rows(mysqli_query($conn, $sql));
-            ?>
 
-            <h1><?php echo $count; ?></h1>
-            <br />
-            <h4>Total Admins</h4>
-            </div>
-        </div>
         <div class=" col-sm-4 text-center" > 
             <div class=" boxStyle">            
             <?php 
@@ -88,15 +75,43 @@ if (isset($_SESSION['loginAdmin'])) {
             <h4>Alltime Product Orders</h4>
             </div>
         </div>
+
         <div class=" col-sm-4 text-center" > 
-            <div class="row">
-                <div class=" col-sm-6 text-center" > 
+            <div class=" boxStyle">            
+            <?php 
+                //Sql Query 
+                $sql = "SELECT * FROM `userorder` WHERE paid='yes' AND approved='yes'";
+                //Execute Query
+                $count = mysqli_num_rows(mysqli_query($conn, $sql));
+            ?>
+
+            <h1><?php echo $count; ?></h1>
+            <br />
+            <h4>Total Payed Orders</h4>
+            </div>
+        </div>
+
+        <div class=" col-sm-4 text-center" > 
+            <div class=" boxStyle">            
+            <?php 
+                //Sql Query 
+                $sql = "SELECT * FROM `userorder` WHERE deleted='no' AND paid='yes' AND approved='' ";
+                //Execute Query
+                $count = mysqli_num_rows(mysqli_query($conn, $sql));
+            ?>
+
+            <h1><?php echo $count; ?></h1>
+            <br />
+            <h4>Total Order for Validation</h4>
+            </div>
+        </div>
+
+                 <div class=" col-sm-4 text-center" > 
                     <div class=" boxStyle">            
                     <?php 
                         //Sql Query 
                         $Join = "SELECT 'Today' as date, count(orderID) as Unpaid FROM userorder 
-                        WHERE deleted='no' 
-                        AND paid='no' 
+                        WHERE deleted='no' AND paid='no' 
                         AND orderDate > DATE_ADD(CURDATE(), INTERVAL -1 DAY)";
                         //Execute Query
                         $res = mysqli_query($conn, $Join);
@@ -111,16 +126,42 @@ if (isset($_SESSION['loginAdmin'])) {
 
                     <h1><?php echo $countUnpaid; ?></h1>
                     <br />
-                    <h5>Today Unpaid Orders</h5>
+                    <h4>Today Unpaid Orders</h4>
                     </div>
                 </div>
-                <div class=" col-sm-6 text-center" > 
+
+                 <div class=" col-sm-4 text-center" > 
+                    <div class=" boxStyle">            
+                    <?php 
+                        //Sql Query 
+                        $Join = "SELECT 'Today' as date, count(orderID) as Unpaid FROM userorder 
+                        WHERE deleted='no' 
+                        AND paid='yes' AND approved=''
+                        AND orderDate > DATE_ADD(CURDATE(), INTERVAL -1 DAY)";
+                        //Execute Query
+                        $res = mysqli_query($conn, $Join);
+                        $row = mysqli_fetch_assoc($res);
+                        $countUnpaid = $row['Unpaid'];
+        
+                        if($countUnpaid == null )
+                        {
+                            $countUnpaid = 0;
+                        }
+                    ?>
+
+                    <h1><?php echo $countUnpaid; ?></h1>
+                    <br />
+                    <h4>Today Order for Validation</h4>
+                    </div>
+                </div>
+
+                <div class=" col-sm-4 text-center" > 
                     <div class=" boxStyle">            
                     <?php 
                         //Sql Query 
                         $Join = "SELECT 'Today' as date, count(orderID) as paid FROM userorder 
                         WHERE deleted='no' 
-                        AND paid='yes' 
+                        AND paid='yes' AND approved='yes'
                         AND orderDate > DATE_ADD(CURDATE(), INTERVAL -1 DAY)";
                         //Execute Query
                         $res = mysqli_query($conn, $Join);
@@ -135,26 +176,13 @@ if (isset($_SESSION['loginAdmin'])) {
 
                     <h1><?php echo $countPaid; ?></h1>
                     <br />
-                    <h5>Today Paid Orders</h5>
+                    <h4>Today Paid Orders</h4>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class=" col-sm-4 text-center" > 
-            <div class=" boxStyle">            
-            <?php 
-                //Sql Query 
-                $sql = "SELECT * FROM `userorder` WHERE paid='yes'";
-                //Execute Query
-                $count = mysqli_num_rows(mysqli_query($conn, $sql));
-            ?>
+            
+        
 
-            <h1><?php echo $count; ?></h1>
-            <br />
-            <h4>Total Payed Orders</h4>
-            </div>
-        </div>
-        <div class=" col-sm-4 text-center " > 
+        <div class=" col-sm-6 text-center " > 
             <div class=" boxStyle">            
             <?php 
                 //Sql Query 
@@ -162,7 +190,7 @@ if (isset($_SESSION['loginAdmin'])) {
                 FROM cart 
                 JOIN userorder 
                 ON cart.orderID = userorder.orderID
-                WHERE userorder.deleted='no' AND userorder.paid='yes'";
+                WHERE userorder.deleted='no' AND userorder.paid='yes' AND userorder.approved='yes' AND cart.completed='yes'";
                 
                 $res = mysqli_query($conn, $Join);
                 $row = mysqli_fetch_assoc($res);
@@ -176,17 +204,18 @@ if (isset($_SESSION['loginAdmin'])) {
 
             <h1>RM<?php echo $sum; ?></h1>
             <br />
-            <h4>Alltime Revenue</h4>
+            <h4>Alltime Completed Revenue</h4>
             </div>
         </div>
-        <div class=" col-sm-4 text-center " > 
+        <div class=" col-sm-6 text-center " > 
             <div class=" boxStyle">            
             <?php 
                 //Sql Query 
                 $queryJoin = "SELECT 'Today' as date, sum(total) as total FROM cart
                 JOIN userorder 
                 ON cart.orderID = userorder.orderID
-                WHERE userorder.deleted='no' AND userorder.paid='yes' AND userorder.orderDate > DATE_ADD(CURDATE(), INTERVAL -1 DAY)";
+                WHERE userorder.deleted='no' AND userorder.paid='yes' AND userorder.approved='yes' AND cart.completed='yes'
+                AND userorder.orderDate > DATE_ADD(CURDATE(), INTERVAL -1 DAY)";
                 //Execute Query
                 $res = mysqli_query($conn, $queryJoin);
                 $row = mysqli_fetch_assoc($res);
@@ -201,7 +230,7 @@ if (isset($_SESSION['loginAdmin'])) {
 
             <h1>RM<?php echo $sum; ?></h1>
             <br />
-            <h4>Today Revenue</h4>
+            <h4>Today Completed Revenue</h4>
             </div>
         </div>
 
