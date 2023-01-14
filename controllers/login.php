@@ -69,9 +69,35 @@ class login
 
         if (mysqli_num_rows($validateUser) == 1) {
 
+
+            
             $row = mysqli_fetch_assoc($validateUser);
             // put all user data into session
             $_SESSION['userID'] = $row['userID'];
+            $uid = $_SESSION['userID'];
+
+            $qUser = "SELECT * FROM `userorder` WHERE userID='$uid' AND paid='no' AND approved='no' AND deleted='no'";
+
+            $qUser2 = "SELECT * 
+            FROM cart 
+            JOIN userorder ON cart.orderID = userorder.orderID
+            JOIN product ON cart.productID = product.productID
+            WHERE userorder.userID='$uid' AND userorder.deleted='no' AND userorder.paid='yes' AND userorder.fulfilled='no' AND cart.completed='yes'";
+            //Execute the qUery
+            $paidUser = mysqli_query($conn, $qUser);
+            $paidUser2 = mysqli_query($conn, $qUser2);
+            //Count Rows to check whether we have foods or not
+            $countUser = mysqli_num_rows($paidUser);
+            $countUser2 = mysqli_num_rows($paidUser2);
+            //Create Serial Number VAriable and Set Default VAlue as 1
+            
+            if($countUser>0){
+                $_SESSION['paidUser'] = "<div style='color: red' class='alert text-center'>You Have Payments Not Approved</div>";
+            }
+            if($countUser2>0){
+                $_SESSION['paidUser2'] = "<div style='color: red' class='alert text-center'>Orders have been sent, Check Your History</div>";
+            }
+            
             $_SESSION['userFullname'] = $row['fullName'];
             $_SESSION['userName'] = $row['uName'];
             $_SESSION['userPass'] = $row['uPass'];
@@ -79,7 +105,7 @@ class login
             $_SESSION['userPhone'] = $row['userPhone'];
             $_SESSION['userLocation'] = $row['userLocation'];
 
-            $_SESSION['loginUser'] = "<div style='color: green' class='alert alert-success text-center'>Login succesful.</div>";
+            $_SESSION['loginUser'] = "<div style='color: green'  class='alert alert-success text-center'>Login succesful.</div>";
             echo '<script>window.location.href = "../../views/user/userHomepage.php"</script>';
         } else {
             echo '
@@ -126,15 +152,28 @@ class login
             FROM cart 
             JOIN userorder ON cart.orderID = userorder.orderID
             JOIN product ON cart.productID = product.productID
-            WHERE product.vendorID='$vid' AND userorder.deleted='no' AND userorder.paid='yes' AND cart.completed='no' ORDER BY `cartID` DESC";
+            WHERE product.vendorID='$vid' AND userorder.deleted='no' AND userorder.paid='yes' AND cart.completed='no'  AND userorder.approved='yes' ";
+
+            $query2 = "SELECT * 
+            FROM cart 
+            JOIN userorder ON cart.orderID = userorder.orderID
+            JOIN product ON cart.productID = product.productID
+            WHERE product.vendorID='$vid' AND userorder.deleted='no' AND userorder.paid='yes' AND cart.completed='no' AND userorder.proof!=''  AND userorder.approved='' ";
             //Execute the qUery
             $paidOrder = mysqli_query($conn, $query);
+            $paidOrder2 = mysqli_query($conn, $query2);
             //Count Rows to check whether we have foods or not
             $count = mysqli_num_rows($paidOrder);
+
+            $count2 = mysqli_num_rows($paidOrder2);
             //Create Serial Number VAriable and Set Default VAlue as 1
             
             if($count>0){
-                $_SESSION['paidOrder'] = "<div style='color: red' class='alert text-center'>You Have Orders to fulfill.</div>";
+                $_SESSION['paidOrder'] = "<div style='color: red' class='alert text-center'>You Have Orders to Fulfill.</div>";
+            }
+
+            if($count2>0){
+                $_SESSION['paidOrder2'] = "<div style='color: red' class='alert text-center'>You Have Payments to Validate</div>";
             }
             
             $_SESSION['vendorName'] = $row['vendorName'];

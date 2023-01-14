@@ -139,6 +139,41 @@ a {
     height:100%;
   }
 
+  .input2
+  {
+   background: rgba(255,255,255,0.1);
+   border: none;
+   font-size: 16px;
+   height: auto;
+   margin: 0;
+   outline: 0;
+   padding: 15px;
+   width: 100%;
+   background-color: #e8eeef;
+   color: #6A0DAD;
+   box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+ }
+ 
+/* proof PRODUCT */
+.inner-update2 {
+  background: #fff;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+
+  display: -ms-flexbox;
+  min-width: 0;
+ 
+}
+
+.image-holder-update2 {
+
+
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100%;
+}
+
+
+
   /* ALL INPUT COLOR GREY */
   /* textarea,
   input[type] {
@@ -230,6 +265,17 @@ a {
     border-radius: 5px;
     width: 100%;
     background-color:#6A0DAD; color:white;
+    width: 100%;
+    transition: 0.3s;
+  }
+  .buttonProfile2 {
+    border: none;
+    color: #FFF;
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    border-radius: 5px;
+    width: 100%;
     width: 100%;
     transition: 0.3s;
   }

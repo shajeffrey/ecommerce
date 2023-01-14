@@ -28,10 +28,19 @@ if (isset($_SESSION['updateProd'])) {
     echo $_SESSION['updateProd'];
     unset($_SESSION['updateProd']);
 }
-// if (isset($_SESSION['updateProfile'])) {
-//     echo $_SESSION['updateProfile'];
-//     unset($_SESSION['updateProfile']);
-// }
+
+    // Paid Order Reminder of Orders to Fulfill
+if (isset($_SESSION['paidUser'])) {
+    echo $_SESSION['paidUser'];
+    unset($_SESSION['paidUser']);
+}
+
+    // Paid Order Reminder of Orders to Fulfill
+if (isset($_SESSION['paidUser2'])) {
+    echo $_SESSION['paidUser2'];
+    unset($_SESSION['paidUser2']);
+}
+
 
 ?>
 
@@ -188,7 +197,11 @@ if (isset($_SESSION['updateProd'])) {
                                     while($row = mysqli_fetch_assoc($orderTable))
                                     {
                                         $orderID = $row['orderID'];
-                                        $query2 = "SELECT * FROM `cart` WHERE orderID='$orderID' AND productID='$productID' AND completed='no' ";
+
+                                        $query2 = "SELECT * FROM cart 
+                                        JOIN userorder ON cart.orderID = userorder.orderID
+                                        WHERE cart.orderID='$orderID' AND cart.productID='$productID' AND completed='no' AND approved='' AND proof='' ";
+
                                         $cartTable = mysqli_query($conn, $query2);
 
                                         if (mysqli_num_rows($cartTable) == 1 ){
@@ -198,7 +211,7 @@ if (isset($_SESSION['updateProd'])) {
 
                                             ?>
                                             <div class="text-muted mb-3">Availability to Add to Order: <?=$inventoryNo; ?></div>
-                                            <a href="userUpdate.php?prodID=<?php echo $productID;?>&cartID=<?php echo $cartID; ?>" type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i>Update Your Order?</a>
+                                            <a href="userUpdate.php?prodID=<?php echo $productID;?>&cartID=<?php echo $cartID; ?>" type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i>Update Latest Product Order?</a>
                                             
                                             <?php
                                         }

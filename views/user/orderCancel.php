@@ -43,6 +43,7 @@ WHERE userorder.userID='$userID' AND userorder.deleted='yes' AND userorder.fulfi
         <thead style="color:#007dd6;">
         <tr class="tr">
             <th style="width: 3%;">No.</th>
+            <th style="width: 7%;">ID No.</th>
             <th>Vendor</th>
             <th style="width: 17%;">Image</th>
             <th style="width: 17%;">Item Name</th>
@@ -90,6 +91,7 @@ WHERE userorder.userID='$userID' AND userorder.deleted='yes' AND userorder.fulfi
 
         <tr class="tr2">
            <td ><?php echo $sn++; ?>. </td>
+           <td><?php echo $orderID; ?></td>
            <td ><?php echo $vendorName; ?></td>
            <td>
                 <?php  

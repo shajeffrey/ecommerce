@@ -10,15 +10,18 @@ include 'templates/vHomeHeader.php';
         <div class="col-12 text-center">
         <h2 style="color:#6A0DAD;" class="mb-4">Orders Completed</h2>
         </div>
-        <div class="col-4 text-center">
+        <div class="col-3  text-center">
+            <a  href="orderReject.php" style=" color:white;" class="btn btn-danger ">View Rejected Orders</a> 
+        </div>
+        <div class="col-3 text-center">
             
             <a  href="orderPaid.php" style="background-color:#6A0DAD; color:white;" class="btn ">View Incoming Orders</a> 
         </div>
-        <div class="col-4  text-center">
-            <a  href="orderOngoing.php" style="background-color:#6A0DAD; color:white;" class="btn ">View Orders Sent</a> 
+        <div class="col-3  text-center">
+            <a  href="orderOngoing.php" style="background-color:#6A0DAD; color:white;" class="btn ">View Sent Orders</a> 
         </div>
-        <div class="col-4  text-center">
-            <a  href="orderReceive.php" style="background-color:#6A0DAD; color:white;" class="btn inactiveLink2">View Orders Received</a> 
+        <div class="col-3  text-center">
+            <a  href="orderReceive.php" style="background-color:#6A0DAD; color:white;" class="btn inactiveLink2">View Received Orders</a> 
         </div>
     </div>
         <br>       

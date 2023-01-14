@@ -8,17 +8,17 @@ include 'templates/vHomeHeader.php';
 
     <div class="row">
         <div class="col-12 text-center ">
-        <h2 style="color:#6A0DAD;" class="mb-4">Orders Sent</h2>
+        <h2 style="color:#6A0DAD;" class="mb-4">Orders Rejected</h2>
         </div>
         <div class="col-3  text-center">
-            <a  href="orderReject.php" style=" color:white;" class="btn btn-danger ">View Rejected Orders</a> 
+            <a  href="orderReject.php" style=" color:white;" class="btn btn-danger inactiveLink2">View Rejected Orders</a> 
         </div>
         <div class="col-3  text-center">
             
             <a  href="orderPaid.php" style="background-color:#6A0DAD; color:white;" class="btn ">View Incoming Orders</a> 
         </div>
         <div class="col-3  text-center">
-            <a  href="orderOngoing.php" style="background-color:#6A0DAD; color:white;" class="btn inactiveLink2">View Sent Orders</a> 
+            <a  href="orderOngoing.php" style="background-color:#6A0DAD; color:white;" class="btn ">View Sent Orders</a> 
         </div>
         <div class="col-3  text-center">
             <a  href="orderReceive.php" style="background-color:#6A0DAD; color:white;" class="btn ">View Received Orders</a> 
@@ -36,7 +36,6 @@ include 'templates/vHomeHeader.php';
             <th style="width: 20%;">Item Ordered</th>
             <th>Item Name</th>
             <th>Quantity</th>
-            <th style="width: 10%;">Date Sent</th>
         </tr>
         </thead>
         <tbody>
@@ -47,7 +46,7 @@ include 'templates/vHomeHeader.php';
         FROM cart 
         JOIN userorder ON cart.orderID = userorder.orderID
         JOIN product ON cart.productID = product.productID
-        WHERE product.vendorID='$vendorID' AND userorder.fulfilled='no' AND cart.completed='yes' ORDER BY `cartID` DESC";        //Execute the qUery
+        WHERE product.vendorID='$vendorID' AND userorder.deleted='no' AND userorder.approved='no' AND cart.completed='no' ORDER BY `cartID` DESC";        //Execute the qUery
         $cartList = mysqli_query($conn, $query);
         //Count Rows to check whether we have foods or not
         $count = mysqli_num_rows($cartList);
@@ -114,7 +113,6 @@ include 'templates/vHomeHeader.php';
             </td>
             <td><?php echo $prodName; ?></td>
             <td><?php echo $qty; ?></td>
-            <td><?php echo $sentDate; ?></td>
  
         </tr>
         

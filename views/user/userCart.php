@@ -102,6 +102,8 @@ WHERE userorder.userID='$userID' AND userorder.deleted='no' AND userorder.paid='
             {
                 //get the values from individual columns
                 $cartID = $cartRow['cartID'];
+                $approved = $cartRow['approved'];
+                $proof = $cartRow['proof'];
                 $productID = $cartRow['productID'];
                     $prodRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `product` WHERE productID='$productID' "));
                     
@@ -151,10 +153,17 @@ WHERE userorder.userID='$userID' AND userorder.deleted='no' AND userorder.paid='
             
             <td><?php echo $disc; ?>%</td>
             <td>RM<?php echo $total; ?></td>
+
             <td>
+                <?php if($approved=='no'|| $proof!='' ) {?>
+
+                <a  class="btn btn-link inactiveLink" style="color: red;">Check Payment</a>
+                <?php }else{ ?>
                 <a href="userUpdate.php?prodID=<?php echo $productID;?>&cartID=<?php echo $cartID; ?>" class="btn btn-link" >Update Order</a>
+                <?php } ?>
             
                 <a onclick="return confirm('Are you sure you want to delete this item?');" href="userDelete.php?deleteID=<?php echo $cartID;?>" class="btn btn-link" >Delete Item</a>
+
             </td>
         </tr>
         

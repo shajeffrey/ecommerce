@@ -54,6 +54,7 @@ include 'templates/uHomeHeader.php';
         //Create Serial Number VAriable and Set Default VAlue as 1
         $sn=1;
         $x=0;
+        $y=0;
 
         if($count>0)
         {
@@ -65,10 +66,14 @@ include 'templates/uHomeHeader.php';
                 //get the values from individual columns
                 $cartID = $cartRow['cartID'];
                 $orderID = $cartRow['orderID'];
+                $approved = $cartRow['approved'];
                 $proof = $cartRow['proof'];
 
                 if(empty($proof)){
                     $x++;
+                }
+                if($approved == 'no'){
+                    $y++;
                 }
 
                 $productID = $cartRow['productID'];
@@ -109,8 +114,21 @@ include 'templates/uHomeHeader.php';
            <td style="color: #007dd6;">RM<?php echo $total; ?></td>
            
            <td >
+
+            <?php 
+            if(empty($proof)){
+            ?>
+                <a href="proof.php?oID=<?php echo $orderID;?>" style=" color:white;" class="btn btn-primary" >New Upload</a>     
             
-           <a href="proof.php?oID=<?php echo $orderID;?>" style="background-color:#007dd6; color:white;" class="btn btn-primary turned-button" >Upload</a>
+            <?php } else if($approved == 'no'){ ?>
+                
+                <a href="proof.php?oID=<?php echo $orderID;?>" style=" color:white;" class="btn btn-danger" >Reupload Needed</a>
+            
+            <?php }else{?>
+
+                <a href="proof.php?oID=<?php echo $orderID;?>" style=" color:white;" class="btn btn-success" >Update Upload</a>
+
+            <?php }?>
 
            </td>
 
@@ -141,15 +159,19 @@ include 'templates/uHomeHeader.php';
     <div class="col-6  text-center">
 
     <?php 
-     if($x == 0){
+     if($y > 0){
     ?>
-    <form method="post">
-        <button onclick="return confirm('Are you sure you have paid?');" name="pay" style="background-color:#007dd6; color:white;"  class="btn hover">Confirm Payments?</button>         
-        </form>
+    <button style=" color:007dd6;"  class="btn btn-link inactiveLink">You Have <?=$y?> More Reupload</button>         
     
-    <?php } else{ ?>
+    <?php } else if($x == 0){ ?>
         
-        <button style=" color:007dd6;"  class="btn btn-link inactiveLink">You Have To Upload <?=$x?> More Payment</button>         
+        <form method="post">
+            <button onclick="return confirm('Are you sure you uploaded payments?');" name="pay" style="background-color:#007dd6; color:white;"  class="btn hover">Confirm Payments?</button>         
+            </form>
+        
+    <?php }else{?>
+            
+            <button style=" color:007dd6;"  class="btn btn-link inactiveLink">You Have To Upload <?=$x?> More Payment</button>         
 
     <?php }?>
        
@@ -177,7 +199,7 @@ if (isset($_POST['pay'])) {
 			<script>
 			sweetAlert({
 					title: "Payment Done!",
-					text: "Check Your History",
+					text: "Check Your History For Order Progress",
 					type: "success",
 				},
 

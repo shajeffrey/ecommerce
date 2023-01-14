@@ -122,7 +122,9 @@ if(empty($_POST['catSearch']) && empty($_POST['typeSearch'])){
                                     while($row = mysqli_fetch_assoc($orderTable))
                                     {
                                         $orderID = $row['orderID'];
-                                        $query2 = "SELECT * FROM `cart` WHERE orderID='$orderID' AND productID='$productID' AND completed='no'   ";
+                                        $query2 = "SELECT * FROM cart 
+                                        JOIN userorder ON cart.orderID = userorder.orderID
+                                        WHERE cart.orderID='$orderID' AND cart.productID='$productID' AND completed='no' AND approved='' AND proof='' ";
                                         $cartTable = mysqli_query($conn, $query2);
 
                                         if (mysqli_num_rows($cartTable) == 1 ){

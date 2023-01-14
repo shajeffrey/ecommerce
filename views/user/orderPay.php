@@ -7,7 +7,7 @@ $query = "SELECT *
 FROM cart 
 JOIN userorder ON cart.orderID = userorder.orderID
 JOIN product ON cart.productID = product.productID
-WHERE userorder.userID='$userID' AND userorder.deleted='no' AND userorder.paid='yes' AND userorder.fulfilled='no' ORDER BY `cartID` DESC";
+WHERE userorder.userID='$userID' AND userorder.deleted='no' AND userorder.paid='yes' AND userorder.fulfilled='no'  ORDER BY `cartID` DESC";
 ?>
 
 <div class="container-fluid ">
@@ -94,6 +94,7 @@ WHERE userorder.userID='$userID' AND userorder.deleted='no' AND userorder.paid='
                 $qty = $cartRow['quantity'];
                 $total = $cartRow['total'];
                 $status = $cartRow['completed'];
+                $approved = $cartRow['approved'];
 
 
         ?>
@@ -125,10 +126,18 @@ WHERE userorder.userID='$userID' AND userorder.deleted='no' AND userorder.paid='
             <td><?php echo $paymentDate; ?></td>
             <td>
                 <?php 
-                if($status=='yes'){
-                echo "<div style='color: green'>Order Has Been Sent</div>";
-                }else{
-                echo "<div style='color: red'>Order Not Sent</div>";
+                 if($status=='yes'){
+
+                     echo "<div style='color: green'>Order Has Been Sent</div>";
+                     
+                } else  if($approved=='yes'){
+                    
+                    echo "<div style='color: green'>Payment Approved</div>";
+
+                }else {
+
+                echo "<div style='color: red'>Validation In Progress</div>";
+
                 }
                 ?>
             </td>

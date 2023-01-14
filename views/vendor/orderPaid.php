@@ -15,18 +15,39 @@ include 'templates/vHomeHeader.php';
     </div>
     <?php endif; ?>
 
+    <?php if (isset($_SESSION['approve'])): ?>
+    <div class="col-12">
+            <?php 
+            echo $_SESSION['approve'];
+            unset($_SESSION['approve']);
+            ?>
+    </div>
+    <?php endif; ?>
+
+    <?php if (isset($_SESSION['reject'])): ?>
+    <div class="col-12">
+            <?php 
+            echo $_SESSION['reject'];
+            unset($_SESSION['reject']);
+            ?>
+    </div>
+    <?php endif; ?>
+
     <div class="row">
         <div class="col-12 text-center">
         <h2 style="color:#6A0DAD;" class="mb-4">Orders Paid Incoming</h2>
         </div>
-        <div class="col-4 text-center">
+        <div class="col-3  text-center">
+            <a  href="orderReject.php" style=" color:white;" class="btn btn-danger ">View Rejected Orders</a> 
+        </div>
+        <div class="col-3 text-center">
             
             <a  href="orderPaid.php" style="background-color:#6A0DAD; color:white;" class="btn inactiveLink2">View Incoming Orders</a> 
         </div>
-        <div class="col-4  text-center">
+        <div class="col-3  text-center">
             <a  href="orderOngoing.php" style="background-color:#6A0DAD; color:white;" class="btn ">View Sent Orders</a> 
         </div>
-        <div class="col-4  text-center">
+        <div class="col-3  text-center">
             <a  href="orderReceive.php" style="background-color:#6A0DAD; color:white;" class="btn ">View Received Orders</a> 
         </div>
     </div>
@@ -75,6 +96,7 @@ include 'templates/vHomeHeader.php';
                 $prodPicture = $cartRow['prodPicture'];
                 $prodName = $cartRow['prodName'];
                 $paymentDate = $cartRow['paymentDate'];
+                $approved = $cartRow['approved'];
                 // $discPrice = $cartRow['price'];
                 // $disc = $cartRow['discount'];
                 // $total = $cartRow['total'];
@@ -125,10 +147,22 @@ include 'templates/vHomeHeader.php';
             <td><?php echo $paymentDate; ?></td>
 
             <td>    
+            
+            <?php 
+            if($approved==''){ 
+            ?>
+                  <a href="validate.php?oID=<?php echo $orderID;?>" class="btn btn-danger" >Validate Payment</a>    
+            <?php    
+            }else{ 
+            ?>
             <form method="post">      
             <input readonly type="hidden" name="cartID" value="<?=$cartID;?>">
             <button onclick="return confirm('Order Sent Confirmation?');" name="send" style="background-color:#6A0DAD;"  class="btn btn-primary">Order Sent?</button>
             </form>
+            <?php 
+            }
+            ?>
+
             </td>
         </tr>
         
