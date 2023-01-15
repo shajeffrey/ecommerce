@@ -5,6 +5,8 @@ include 'templates/uHomeHeader.php';
 if (isset($_GET['vendorID'])) {
 
 $getid = $_GET['vendorID'];
+$vRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `vendor` WHERE vendorID='$getid' "));
+$vName = $vRow['vendorName'];
 
 } else {
 //If not found redirect to vendorhomepage
@@ -16,73 +18,10 @@ echo '<script>window.location.href = "userHomepage.php"</script>';
 <!-- margin y axis (top/bottom) -->
 <div class="my-3">
     <div class="d-flex justify-content-center ">
-        <h1 class="sessionName">Welcome <?=$_SESSION['userFullname'];?></h1>
+        <h1 class="sessionName"><?=$vName?> Catalogue</h1>
     </div>
 </div>
 
-<div class="container">
-    <form action="userSearch.php" method="POST">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-10">
-                <div class="card p-3  py-4">
-                    <h5>Find Your Product</h5>
-                    <?php
-                    if (isset($_SESSION['searchBox'])) {
-                        echo $_SESSION['searchBox'];
-                        unset($_SESSION['searchBox']);
-                    }
-                    ?>
-                    <div class="row g-3 mt-2">
-                        <div class="col-md-3">
-                            <div class="dropdown">
-                           
-                            <!--php category here -->
-                            <select class="btn btn-secondary dropdown-toggle" style="padding: 4% 4% ;" name="catSearch" >
-                            <option value="" disabled selected hidden>Choose Category</option>
-                            <option value="" >No Category</option>
-                            <?php 
-                            $sql = "SELECT * FROM `category`";
-                            $categories = mysqli_query($conn, $sql);
-                            $count = mysqli_num_rows($categories);
-                            if($count>0)
-                            {
-                                while($row=mysqli_fetch_assoc($categories))
-                                {
-                                    //get the details of categories
-                                    $categoryID = $row['categoryID'];
-                                    $categoryName = $row['categoryName'];
-                                    $categoryDesc = $row['categoryDesc'];
-                                    ?>
-                                    <option  value="<?php echo $categoryID;?>"> <?php echo "$categoryName"; ?></option>             
-                                     <?php
-                                }
-                            }
-                            else
-                            {
-                                ?>
-                                 <option class="dropdown-item alert-danger inactiveLink" >Sorry! Error</option>
-                                <?php
-                            }
-                        ?>
-                            </select>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="typeSearch" placeholder="What Products Do You Want to See?">
-                        </div>
-
-                        <div class="col-md-3">
-                            <button class="btn btn-secondary btn-block" type="submit">Search Results</button>
-                        </div>
-
-                    </div>
-
-                  </div>
-            </div>
-        </div>
-    </form>
-</div>
 
 <div style="background-color: white; padding: 0px 20px;">
 <div class="container justify-content-center mt-50 mb-50 ">
@@ -150,7 +89,7 @@ echo '<script>window.location.href = "userHomepage.php"</script>';
                                         <a href="#" class="text-default mb-2 inactiveLink" data-abc="true"><?=$prodName; ?></a><br>
                                         
                                     </h6>
-                                    <u><a href="#" class="text-muted  mt-1" data-abc="true">Vendor   :<?=$vName; ?></a></u><br>
+                                  
                                     <a href="#" class="text-muted inactiveLink" data-abc="true">Category :<?=$category; ?></a><br>
                                     <hr>
                                 

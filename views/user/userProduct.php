@@ -134,7 +134,7 @@ if (isset($_GET['prodID'])) {
                                     <input readonly type="hidden" id="hiddenTotal" name="hiddenTotal" value="">
 
                                     <div class="col-12 text-right col-sm-3 " style="padding: 0% 5% 0% 0%; margin:4% 0% 0% 0%;">
-                                        <button type="submit" name="addCart"  class="btn" style="background-color:#007dd6; color:white;">Add to cart</button>
+                                        <button type="submit" name="addCart"  class="btn" style="background-color:#007dd6; color:white;">Add Product</button>
                                     </div>
 
                                     <!-- ERROR CHECKING PLACE  -->

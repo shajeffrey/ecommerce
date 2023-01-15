@@ -202,7 +202,7 @@ if (isset($_POST['send'])) {
 			<script>
 			sweetAlert({
 					title: "Order Sent!",
-					text: "Check Your Check Your Orders In Progress",
+					text: "Check Your Check Your Orders Sent",
 					type: "success",
 				},
 

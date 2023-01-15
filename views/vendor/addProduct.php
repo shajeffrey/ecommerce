@@ -13,7 +13,7 @@ include 'templates/vHomeHeader.php';
 
                             <div class="p-4">
                                 <div class="col-12 form-header-update text-center">
-                                    <h3 style="color:#6A0DAD ;">Product Addtion</h3>
+                                    <h3 style="color:#6A0DAD ;">Product Addition</h3>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-sm-6" >

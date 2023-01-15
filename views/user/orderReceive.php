@@ -9,11 +9,14 @@ JOIN userorder ON cart.orderID = userorder.orderID
 JOIN product ON cart.productID = product.productID
 WHERE userorder.userID='$userID' AND userorder.deleted='no' AND userorder.fulfilled='yes' AND cart.completed='yes' ORDER BY `cartID` DESC";
 ?>
-
 <div class="container-fluid ">
-    
-    <div style="background-color: #fff; border-radius:10px;" class="m-5 p-4">
+<div class="my-3">
+    <div class="d-flex justify-content-center ">
+        <h2 class="sessionName">History</h2>
+    </div>
+</div>
 
+<div style="background-color: #fff; border-radius:10px;" class="mx-5 p-4">
     <div class="row">
         <div class="col-12 text-center">
         <h2 style="color:#007dd6;" class="mb-4">Orders Received</h2>

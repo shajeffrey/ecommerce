@@ -9,10 +9,15 @@ JOIN userorder ON cart.orderID = userorder.orderID
 JOIN product ON cart.productID = product.productID
 WHERE userorder.userID='$userID' AND userorder.deleted='no' AND userorder.paid='yes' AND userorder.fulfilled='no'  ORDER BY `cartID` DESC";
 ?>
-
 <div class="container-fluid ">
+<div class="my-3">
+    <div class="d-flex justify-content-center ">
+        <h2 class="sessionName">History</h2>
+    </div>
+</div>
+
+<div style="background-color: #fff; border-radius:10px;" class="mx-5 p-4">
     
-    <div style="background-color: #fff; border-radius:10px;" class="m-5 p-4">
 
     <?php if (isset($_SESSION['userPay'])): ?>
     <div class="col-12">
