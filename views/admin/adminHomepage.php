@@ -72,7 +72,7 @@ if (isset($_SESSION['loginAdmin'])) {
 
             <h1><?php echo $count; ?></h1>
             <br />
-            <h4>Alltime Product Orders</h4>
+            <h4>Alltime  Orders</h4>
             </div>
         </div>
 
@@ -87,7 +87,7 @@ if (isset($_SESSION['loginAdmin'])) {
 
             <h1><?php echo $count; ?></h1>
             <br />
-            <h4>Total Payed Orders</h4>
+            <h4>Total Paid Orders</h4>
             </div>
         </div>
 
@@ -106,7 +106,7 @@ if (isset($_SESSION['loginAdmin'])) {
 
             <h1><?php echo $count; ?></h1>
             <br />
-            <h4>Total Order To Receive</h4>
+            <h4>Total Order Not Received</h4>
             </div>
         </div>
 

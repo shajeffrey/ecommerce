@@ -49,7 +49,7 @@ include 'templates/vHomeHeader.php';
                             else
                             {
                                 ?>
-                                <option value="0">Error! Not Found</option>
+                                <option value="0">Sorry! No Categories Available</option>
                                 <?php
                             }
                         ?>

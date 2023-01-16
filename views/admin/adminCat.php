@@ -131,7 +131,7 @@ if (isset($_SESSION['addCategory'])) {
                             else
                             {
                                 //Food not Added in Database
-                                echo "<tr> <td colspan='12' class='text-center'> No Category Added . </td> </tr>";
+                                echo "<tr> <td colspan='12' class='text-center'> No Category Added, Add one?. </td> </tr>";
                             }
 
                             ?>

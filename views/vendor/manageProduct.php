@@ -136,7 +136,7 @@ include 'templates/vHomeHeader.php';
             <td>
                 <a href="updateProduct.php?prodID=<?php echo $productID;?>" class="btn btn-link">Update Item</a>
             
-                <a onclick="return confirm('Are you sure you want to delete this product?');" href="deleteProduct.php?deleteID=<?php echo $productID;?>&currentImage=<?php echo $prodPicture; ?>" class="btn btn-link">Delete Item</a>
+                <a onclick="return confirm('Confirm Deletion? Product History Received Orders will be deleted also!');" href="deleteProduct.php?deleteID=<?php echo $productID;?>&currentImage=<?php echo $prodPicture; ?>" class="btn btn-link">Delete Item</a>
             </td>
         </tr>
         
@@ -146,7 +146,7 @@ include 'templates/vHomeHeader.php';
             else
             {
                 //Food not Added in Database
-                echo "<tr> <td colspan='12' class='text-center'> No Menu Added . </td> </tr>";
+                echo "<tr> <td colspan='12' class='text-center'> Try Adding A New Product? . </td> </tr>";
             }
 
         ?>

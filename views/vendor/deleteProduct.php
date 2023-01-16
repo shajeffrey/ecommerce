@@ -22,13 +22,7 @@ if(isset($_GET['deleteID']) && isset($_GET['currentImage'])) //Either use '&&' o
 
     if($count == 0){
     //CHeck whether the image is available or not and Delete only if available
-        if($prodImage != "")
-        {
-            //Get the Image Path
-            $path = "../../assets/images/product/".$prodImage;
-            //REmove Image File from Folder
-            $remove = unlink($path);
-        }
+     
 
         //Delete Prod from Database
         $query = "DELETE FROM `product` WHERE productID='$deleteID'";
@@ -37,6 +31,13 @@ if(isset($_GET['deleteID']) && isset($_GET['currentImage'])) //Either use '&&' o
 
         if($deleteProd==true)
         {
+            if($prodImage != "")
+            {
+                //Get the Image Path
+                $path = "../../assets/images/product/".$prodImage;
+                //REmove Image File from Folder
+                $remove = unlink($path);
+            }
             //Product Deleted
             $_SESSION['deleteProd'] = "<div style='color: green' class='alert alert-success text-center'>Delete Successful.</div>";
             echo '<script>window.location.href = "manageProduct.php"</script>';
@@ -45,7 +46,7 @@ if(isset($_GET['deleteID']) && isset($_GET['currentImage'])) //Either use '&&' o
             echo '<script>window.location.href = "manageProduct.php"</script>';
         }
     }else{
-        $_SESSION['deleteProd'] = "<div style='color: red' class='alert alert-danger text-center'>There are Customer Orders Related to Product</div>";
+        $_SESSION['deleteProd'] = "<div style='color: red' class='alert alert-danger text-center'>Deletion Cancelled! There are customer Cart Orders related to item</div>";
         echo '<script>window.location.href = "manageProduct.php"</script>';
     }
 }
