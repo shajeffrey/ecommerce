@@ -44,7 +44,7 @@ if (isset($_GET['updateID'])) {
 
                                     <div class="row pt-2">
                                         <div class="col-12 text-center">
-                                        <legend class="legend1 "><?php echo $catName;?> Category</legend>
+                                        <legend class="legend1 "> Update <?php echo $catName;?> Category</legend>
                                         </div>
 
                                         <!-- ERROR CHECKING PLACE  -->
