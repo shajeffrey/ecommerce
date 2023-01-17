@@ -182,7 +182,6 @@ class login
             $_SESSION['vendorPassword'] = $row['vPassword'];
             $_SESSION['vendorPhone'] = $row['vendorPhone'];
             $_SESSION['vendorLocation'] = $row['vendorLocation'];
-            $_SESSION['qrUpload'] = $row['qrUpload'];
             $_SESSION['bankName'] = $row['bankName'];
             $_SESSION['bankNo'] = $row['bankNo'];
 
