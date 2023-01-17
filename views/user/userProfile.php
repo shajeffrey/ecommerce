@@ -60,7 +60,7 @@ if (isset($_SESSION['updateProfile'])) {
             <div class="form-group">
                 <label class="labels" for="uFullname">Full Name</label>
                 <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                <input type="text" class=" input form-control" required name="uFullname" id="uFullname" value="<?php echo $_SESSION['userFullname']; ?>">
+                <input type="text" class=" input form-control" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" required name="uFullname" id="uFullname" value="<?php echo $_SESSION['userFullname']; ?>">
 
             </div>
         </div>
