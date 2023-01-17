@@ -52,7 +52,7 @@ if (isset($_SESSION['addCategory'])) {
                                             <div class="form-group">
                                                 <label class="labels" for="catName">Category Name</label>
                                                 <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                                                <input type="text" class=" input form-control" placeholder="*Enter a name" maxlength="50" required name="catName" id="catName" value="<?php if(isset($_SESSION['catName'])) { echo $_SESSION['catName']; unset($_SESSION['catName']);}?>">
+                                                <input type="text" class=" input form-control" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" placeholder="*Enter a name" maxlength="50" required name="catName" id="catName" value="<?php if(isset($_SESSION['catName'])) { echo $_SESSION['catName']; unset($_SESSION['catName']);}?>">
 
                                             </div>
                                         </div>

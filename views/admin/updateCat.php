@@ -66,7 +66,7 @@ if (isset($_GET['updateID'])) {
                                             <div class="form-group">
                                                 <label class="labels" for="catName">Category Name</label>
                                                 <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                                                <input type="text" class=" input form-control" placeholder="*Enter a name" maxlength="50" required name="catName" id="catName" value="<?php echo $catName;?>">
+                                                <input type="text" class=" input form-control" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" placeholder="*Enter a name" maxlength="50" required name="catName" id="catName" value="<?php echo $catName;?>">
 
                                             </div>
                                         </div>

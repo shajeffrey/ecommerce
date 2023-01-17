@@ -19,7 +19,7 @@ include 'templates/vHomeHeader.php';
                                     <div class="col-12 col-sm-6" >
                                         <div class="form-group">
                                             <label for="prodName">Item Name</label>
-                                            <input type="text" class="form-control input-update" required name="prodName" id="prodName" value="">
+                                            <input type="text"  class="form-control input-update" required name="prodName" id="prodName" value="">
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6">
