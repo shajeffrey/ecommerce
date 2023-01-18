@@ -157,7 +157,7 @@ WHERE userorder.userID='$userID' AND userorder.deleted='no' AND userorder.paid='
             <td>
                 <?php if($approved=='no'|| $proof!='' ) {?>
 
-                <a  class="btn btn-link inactiveLink" style="color: red;">Check Payment</a>
+                <a  class="btn btn-link inactiveLink" style="color: red;">Payment Rejected</a>
                 <?php }else{ ?>
                 <a href="userUpdate.php?prodID=<?php echo $productID;?>&cartID=<?php echo $cartID; ?>" class="btn btn-link" >Update Order</a>
                 <?php } ?>

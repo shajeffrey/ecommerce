@@ -103,7 +103,7 @@ if (isset($_GET['prodID'])) {
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group">
                                             <label for="prodInv">Quantity Remaining</label>
-                                            <input readonly type="number" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" class="form-control inactiveLink input-update" required name="prodInv" id="prodInv" value="<?=$inventoryNo?>">
+                                            <input readonly type="number" min="1" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" class="form-control inactiveLink input-update" required name="prodInv" id="prodInv" value="<?=$inventoryNo?>">
                                         </div>
                                     </div>
 
@@ -225,10 +225,13 @@ if (isset($_POST['addCart'])) {
     `inventoryNo`='$stockLeft',
     `inStock`='$instock' WHERE productID='$prodID'";
     
+    date_default_timezone_set("Singapore");
+    $orderDate = date("Y-m-d h:i:sa"); //Order DAte
+
     if (mysqli_query($conn, $updateProd)) {
 
-        $insertOrder = "INSERT INTO `userorder`(`userID`, `fulfilled`, `deleted`, `paid`) VALUES 
-        ('$userID','no','no','no')";
+        $insertOrder = "INSERT INTO `userorder`(`userID`, `orderDate`, `fulfilled`, `deleted`, `paid`) VALUES 
+        ('$userID','$orderDate','no','no','no')";
     
         if (mysqli_query($conn, $insertOrder)) {
             $orderRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `userorder` ORDER BY orderID DESC LIMIT 1"));

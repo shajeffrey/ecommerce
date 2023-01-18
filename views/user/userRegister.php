@@ -16,7 +16,7 @@ include '../../controllers/register.php';
                             <div class="form-group">
                                 <label for="uFullname">Full Name</label>
                                 <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                                <input type="text" class="form-control" required name="uFullname" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" id="uFullname" value="<?php if(isset($_SESSION['uFullname'])) { echo $_SESSION['uFullname']; unset($_SESSION['uFullname']);} ?>">
+                                <input type="text" class="form-control" required name="uFullname" pattern="^[A-Za-z \s*]+$"  id="uFullname" value="<?php if(isset($_SESSION['uFullname'])) { echo $_SESSION['uFullname']; unset($_SESSION['uFullname']);} ?>">
                             
                             </div>
                         </div>

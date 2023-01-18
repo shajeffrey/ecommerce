@@ -63,7 +63,7 @@ if (isset($_SESSION['updateProfile'])) {
             <div class="form-group">
                 <label for="vName">Vendor Name</label>
                 <!-- setvalue CI4 helper(['form']) in Users Controller -->
-                <input type="text" class="input form-control" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" required name="vName" id="vName" value="<?php echo $_SESSION['vendorName']; ?>">
+                <input type="text" class="input form-control" pattern="^[A-Za-z \s*]+$"  required name="vName" id="vName" value="<?php echo $_SESSION['vendorName']; ?>">
             </div>
         </div>
 
