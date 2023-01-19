@@ -155,10 +155,13 @@ WHERE userorder.userID='$userID' AND userorder.deleted='no' AND userorder.paid='
             <td>RM<?php echo $total; ?></td>
 
             <td>
-                <?php if($approved=='no'|| $proof!='' ) {?>
+                <?php if($approved=='no' ) {?>
 
                 <a  class="btn btn-link inactiveLink" style="color: red;">Payment Rejected</a>
-                <?php }else{ ?>
+                <?php }else if($proof!='') { ?>
+
+                <a  class="btn btn-link inactiveLink" style="color: red;">Payment already uploaded</a>
+                <?php } else { ?>
                 <a href="userUpdate.php?prodID=<?php echo $productID;?>&cartID=<?php echo $cartID; ?>" class="btn btn-link" >Update Order</a>
                 <?php } ?>
             

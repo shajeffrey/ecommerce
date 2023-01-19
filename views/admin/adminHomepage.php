@@ -99,7 +99,7 @@ if (isset($_SESSION['loginAdmin'])) {
                 FROM cart 
                 JOIN userorder 
                 ON cart.orderID = userorder.orderID
-                WHERE userorder.deleted='no' AND userorder.paid='yes' AND userorder.approved='yes' AND userorder.fulfilled='no' AND cart.completed='yes' ";
+                WHERE userorder.deleted='no' AND userorder.approved='yes' AND userorder.fulfilled='no' ";
                 //Execute Query
                 $count = mysqli_num_rows(mysqli_query($conn, $sql));
             ?>

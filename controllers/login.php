@@ -92,7 +92,7 @@ class login
             //Create Serial Number VAriable and Set Default VAlue as 1
             
             if($countUser>0){
-                $_SESSION['paidUser'] = "<div style='color: red' class='alert text-center'>You Have Payments Rejecetd in Cart</div>";
+                $_SESSION['paidUser'] = "<div style='color: red' class='alert text-center'>You Have Payments Rejected in Cart</div>";
             }
             if($countUser2>0){
                 $_SESSION['paidUser2'] = "<div style='color: red' class='alert text-center'>Orders have been sent, Check Your History</div>";
