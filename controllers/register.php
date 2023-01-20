@@ -1,3 +1,4 @@
+<!-- REGISTER CLASS -->
 <?php
 
 session_start();

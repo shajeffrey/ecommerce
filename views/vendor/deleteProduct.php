@@ -1,4 +1,4 @@
-
+<!-- VNDOR DELETE PRODUCT -->
 <?php include '../../conn.php';
 session_start();
 if(isset($_GET['deleteID']) && isset($_GET['currentImage'])) //Either use '&&' or 'AND'

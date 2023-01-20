@@ -1,3 +1,4 @@
+<!-- USER PAID ORDERS HISTORY -->
 <?php
 include 'templates/uHomeHeader.php';
 

@@ -1,3 +1,4 @@
+<!-- USER CANCELLED HISTORY ORDERS -->
 <?php
 include 'templates/uHomeHeader.php';
 

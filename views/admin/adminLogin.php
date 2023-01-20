@@ -1,4 +1,4 @@
-
+<!-- ADMIN LOGIN PAGE -->
 <?php
 include 'templates/header.php';
 include '../../controllers/login.php';

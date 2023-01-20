@@ -1,3 +1,4 @@
+<!-- USER CART -->
 <?php
 include 'templates/uHomeHeader.php';
 

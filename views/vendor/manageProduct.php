@@ -1,3 +1,4 @@
+<!-- VENDOR MANAGE PRODUCT CATALOG -->
 <?php
 include 'templates/vHomeHeader.php';
 ?>

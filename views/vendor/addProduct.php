@@ -1,3 +1,4 @@
+<!-- VENDOR ADD PRODUCT -->
 <?php
 
 include 'templates/vHomeHeader.php';

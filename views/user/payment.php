@@ -1,3 +1,4 @@
+<!-- USER PAYMENT -->
 <?php
 include 'templates/uHomeHeader.php';
 ?>

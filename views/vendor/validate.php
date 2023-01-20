@@ -1,4 +1,4 @@
-     
+     <!-- VENDOR VALIDATE ORDER PAYMENT BY USER -->
      <?php
 
 include 'templates/vHomeHeader.php';

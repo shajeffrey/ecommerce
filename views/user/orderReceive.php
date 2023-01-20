@@ -1,3 +1,4 @@
+<!-- USER RECEIVED ORDERS HISTORY -->
 <?php
 include 'templates/uHomeHeader.php';
 

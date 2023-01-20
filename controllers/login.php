@@ -1,3 +1,4 @@
+<!-- LOGIN CLASS -->
 <?php
 
 session_start();

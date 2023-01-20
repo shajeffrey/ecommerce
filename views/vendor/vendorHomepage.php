@@ -1,3 +1,4 @@
+<!-- VENDOR HOMEPAGE -->
 <?php
 include 'templates/vHomeHeader.php';
 ?>

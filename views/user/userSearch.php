@@ -1,4 +1,4 @@
-
+<!-- USER SEARCH PRODUCTS -->
 <?php
 include 'templates/uHomeHeader.php';
 ?>

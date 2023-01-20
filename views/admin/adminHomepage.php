@@ -1,3 +1,4 @@
+<!-- ADMIN HOMEPAGE -->
 <?php
 include 'templates/aHomeHeader.php';
 ?>

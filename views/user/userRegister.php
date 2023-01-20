@@ -1,3 +1,4 @@
+<!-- USER REGISTER -->
 <?php
 include 'templates/header.php';
 include '../../controllers/register.php';

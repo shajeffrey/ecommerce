@@ -1,3 +1,4 @@
+<!-- VENDOR PAID ORDERS -->
 <?php
 include 'templates/vHomeHeader.php';
 ?>

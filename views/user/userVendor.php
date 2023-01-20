@@ -1,3 +1,4 @@
+<!-- USER SEARCH VENDOR CATALOG -->
 <?php
 include 'templates/uHomeHeader.php';
 

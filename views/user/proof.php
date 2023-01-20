@@ -1,4 +1,4 @@
-     
+     <!-- USER PROOF OF PAYMENT  -->
      <?php
 
 include 'templates/uHomeHeader.php';

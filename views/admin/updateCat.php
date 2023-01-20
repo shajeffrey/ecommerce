@@ -1,3 +1,4 @@
+<!-- ADMIN UPDATE CATEGORY -->
 <?php
 include 'templates/aHomeHeader.php';
 ?>

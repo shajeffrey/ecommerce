@@ -1,3 +1,4 @@
+<!-- VENDOR UPDATE PROFILE -->
 <?php
 include 'templates/vHomeHeader.php';
 

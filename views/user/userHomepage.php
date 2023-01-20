@@ -1,3 +1,4 @@
+<!-- USER HOMEPAGE -->
 <?php
 include 'templates/uHomeHeader.php';
 

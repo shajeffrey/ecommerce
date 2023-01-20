@@ -1,3 +1,4 @@
+<!-- VENDOR CATALOG SEARCH -->
 <?php
 include 'templates/vHomeHeader.php';
 ?>

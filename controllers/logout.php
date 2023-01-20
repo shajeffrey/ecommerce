@@ -1,3 +1,4 @@
+<!-- LOGOUT CLASS -->
 <?php
 session_start();
 session_destroy();

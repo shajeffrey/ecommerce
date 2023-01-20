@@ -1,3 +1,4 @@
+<!-- USER LOGIN PAGE -->
 <?php
 
 include 'templates/header.php';

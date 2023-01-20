@@ -1,3 +1,4 @@
+<!-- USER UPDATE PRODUCTS -->
 <?php
 include 'templates/uHomeHeader.php';
 ?>

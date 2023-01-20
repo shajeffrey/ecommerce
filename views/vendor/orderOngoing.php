@@ -1,3 +1,4 @@
+<!-- VENDOR SENT ORDERS  -->
 <?php
 include 'templates/vHomeHeader.php';
 ?>

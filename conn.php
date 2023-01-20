@@ -1,3 +1,4 @@
+<!-- DB CONNECTION -->
 <?php
 
 /* define('LOCALHOST', 'localhost');

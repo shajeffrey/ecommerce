@@ -1,4 +1,4 @@
-
+<!-- USER DELETE ORDERS -->
 <?php include '../../conn.php';
 session_start();
 if (isset($_GET['deleteID'])) //Either use '&&' or 'AND'

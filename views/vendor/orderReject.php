@@ -1,3 +1,4 @@
+<!-- VENDOR REJECTED ORDERS -->
 <?php
 include 'templates/vHomeHeader.php';
 ?>
