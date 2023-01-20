@@ -65,7 +65,7 @@ if (isset($_SESSION['paidUser2'])) {
                             <option value="" disabled selected hidden>Choose Category</option>
                             <option value="" >No Category</option>
                             <?php 
-                            $sql = "SELECT * FROM `category`";
+                            $sql = "SELECT * FROM `category` WHERE catDel='no'";
                             $categories = mysqli_query($conn, $sql);
                             $count = mysqli_num_rows($categories);
                             if($count>0)
